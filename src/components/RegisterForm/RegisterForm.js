@@ -5,6 +5,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class RegisterForm extends Component {
   state = {
     newUser: {
+      coopName: '',
       firstName: '',
       lastName: '',
       username: '',
@@ -40,6 +41,18 @@ class RegisterForm extends Component {
             {this.props.store.errors.registrationMessage}
           </h3>
         )}
+        <div>
+          <label htmlFor="coopName">
+            Coop Name:
+            <input
+              type="text"
+              name="coopName"
+              value={this.state.coopName}
+              required
+              onChange={this.handleInputChangeFor('coopName')}
+            />
+          </label>
+        </div>
         <div>
           <label htmlFor="firstName">
             First Name:
