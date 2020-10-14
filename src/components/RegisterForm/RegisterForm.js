@@ -154,6 +154,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="phone"
+              placeholder="(XXX)XXX-XXXX"
               value={this.state.phone}
               required
               onChange={this.handleInputChangeFor('phone')}
