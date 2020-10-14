@@ -4,14 +4,16 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class RegisterForm extends Component {
   state = {
-    firstName: '',
-    lastName: '',
-    username: '',
-    password: '',
-    address: '',
-    zipcode: '',
-    email: '',
-    phone: '',
+    newUser: {
+      firstName: '',
+      lastName: '',
+      username: '',
+      password: '',
+      address: '',
+      zipcode: '',
+      email: '',
+      phone: '',
+    }
   };
 
   registerUser = (event) => {
@@ -19,10 +21,7 @@ class RegisterForm extends Component {
 
     this.props.dispatch({
       type: 'REGISTER',
-      payload: {
-        username: this.state.username,
-        password: this.state.password,
-      },
+      payload: this.state.newUser
     });
   }; // end registerUser
 
@@ -41,6 +40,30 @@ class RegisterForm extends Component {
             {this.props.store.errors.registrationMessage}
           </h3>
         )}
+        <div>
+          <label htmlFor="firstName">
+            First Name:
+            <input
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
+              required
+              onChange={this.handleInputChangeFor('firstName')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="lastName">
+            Last Name:
+            <input
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              required
+              onChange={this.handleInputChangeFor('lastName')}
+            />
+          </label>
+        </div>
         <div>
           <label htmlFor="username">
             Username:
@@ -62,6 +85,65 @@ class RegisterForm extends Component {
               value={this.state.password}
               required
               onChange={this.handleInputChangeFor('password')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="username">
+            Username:
+            <input
+              type="text"
+              name="username"
+              value={this.state.username}
+              required
+              onChange={this.handleInputChangeFor('username')}
+            />
+          </label>
+        </div><div>
+          <label htmlFor="address">
+            Address:
+            <input
+              type="text"
+              name="address"
+              value={this.state.address}
+              required
+              onChange={this.handleInputChangeFor('address')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="zipcode">
+            Zipcode:
+            <input
+              type="text"
+              name="zipcode"
+              value={this.state.zipcode}
+              required
+              onChange={this.handleInputChangeFor('zipcode')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="email">
+            Email:
+            <input
+              type="text"
+              name="email"
+              value={this.state.email}
+              required
+              onChange={this.handleInputChangeFor('email')}
+            />
+          </label>
+        </div>
+        <div>
+          <label htmlFor="phone">
+            Phone:
+            <input
+              type="text"
+              name="phone"
+              value={this.state.phone}
+              required
+              onChange={this.handleInputChangeFor('phone')}
             />
           </label>
         </div>
