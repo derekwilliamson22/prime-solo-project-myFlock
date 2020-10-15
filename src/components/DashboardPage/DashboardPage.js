@@ -24,11 +24,7 @@ class DashboardPage extends Component {
       <div>
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
-        <div>
-          {/* {this.props.store.coop.map((coop, i) =>
-          <p>Your coop name is: {coop.name}</p>
-          )} */}
-        </div>
+        <p>Your Coop Name is: {this.props.store.coop.name}</p>
         <LogOutButton className="log-in" />
       </div>
     );

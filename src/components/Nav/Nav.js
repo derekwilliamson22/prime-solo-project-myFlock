@@ -17,12 +17,20 @@ const Nav = (props) => {
     loginLinkData.text = 'Home';
   }
 
+  let title = {
+    text: 'myFlock'
+  }
+
+  if (props.store.user.id != null) {
+    title.text = props.store.coop.name;
+  }
+
   
 
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">myFlock</h2>
+        <h2 className="nav-title">{title.text}</h2>
       </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
