@@ -16,6 +16,7 @@ class ConfirmationPage extends Component {
     return (
       <div>
         <h2>BOK! BOK!</h2>
+        <h3>You're registered!</h3>
         <button
             type="button"
             className="btn"
@@ -23,7 +24,7 @@ class ConfirmationPage extends Component {
               this.props.history.push('/login');
             }}
           >
-            Login
+            Return to Login
         </button>
       </div>
     );
