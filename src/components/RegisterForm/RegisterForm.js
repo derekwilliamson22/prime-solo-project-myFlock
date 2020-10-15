@@ -28,14 +28,17 @@ class RegisterForm extends Component {
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
+      newUser: {
+      ...this.state.newUser,
       [propertyName]: event.target.value,
+      }
     });
   };
 
   render() {
     return (
       <form className="formPanel" onSubmit={this.registerUser}>
-        <h2>Register User</h2>
+        <h2>Please Fill Out All Fields</h2>
         {this.props.store.errors.registrationMessage && (
           <h3 className="alert" role="alert">
             {this.props.store.errors.registrationMessage}
@@ -47,7 +50,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="coopName"
-              value={this.state.coopName}
+              value={this.state.newUser.coopName}
               required
               onChange={this.handleInputChangeFor('coopName')}
             />
@@ -59,7 +62,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="firstName"
-              value={this.state.firstName}
+              value={this.state.newUser.firstName}
               required
               onChange={this.handleInputChangeFor('firstName')}
             />
@@ -71,7 +74,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="lastName"
-              value={this.state.lastName}
+              value={this.state.newUser.lastName}
               required
               onChange={this.handleInputChangeFor('lastName')}
             />
@@ -83,7 +86,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="username"
-              value={this.state.username}
+              value={this.state.newUser.username}
               required
               onChange={this.handleInputChangeFor('username')}
             />
@@ -95,30 +98,19 @@ class RegisterForm extends Component {
             <input
               type="password"
               name="password"
-              value={this.state.password}
+              value={this.state.newUser.password}
               required
               onChange={this.handleInputChangeFor('password')}
             />
           </label>
         </div>
         <div>
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              required
-              onChange={this.handleInputChangeFor('username')}
-            />
-          </label>
-        </div><div>
           <label htmlFor="address">
             Address:
             <input
               type="text"
               name="address"
-              value={this.state.address}
+              value={this.state.newUser.address}
               required
               onChange={this.handleInputChangeFor('address')}
             />
@@ -130,7 +122,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="zipcode"
-              value={this.state.zipcode}
+              value={this.state.newUser.zipcode}
               required
               onChange={this.handleInputChangeFor('zipcode')}
             />
@@ -142,7 +134,7 @@ class RegisterForm extends Component {
             <input
               type="text"
               name="email"
-              value={this.state.email}
+              value={this.state.newUser.email}
               required
               onChange={this.handleInputChangeFor('email')}
             />
@@ -155,14 +147,14 @@ class RegisterForm extends Component {
               type="text"
               name="phone"
               placeholder="(XXX)XXX-XXXX"
-              value={this.state.phone}
+              value={this.state.newUser.phone}
               required
               onChange={this.handleInputChangeFor('phone')}
             />
           </label>
         </div>
         <div>
-          <input className="btn" type="submit" name="submit" value="Register" />
+          <input className="btn" type="submit" name="submit" value="Submit" />
         </div>
       </form>
     );

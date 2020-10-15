@@ -24,7 +24,7 @@ class RegisterPage extends Component {
               this.props.history.push('/login');
             }}
           >
-            Login
+            Return to Login
           </button>
         </center>
       </div>
