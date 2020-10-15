@@ -25,6 +25,7 @@ class RegisterForm extends Component {
       type: 'REGISTER',
       payload: this.state.newUser
     });
+    this.props.history.push('/confirmation')
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
@@ -40,7 +41,7 @@ class RegisterForm extends Component {
     return (
       <div>
         <form className="formPanel" onSubmit={this.registerUser}>
-          <h2>Please Fill Out All Fields</h2>
+          <h2>myFlock Registration</h2>
           {this.props.store.errors.registrationMessage && (
             <h3 className="alert" role="alert">
               {this.props.store.errors.registrationMessage}
