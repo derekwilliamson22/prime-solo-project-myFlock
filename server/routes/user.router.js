@@ -33,22 +33,22 @@ router.post('/register', (req, res, next) => {
 
       const createdUserId = result.rows[0].id
 
-      // Depending on how you make your junction table, this insert COULD change.
+     
       const insertCoopNameAndUserIdQuery = `
       INSERT INTO "coop" ("name", "user_id")
       VALUES  ($1, $2);
       `
-      // SECOND QUERY MAKES GENRE FOR THAT NEW MOVIE
+      
       pool.query(insertCoopNameAndUserIdQuery, [req.body.coopName, createdUserId]).then(result => {
-        //Now that both are done, send back success!
+       
         res.sendStatus(201);
       }).catch(err => {
-        // catch for second query
+      
         console.log(err);
         res.sendStatus(500)
       })
 
-      // Catch for first query
+    
     }).catch(err => {
       console.log(err);
       res.sendStatus(500)
