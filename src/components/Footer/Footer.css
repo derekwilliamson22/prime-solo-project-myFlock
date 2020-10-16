@@ -1,5 +1,25 @@
 footer {
   margin-top: 80px;
-  padding: 20px;
+  background-color: rgb(176, 44, 30);
+  overflow: hidden;
   text-align: center;
+}
+
+nav > ul {
+  list-style-type: none;
+  margin: 10px auto;
+  width: 700px;
+  padding: 0;
+}
+
+nav > ul li {
+  display: inline-block;
+  text-align: center;
+  width: 160px;
+}
+
+nav > ul li a {
+  display: block;
+  padding: 10px;
+  color: white;
 }

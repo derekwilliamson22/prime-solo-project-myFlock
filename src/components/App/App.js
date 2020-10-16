@@ -14,12 +14,16 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 //import AboutPage from '../AboutPage/AboutPage';
-import DashboardPage from '../DashboardPage/DashboardPage';
+
 import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
+import DashboardPage from '../DashboardPage/DashboardPage';
+import MyCoopPage from '../MyCoopPage/MyCoopPage';
+import MyStatsPage from '../MyStatsPage/MyStatsPage';
+import ServicePage from '../ServicePage/ServicePage';
 
 import './App.css';
 
@@ -31,7 +35,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div className="App">
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -52,6 +56,21 @@ class App extends Component {
               exact
               path="/dashboard"
               component={DashboardPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/mycoop"
+              component={MyCoopPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/mystats"
+              component={MyStatsPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/service"
+              component={ServicePage}
             />
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage

@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Footer.css';
 
 // This is one of our simplest components
@@ -6,6 +9,20 @@ import './Footer.css';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const Footer = () => <footer>&copy; Prime Digital Academy</footer>;
+const Footer = (props) => {
 
-export default Footer;
+return (
+    <footer>
+      <nav>
+        <ul>
+          <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to="/mycoop">myCoop</Link></li>
+          <li><Link to="/mystats">myStats</Link></li>
+          <li><Link to="/service">Service Request</Link></li>
+        </ul>
+      </nav>
+  </footer>
+)
+};
+
+export default connect(mapStoreToProps)(Footer);

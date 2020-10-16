@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
+
 class DashboardPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
 
@@ -13,6 +14,7 @@ class DashboardPage extends Component {
         <p>Your ID is: {this.props.store.user.id}</p>
         <p>Your Coop Name is: {this.props.store.coop.name}</p>
         
+
         
         
         
