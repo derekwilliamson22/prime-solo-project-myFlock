@@ -24,6 +24,7 @@ import DashboardPage from '../DashboardPage/DashboardPage';
 import MyCoopPage from '../MyCoopPage/MyCoopPage';
 import MyStatsPage from '../MyStatsPage/MyStatsPage';
 import ServicePage from '../ServicePage/ServicePage';
+import CreateChicken from '../CreateChicken/CreateChicken';
 
 import './App.css';
 
@@ -64,6 +65,11 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/chicken_form"
+              component={CreateChicken}
+            />
+            <ProtectedRoute
+              exact
               path="/mystats"
               component={MyStatsPage}
             />
@@ -71,6 +77,7 @@ class App extends Component {
               exact
               path="/service"
               component={ServicePage}
+             
             />
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage

@@ -14,6 +14,10 @@ img {
   max-width: 100%;
 }
 
+ul li {
+  list-style-type: none;
+}
+
 /* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
@@ -133,4 +137,8 @@ myCoop View
 
 .AddChickenBar {
   display: inline-block;
+}
+
+.bar {
+  border: 2px solid black;
 }

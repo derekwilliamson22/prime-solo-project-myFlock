@@ -22,9 +22,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
 class DateBar extends Component {
-  state = {
-    date: format((subDays(new Date(), 0)), 'MMMM - dd - yyyy')
-  }
+  // state = {
+  //   // date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy'),
+  //   counter: this.props.store.date.counterForDate
+  // }
 
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
@@ -36,10 +37,15 @@ class DateBar extends Component {
         type: "SET_INCREASE",
       });
     }
-    this.setState({
-      ...this.state,
-      date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
-    }) 
+    // this.setState({
+    //   ...this.state,
+    //   date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
+    // }) 
+    // this.setState({
+    //   ...this.state,
+    //   counter: this.props.store.date.counterForDate
+    // })
+
  }
 
  changeToTomorrow = (event) => {
@@ -53,22 +59,29 @@ class DateBar extends Component {
       type: "SET_DECREASE",
     });
   }
-  // this.updateDate();
   // this.setState({
   //   ...this.state,
   //   date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
   // }) 
+  // this.setState({
+  //   ...this.state,
+  //   counter: this.props.store.date.counterForDate
+  // })
  }
 
   render() {
+  
+  const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
+
     return (
       <div className="DateBar">
         <button value="increase" onClick={this.changeToYesterday}>Yesterday</button>
-        <h3>{this.state.date}</h3>
-        <h3>{this.props.store.date.counterForDate}</h3>
+        {/* <h3>{this.state.date}</h3> */}
+        <h3>{date}</h3>
+        {/* <h3>{this.props.store.date}</h3> */}
         {this.props.store.date.counterForDate > 0 ? 
         <button value="decrease" onClick={this.changeToTomorrow}>Tomorrow</button> :
-        <span></span>}      
+        ''}      
       </div>
     );
   }

@@ -102,14 +102,14 @@ CREATE TABLE "chicken" (
  
 CREATE TABLE "layingData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE,
+  "date" VARCHAR,
   "didLay" BOOLEAN,
   "chickenId" INT references "chicken"
 );
 
 CREATE TABLE "coopData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE NOT NULL,
+  "date" VARCHAR NOT NULL,
   "notes" VARCHAR,
   "isClean" BOOLEAN DEFAULT FALSE,
   "hasFood" BOOLEAN DEFAULT FALSE,
@@ -119,7 +119,7 @@ CREATE TABLE "coopData" (
 
 CREATE TABLE "serviceData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE,
+  "date" VARCHAR,
   "userId" INT references "user",
   "requestForFeed" BOOLEAN DEFAULT FALSE,
   "requestForCleaning" BOOLEAN DEFAULT FALSE,
