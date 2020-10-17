@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Clock from '../Clock/Clock';
+import DateBar from '../DateBar/DateBar';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -14,7 +14,7 @@ class DashboardPage extends Component {
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
         <p>Your Coop Name is: {this.props.store.coop.name}</p>
-        <Clock />
+        <DateBar />
         
 
         

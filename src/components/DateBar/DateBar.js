@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { format } from 'date-fns';
 
 
-class Clock extends Component {
+class DateBar extends Component {
   state = {
     date: new Date(),
     dateBar: new Date().toLocaleDateString(
-      'en-gb',
+      'en-us',
       {
         year: 'numeric',
-        month: 'long',
         day: 'numeric',
-        timeZone: 'utc'
+        month: 'long',
+        timeZone: 'cst'
       }
     ),
+    newDate: format(new Date(), 'MMMM-dd-yyyy'),
   };
   
-  
+   
 
   render() {
     return (
-      <div>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-        <h2>{this.state.dateBar}</h2>
+      <div className="DateBar">
+        <h2>{this.state.newDate}</h2>
       </div>
     );
   }
 }
 
-export default connect()(Clock);
+export default connect()(DateBar);
