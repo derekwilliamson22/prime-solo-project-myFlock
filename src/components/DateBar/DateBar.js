@@ -12,7 +12,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // console.log('what the props', this.props.store);
 
 
-let currentDate = format((subDays(new Date(), 0)), 'MMMM - dd - yyyy');
+//let currentDate = format((subDays(new Date(), 0)), 'MMMM - dd - yyyy');
 
 // console.log('what is date', date);
 
@@ -23,40 +23,52 @@ let currentDate = format((subDays(new Date(), 0)), 'MMMM - dd - yyyy');
 
 class DateBar extends Component {
   state = {
-    date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
-  };
+    date: format((subDays(new Date(), 0)), 'MMMM - dd - yyyy')
+  }
 
-  changeDate = (event) => {
-    console.log('what the props', this.props.store.date.counterForDate);
+  changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
-    
     // console.log('what is date', date);
     console.log('what is date change', event.target.value);
     let date = event.target.value;
-    console.log('what is date', date);
-    
     if(date === "increase") {
       this.props.dispatch({
         type: "SET_INCREASE",
       });
     }
-    if(date === "decrease") {
-      this.props.dispatch({
-        type: "SET_DECREASE",
-      });
-    }
     this.setState({
       ...this.state,
-      date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy'),
+      date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
     }) 
+ }
+
+ changeToTomorrow = (event) => {
+   // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
+  
+  // console.log('what is date', date);
+  console.log('what is date change', event.target.value);
+  let date = event.target.value;
+  if(date === "decrease") {
+    this.props.dispatch({
+      type: "SET_DECREASE",
+    });
+  }
+  // this.updateDate();
+  // this.setState({
+  //   ...this.state,
+  //   date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
+  // }) 
  }
 
   render() {
     return (
       <div className="DateBar">
-        <button value="increase" onClick={this.changeDate}>Yesterday</button>
+        <button value="increase" onClick={this.changeToYesterday}>Yesterday</button>
         <h3>{this.state.date}</h3>
-        <button value="decrease" onClick={this.changeDate}>Tomorrow</button>
+        <h3>{this.props.store.date.counterForDate}</h3>
+        {this.props.store.date.counterForDate > 0 ? 
+        <button value="decrease" onClick={this.changeToTomorrow}>Tomorrow</button> :
+        <span></span>}      
       </div>
     );
   }
