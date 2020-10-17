@@ -14,7 +14,7 @@ class ConfirmationPage extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Dashboard">
         <h2>BOK! BOK!</h2>
         <h3>You're registered!</h3>
         <button

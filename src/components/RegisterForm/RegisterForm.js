@@ -48,104 +48,101 @@ class RegisterForm extends Component {
             </h3>
           )}
           <div>
-            <label htmlFor="coopName">
-              Coop Name:
               <input
                 type="text"
                 name="coopName"
+                placeholder="Coop Name"
                 value={this.state.newUser.coopName}
                 required
                 onChange={this.handleInputChangeFor('coopName')}
               />
-            </label>
           </div>
           <div>
-            <label htmlFor="firstName">
-              First Name:
+            
               <input
                 type="text"
                 name="firstName"
+                placeholder="First Name"
                 value={this.state.newUser.firstName}
                 required
                 onChange={this.handleInputChangeFor('firstName')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="lastName">
-              Last Name:
+            
               <input
                 type="text"
                 name="lastName"
+                placeholder="Last Name"
                 value={this.state.newUser.lastName}
                 required
                 onChange={this.handleInputChangeFor('lastName')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="username">
-              Username:
+            
               <input
                 type="text"
                 name="username"
+                placeholder="Username"
                 value={this.state.newUser.username}
                 required
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
+            
               <input
                 type="password"
                 name="password"
+                placeholder="Password"
                 value={this.state.newUser.password}
                 required
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="address">
-              Address:
+            
               <input
                 type="text"
                 name="address"
+                placeholder="Address"
                 value={this.state.newUser.address}
                 required
                 onChange={this.handleInputChangeFor('address')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="zipcode">
-              Zipcode:
+            
               <input
                 type="text"
                 name="zipcode"
+                placeholder="Zipcode"
                 value={this.state.newUser.zipcode}
                 required
                 onChange={this.handleInputChangeFor('zipcode')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="email">
-              Email:
+            
               <input
                 type="text"
                 name="email"
+                placeholder="Email"
                 value={this.state.newUser.email}
                 required
                 onChange={this.handleInputChangeFor('email')}
               />
-            </label>
+            
           </div>
           <div>
-            <label htmlFor="phone">
-              Phone:
+            
               <input
                 type="text"
                 name="phone"
@@ -154,20 +151,22 @@ class RegisterForm extends Component {
                 required
                 onChange={this.handleInputChangeFor('phone')}
               />
-            </label>
+            
           </div>
-          <div>
+          <div className="Register-btn">
+            
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                this.props.history.push('/login');
+              }}
+            >
+              Return to Login
+            </button>
             <input className="btn" type="submit" name="submit" value="Submit" />
           </div>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => {
-              this.props.history.push('/login');
-            }}
-          >
-            Return to Login2
-        </button>
+          
         </form>
        
       </div>
