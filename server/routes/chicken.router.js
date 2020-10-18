@@ -46,4 +46,26 @@ router.post('/', (req, res) => {
     });
 })
 
+router.get('/details/:id', (req, res) => {
+  // GET route code here
+  console.log("What happened to my get details request?:", req.body, req.params.id);
+  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."imageUrl", "chicken"."bio", "chicken"."birthday" FROM "chicken"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coopId"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "chicken"."id" = $1;`;
+  pool.query(queryString, [req.params.id])
+    .then(result => {
+      res.send(result.rows[0]);
+    })
+    .catch(err => {
+      console.log('error in GETting chicken details', err);
+      res.sendStatus(500);
+    });
+});
+
+
+
+
 module.exports = router;

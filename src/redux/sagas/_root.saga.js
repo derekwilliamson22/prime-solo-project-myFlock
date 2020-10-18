@@ -5,6 +5,7 @@ import userSaga from './user.saga';
 import coopSaga from './coop.saga';
 import addChickenSaga from './addChicken.saga';
 import fetchChickensSaga from './fetchChickens.saga';
+import fetchChickenDetailsSaga from './fetchChickenDetails.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +22,6 @@ export default function* rootSaga() {
     coopSaga(),
     addChickenSaga(),
     fetchChickensSaga(),
+    fetchChickenDetailsSaga(),
   ]);
 }

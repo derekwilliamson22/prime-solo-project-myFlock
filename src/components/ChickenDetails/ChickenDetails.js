@@ -16,7 +16,7 @@ class ChickenDetails extends Component {
   
 
   render() {
-    console.log('what are the chicken details', this.props.store.chicken);
+    console.log('what are the chicken details', this.props.store.chickenDetails);
     
     return (
       <div>
@@ -33,7 +33,7 @@ class ChickenDetails extends Component {
 
 
 
-        <h2>{this.state.heading}</h2>
+       
       </div>
     );
   }
