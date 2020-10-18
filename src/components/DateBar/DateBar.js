@@ -69,18 +69,37 @@ class DateBar extends Component {
   // })
  }
 
+ goToYesterday = (dateId) => {
+   console.log('what is the date in goToYesterday', dateId);
+   
+  
+  // this.props.dispatch({
+  //    type: 'FETCH_COOP_DATA'
+  //  })
+ }
+
+ goToTomorrow = (dateId) => {
+  console.log('what is the date in goToTomorrow', dateId);
+  
+ 
+ // this.props.dispatch({
+ //    type: 'FETCH_COOP_DATA'
+ //  })
+}
+
+ 
   render() {
   
   const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
 
     return (
       <div className="DateBar">
-        <button value="increase" onClick={this.changeToYesterday}>Yesterday</button>
+        <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button>
         {/* <h3>{this.state.date}</h3> */}
         <h3>{date}</h3>
         {/* <h3>{this.props.store.date}</h3> */}
         {this.props.store.date.counterForDate > 0 ? 
-        <button value="decrease" onClick={this.changeToTomorrow}>Tomorrow</button> :
+        <button value="decrease" onMouseDown={this.changeToTomorrow} onMouseUp={this.goToTomorrow(date)}>Tomorrow</button> :
         ''}      
       </div>
     );

@@ -23,12 +23,15 @@ class Footer extends Component {
     return (
         <footer>
           <nav>
+            {this.props.store.user.id === undefined ?
+            '' : 
             <ul>
               <li><Link to="/dashboard">Dashboard</Link></li>
               <li><Link onClick={()=>this.fetchChickens(`${this.props.store.coop.id}`)} to="/mycoop">myCoop</Link></li>
               <li><Link to="/mystats">myStats</Link></li>
               <li><Link to="/service">Service Request</Link></li>
             </ul>
+            }
           </nav>
         </footer>
     )
