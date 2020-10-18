@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 const LogOutButton = (props) => (
   <button
@@ -8,6 +10,7 @@ const LogOutButton = (props) => (
     // is passed to it from it's parents through React props
     className={props.className}
     onClick={() => props.dispatch({ type: 'LOGOUT' })}
+    
   >
     Log Out
   </button>

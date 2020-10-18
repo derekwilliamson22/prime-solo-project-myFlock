@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { format, addDays, subDays } from 'date-fns';
+
+const date = format(new Date(), 'MMMM - dd - yyyy');
 
 class RegisterForm extends Component {
+  
+
   state = {
     newUser: {
       coopName: '',
@@ -15,6 +20,7 @@ class RegisterForm extends Component {
       zipcode: '',
       email: '',
       phone: '',
+      registration_date: date
     }
   };
 

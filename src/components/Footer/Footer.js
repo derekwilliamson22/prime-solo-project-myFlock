@@ -12,6 +12,8 @@ import './Footer.css';
 class Footer extends Component {
 
   fetchChickens = () => {
+    console.log('whats is the value of this:', this.props.store.coop.id);
+    
     this.props.dispatch({
       type: 'FETCH_CHICKENS',
       url: `api/chicken/${this.props.store.coop.id}`

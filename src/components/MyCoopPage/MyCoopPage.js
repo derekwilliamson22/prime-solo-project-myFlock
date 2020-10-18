@@ -10,6 +10,13 @@ import { withRouter } from 'react-router-dom';
 // component.
 class MyCoopPage extends Component {
 
+  // componentDidMount(){
+  //   this.props.dispatch({
+  //     type: 'FETCH_CHICKENS',
+  //     url: `api/chicken/${this.props.store.coop.id}`
+  //   });
+  // }
+
   addChicken = () => {
     this.props.history.push('/chicken_form')
   }

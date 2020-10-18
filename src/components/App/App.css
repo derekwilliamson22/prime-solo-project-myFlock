@@ -131,6 +131,14 @@ DashBoard View
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
+.DateBar{
+  display: inline;
+}
+
+.DateBar > button, h3 {
+  display: inline;
+  width: 75px;
+}
 /* --------------------------------------------------------------------------------
 myCoop View
 -------------------------------------------------------------------------------- */
@@ -142,3 +150,4 @@ myCoop View
 .bar {
   border: 2px solid black;
 }
+
