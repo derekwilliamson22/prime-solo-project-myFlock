@@ -4,8 +4,8 @@ import axios from 'axios';
 function* fetchChickens(action) {
   console.log('hit fetchChickens', action.url);
   let response = yield axios({
-    method: 'GET',
-    url: action.url
+    method: "GET",
+    url: 'api/chicken'
   });
   yield put({
     type: 'SET_CHICKENS',

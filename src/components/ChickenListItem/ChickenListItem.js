@@ -5,22 +5,18 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 
 class ChickenListItem extends Component {
 
-  handleClickDetails = () => {
+  getChickenDetails = () => {
     // navigate to creature details page
     this.props.history.push(`/chicken_details/${this.props.chicken.id}`);
   }
 
   render() {
-    const {
-      chicken,
-    } = this.props;
-
     return (
       <div className="bar"
-      onClick={this.handleClickDetails}
+      onClick={this.getChickenDetails}
       >
-      <img src={chicken.imageUrl}/> 
-      <h4>{chicken.name}</h4>
+      <img src={this.props.chicken.imageUrl}/> 
+      <h4>{this.props.chicken.name}</h4>
                     
       </div>
     );

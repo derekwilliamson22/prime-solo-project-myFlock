@@ -3,11 +3,16 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   // GET route code here
-  console.log("What happened to my get request?:", req.body, req.params.id);
-  const queryString = `SELECT * FROM "chicken" WHERE "coopId" = $1;`;
-  pool.query(queryString, [req.params.id])
+  console.log("What happened to my get request?:", req.body, req.params.id, req.user);
+  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."imageUrl", "chicken"."bio", "chicken"."birthday" FROM "chicken"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coopId"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "user"."id" = $1;`;
+  pool.query(queryString, [req.user.id])
     .then(result => {
       res.send(result.rows);
     })

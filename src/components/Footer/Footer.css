@@ -5,18 +5,18 @@ footer {
   text-align: center;
 }
 
-nav > ul {
+nav > div {
   list-style-type: none;
   margin: 10px auto;
   padding: 0;
 }
 
-nav > ul li {
+nav > div button {
   display: inline-block;
   text-align: center;
 }
 
-nav > ul li a {
+nav > div button {
   display: inline-block;
   padding: 10px;
   color: white;

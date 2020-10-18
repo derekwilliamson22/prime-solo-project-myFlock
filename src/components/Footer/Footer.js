@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Footer.css';
@@ -12,12 +12,28 @@ import './Footer.css';
 class Footer extends Component {
 
   fetchChickens = () => {
-    console.log('whats is the value of this:', this.props.store.coop.id);
-    
     this.props.dispatch({
       type: 'FETCH_CHICKENS',
-      url: `api/chicken/${this.props.store.coop.id}`
+      url: 'api/chicken'
     });
+  }
+
+  goToDashboard = () => {
+    this.props.history.push('/dashboard');
+  }
+  goToMyCoop = () => {
+    this.props.history.push('/mycoop');
+  }
+  goToMyStats = () => {
+    this.props.history.push('/mystats');
+  }
+  goToService = () => {
+    this.props.history.push('/service');
+  }
+
+  fetchAndGoToMyCoop = () => {
+    this.fetchChickens();
+    this.goToMyCoop();
   }
 
 
@@ -27,12 +43,12 @@ class Footer extends Component {
           <nav>
             {this.props.store.user.id === undefined ?
             '' : 
-            <ul>
-              <li><Link to="/dashboard">Dashboard</Link></li>
-              <li><Link onClick={()=>this.fetchChickens(`${this.props.store.coop.id}`)} to="/mycoop">myCoop</Link></li>
-              <li><Link to="/mystats">myStats</Link></li>
-              <li><Link to="/service">Service Request</Link></li>
-            </ul>
+            <div>
+              <button onClick={this.goToDashboard}>Dashboard</button>
+              <button onClick={this.fetchAndGoToMyCoop}>myCoop</button>
+              <button onClick={this.goToMyStats}>myStats</button>
+              <button onClick={this.goToService}>Service Request</button>
+            </div>
             }
           </nav>
         </footer>
@@ -40,4 +56,4 @@ class Footer extends Component {
   };
 }
 
-export default connect(mapStoreToProps)(Footer);
+export default connect(mapStoreToProps)(withRouter(Footer));

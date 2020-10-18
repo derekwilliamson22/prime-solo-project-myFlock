@@ -25,6 +25,7 @@ import MyCoopPage from '../MyCoopPage/MyCoopPage';
 import MyStatsPage from '../MyStatsPage/MyStatsPage';
 import ServicePage from '../ServicePage/ServicePage';
 import CreateChicken from '../CreateChicken/CreateChicken';
+import ChickenDetails from '../ChickenDetails/ChickenDetails';
 
 import './App.css';
 
@@ -67,6 +68,11 @@ class App extends Component {
               exact
               path="/chicken_form"
               component={CreateChicken}
+            />
+            <ProtectedRoute
+              exact
+              path="/chicken_details/:id"
+              component={ChickenDetails}
             />
             <ProtectedRoute
               exact
