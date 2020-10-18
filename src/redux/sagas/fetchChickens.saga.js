@@ -15,8 +15,8 @@ function* fetchChickens(action) {
 
 
 
-function* fetchChickenSaga() {
+function* fetchChickensSaga() {
   yield takeLatest('FETCH_CHICKENS', fetchChickens);
 }
 
-export default fetchChickenSaga;
+export default fetchChickensSaga;

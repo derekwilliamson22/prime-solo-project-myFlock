@@ -13,13 +13,26 @@ class ChickenDetails extends Component {
       payload: parseInt(this.props.match.params.id),
     });
   }
-  state = {
-    heading: parseInt(this.props.match.params.id),
-  };
+  
 
   render() {
+    console.log('what are the chicken details', this.props.store.chicken);
+    
     return (
       <div>
+         {/* <div>
+              {this.porops.store.chickenchickenDetails.img_path &&
+                <img
+                  src={`images/${creatureDetails.img_path}`}
+                  alt={creatureDetails}
+                />
+              }
+            </div>
+ */}
+
+
+
+
         <h2>{this.state.heading}</h2>
       </div>
     );
