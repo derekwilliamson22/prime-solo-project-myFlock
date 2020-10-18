@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/:id', (req, res) => {
   // GET route code here
-  console.log("What are my body and params?:", req.body, req.params.id);
+  console.log("What happened to my get request?:", req.body, req.params.id);
   const queryString = `SELECT * FROM "chicken" WHERE "coopId" = $1;`;
   pool.query(queryString, [req.params.id])
     .then(result => {
