@@ -8,13 +8,18 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class ServicePage extends Component {
   state = {
-    heading: 'ServicePage',
+    newServiceRequest: {
+
+
+
+
+    }
   };
 
   render() {
     return (
       <div className="Dashboard">
-        <h2>{this.state.heading}</h2>
+        <h2>Coming Soon...</h2>
       </div>
     );
   }

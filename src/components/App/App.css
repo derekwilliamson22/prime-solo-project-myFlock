@@ -188,3 +188,15 @@ img {
 .ChickenListItem {
   display: inline;
 }
+
+.DashboardListItem {
+  display: inline;
+}
+
+#DashboardListImg {
+  width: 100px;
+}
+
+.CoopForm input {
+display: block;
+}
