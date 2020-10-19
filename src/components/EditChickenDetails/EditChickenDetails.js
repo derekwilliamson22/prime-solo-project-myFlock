@@ -10,10 +10,10 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class EditChickenDetails extends Component {
   state = {
     updatedChickenDetails: {
-      chickenName: '',
+      chicken_name: '',
       breed: '',
       birthday: '',
-      bio: '',
+      notes: '',
     }
   };
 
@@ -44,7 +44,7 @@ class EditChickenDetails extends Component {
       <div className="EditDetails">
         <div className="DetailsImg">
           <img
-            src={`${this.props.store.chickenDetails.imageUrl}`}
+            src={`${this.props.store.chickenDetails.image_url}`}
             alt={this.props.store.chickenDetails}
           />
         </div>
@@ -52,10 +52,10 @@ class EditChickenDetails extends Component {
           <h5>Name: 
             <input
             type="text"
-            name="chickenName"
+            name="chicken_name"
             placeholder={this.props.store.chickenDetails.name}
-            value={this.state.updatedChickenDetails.chickenName}
-            onChange={this.handleInputChangeFor('chickenName')}
+            value={this.state.updatedChickenDetails.chicken_name}
+            onChange={this.handleInputChangeFor('chicken_name')}
           />
           </h5>
         </div>
@@ -82,13 +82,13 @@ class EditChickenDetails extends Component {
           </h5>
         </div>
         <div>
-          <h5>Character/Habits:</h5>
+          <h5>Notes:</h5>
             <textarea
               type="textarea"
-              name="bio"
-              placeholder={this.props.store.chickenDetails.bio}
-              value={this.state.updatedChickenDetails.bio}
-              onChange={this.handleInputChangeFor('bio')}
+              name="notes"
+              placeholder={this.props.store.chickenDetails.notes}
+              value={this.state.updatedChickenDetails.notes}
+              onChange={this.handleInputChangeFor('notes')}
             />
         </div>
         <div className="EditDetailsButtons">

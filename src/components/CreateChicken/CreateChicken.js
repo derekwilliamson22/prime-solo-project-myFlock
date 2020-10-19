@@ -9,12 +9,12 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class CreateChicken extends Component {
   state = {
     newChicken: {
-      chickenName: '',
+      chicken_name: '',
       breed: '',
       birthday: '',
       notes: '',
-      imageUrl: '',
-      coopId: `${this.props.store.coop.id}`
+      image_url: '',
+      coop_id: `${this.props.store.coop.id}`
     }
   };
 
@@ -26,11 +26,11 @@ class CreateChicken extends Component {
     })
     this.setState({
       newChicken: {
-        chickenName: '',
+        chicken_name: '',
         breed: '',
         birthday: '',
         notes: '',
-        imageUrl: ''
+        image_url: ''
       }
     })
     this.props.history.push('/mycoop');
@@ -65,10 +65,10 @@ class CreateChicken extends Component {
           <div>
               <input
                 type="text"
-                name="chickenName"
+                name="chicken_name"
                 placeholder="Chicken Name"
-                value={this.state.newChicken.chickenName}
-                onChange={this.handleInputChangeFor('chickenName')}
+                value={this.state.newChicken.chicken_name}
+                onChange={this.handleInputChangeFor('chicken_name')}
               />
           </div>
           <div>
@@ -87,7 +87,7 @@ class CreateChicken extends Component {
               <input
                 type="date"
                 name="birthday"
-                placeholder="DOB 04/5/2020"
+                placeholder="04/05/2020"
                 value={this.state.newChicken.birthday}               
                 onChange={this.handleInputChangeFor('birthday')}
               />
@@ -99,8 +99,8 @@ class CreateChicken extends Component {
                 type="textarea"
                 name="bio"
                 placeholder="Character/Habits"
-                value={this.state.newChicken.bio}
-                onChange={this.handleInputChangeFor('bio')}
+                value={this.state.newChicken.notes}
+                onChange={this.handleInputChangeFor('notes')}
               />
             
           </div>
@@ -108,10 +108,10 @@ class CreateChicken extends Component {
             
               <input
                 type="text"
-                name="imageUrl"
+                name="image_url"
                 placeholder="Image Url"
-                value={this.state.newChicken.imageUrl}
-                onChange={this.handleInputChangeFor('imageUrl')}
+                value={this.state.newChicken.image_url}
+                onChange={this.handleInputChangeFor('image_url')}
               />
             
           </div>

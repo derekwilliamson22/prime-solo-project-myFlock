@@ -6,11 +6,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // GET route code here
   console.log("What happened to my get request?:", req.body, req.params.id, req.user);
-  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."imageUrl", "chicken"."bio", "chicken"."birthday" FROM "chicken"
+  const queryString = `
+  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
-  ON "coop"."id" = "chicken"."coopId"
+  ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"
-  on "coop"."user_id" = "user"."id"
+  ON "coop"."user_id" = "user"."id"
   WHERE "user"."id" = $1
   ORDER BY "chicken"."id" ASC;`;
   pool.query(queryString, [req.user.id])
@@ -27,15 +28,15 @@ router.post('/', (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `
   INSERT INTO "chicken" 
-  ("name", "breed", "imageUrl", "birthday", "bio", "coopId")
+  ("name", "breed", "image_url", "birthday", "notes", "coop_id")
   VALUES ($1, $2, $3, $4, $5, $6);`;
   const queryParams = [
-    req.body.chickenName,
+    req.body.chicken_name,
     req.body.breed,
-    req.body.imageUrl,
+    req.body.image_url,
     req.body.birthday,
-    req.body.bio,
-    req.body.coopId
+    req.body.notes,
+    req.body.coop_id
   ]
   pool.query(queryString, queryParams)
     .then(result => {
@@ -50,11 +51,11 @@ router.post('/', (req, res) => {
 router.get('/details/:id', (req, res) => {
   // GET route code here
   console.log("What happened to my get details request?:", req.body, req.params.id);
-  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."imageUrl", "chicken"."bio", "chicken"."birthday" FROM "chicken"
+  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
-  ON "coop"."id" = "chicken"."coopId"
+  ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"
-  on "coop"."user_id" = "user"."id"
+  ON "coop"."user_id" = "user"."id"
   WHERE "chicken"."id" = $1;`;
   pool.query(queryString, [req.params.id])
     .then(result => {
