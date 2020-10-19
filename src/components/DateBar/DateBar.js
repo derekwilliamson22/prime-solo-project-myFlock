@@ -92,7 +92,10 @@ class DateBar extends Component {
 
     return (
       <div className="DateBar">
-        <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button>
+        {this.props.store.date.counterForDate <= 6 ? 
+        <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button> :
+        ''} 
+        {/* <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button> */}
         {/* <h3>{this.state.date}</h3> */}
         <h3>{date}</h3>
         {/* <h3>{this.props.store.date}</h3> */}
