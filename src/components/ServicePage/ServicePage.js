@@ -19,7 +19,7 @@ class ServicePage extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <h2>Coming Soon...</h2>
+        <h2>Service Coming Soon...</h2>
       </div>
     );
   }

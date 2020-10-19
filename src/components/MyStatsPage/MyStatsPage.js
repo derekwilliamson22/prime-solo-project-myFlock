@@ -14,7 +14,7 @@ class MyStatsPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <h2>Coming Soon...</h2>
+        <h2>my Stats Coming Soon...</h2>
       </div>
     );
   }

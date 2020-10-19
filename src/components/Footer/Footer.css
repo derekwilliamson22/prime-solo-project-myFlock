@@ -3,6 +3,10 @@ footer {
   background-color: rgb(176, 44, 30);
   overflow: hidden;
   text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }
 
 nav > div {

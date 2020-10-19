@@ -10,10 +10,8 @@ class DashboardPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
-        <p>Your ID is: {this.props.store.user.id}</p>
-        <p>Your Coop Name is: {this.props.store.coop.name}</p>
-        <p>Your Coop Id is: {this.props.store.coop.id}</p>
+        <h3 id="welcome">Welcome, {this.props.store.user.username}!</h3>
+        <div>
         <DateBar />
         {/* <ChickenLayingList /> */}
         
@@ -24,7 +22,7 @@ class DashboardPage extends Component {
         
         
         {/* <LogOutButton className="log-in" /> */}
-
+        </div>
         <div>
           <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar.jpg"/>
           <h4 className="DashboardListItem">Mabel</h4>
@@ -49,13 +47,19 @@ class DashboardPage extends Component {
           <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
           <label for="didLayEgg">Egg?</label>
         </div>
-        <div className="CoopForm">
-          <label for="didAddFeed">Did you add feed?</label>
-          <input type="checkbox" id="didAddFeed" name="didAddFeed" value="TRUE" />
-          <label for="didAddWater">Did you add water?</label>
-          <input type="checkbox" id="didAddWater" name="didAddWater" value="TRUE" />
-          <label for="didCleanCoop">Did you clean the coop?</label>
-          <input type="checkbox" id="didCleanCoop" name="didCleanCoop" value="TRUE" />
+        <div>
+          <div>
+            <label className="CoopForm" for="didAddFeed">Did you add feed?</label>
+            <input className="CoopForm" type="checkbox" id="didAddFeed" name="didAddFeed" value="TRUE" />
+          </div>
+          <div>
+            <label className="CoopForm" for="didAddWater">Did you add water?</label>
+            <input className="CoopForm" type="checkbox" id="didAddWater" name="didAddWater" value="TRUE" />
+          </div>
+          <div>
+            <label className="CoopForm" for="didCleanCoop">Did you clean the coop?</label>
+            <input className="CoopForm" type="checkbox" id="didCleanCoop" name="didCleanCoop" value="TRUE" />
+          </div>
         </div>
 
       </div>
