@@ -19,21 +19,13 @@ class ChickenDetails extends Component {
     console.log('what are the chicken details', this.props.store.chickenDetails);
     
     return (
-      <div>
-         {/* <div>
-              {this.porops.store.chickenchickenDetails.img_path &&
-                <img
-                  src={`images/${creatureDetails.img_path}`}
-                  alt={creatureDetails}
-                />
-              }
-            </div>
- */}
-
-
-
-
-       
+      <div className="Details">
+        <div className="DetailsImg">
+          <img
+            src={`${this.props.store.chickenDetails.imageUrl}`}
+            alt={this.props.store.chickenDetails}
+          />
+        </div>          
       </div>
     );
   }

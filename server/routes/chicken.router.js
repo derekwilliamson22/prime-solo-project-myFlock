@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
   ON "coop"."id" = "chicken"."coopId"
   JOIN "user"
   on "coop"."user_id" = "user"."id"
-  WHERE "user"."id" = $1;`;
+  WHERE "user"."id" = $1
+  ORDER BY "chicken"."id" ASC;`;
   pool.query(queryString, [req.user.id])
     .then(result => {
       res.send(result.rows);

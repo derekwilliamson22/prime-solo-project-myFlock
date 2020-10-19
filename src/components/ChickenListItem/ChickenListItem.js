@@ -15,7 +15,7 @@ class ChickenListItem extends Component {
       <div className="bar"
       onClick={this.getChickenDetails}
       >
-      <img src={this.props.chicken.imageUrl}/> 
+      <img className="ChickenListImg" src={this.props.chicken.imageUrl}/> 
       <h4>{this.props.chicken.name}</h4>
                     
       </div>
