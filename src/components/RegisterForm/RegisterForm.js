@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { format, addDays, subDays } from 'date-fns';
+import { format } from 'date-fns';
 
 const date = format(new Date(), 'MMMM - dd - yyyy');
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { format, addDays, subDays } from 'date-fns';
+import { format, subDays } from 'date-fns';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 

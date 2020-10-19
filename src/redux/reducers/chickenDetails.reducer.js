@@ -1,5 +1,4 @@
-const chickenDetailsReducer = (state = {}, action) => {
-  console.log('what is the action.payload for coopreducer', action.payload);
+const chickenDetailsReducer = (state = {}, action) => 
   
   switch (action.type) {    
     case 'SET_CHICKEN_DETAILS':

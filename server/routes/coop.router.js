@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/:id', (req, res) => {
   // GET route code here
   const queryString = `SELECT * FROM "coop" WHERE "user_id" = $1;`;
-  pool.query(queryString, [req.params.id])
+  pool.query(queryString, [req.user.id])
     .then(result => {
       res.send(result.rows[0]);
     })

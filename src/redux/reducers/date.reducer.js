@@ -3,7 +3,6 @@ const counterForDate = {
 }
 // speed reducer
 const dateReducer = (state = counterForDate, action) => {
-  console.log('what is the action type', action.type);
   
   if(action.type === "SET_INCREASE") {
     return {

@@ -97,8 +97,8 @@ class CreateChicken extends Component {
             
               <textarea
                 type="textarea"
-                name="bio"
-                placeholder="Character/Habits"
+                name="notes"
+                placeholder="Notes"
                 value={this.state.newChicken.notes}
                 onChange={this.handleInputChangeFor('notes')}
               />
