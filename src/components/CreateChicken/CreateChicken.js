@@ -12,7 +12,7 @@ class CreateChicken extends Component {
       chickenName: '',
       breed: '',
       birthday: '',
-      bio: '',
+      notes: '',
       imageUrl: '',
       coopId: `${this.props.store.coop.id}`
     }
@@ -29,7 +29,7 @@ class CreateChicken extends Component {
         chickenName: '',
         breed: '',
         birthday: '',
-        bio: '',
+        notes: '',
         imageUrl: ''
       }
     })

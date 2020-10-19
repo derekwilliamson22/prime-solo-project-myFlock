@@ -42,43 +42,60 @@ class EditChickenDetails extends Component {
   render() {
     return (
       <div className="EditDetails">
+        <div className="DetailsImg">
+          <img
+            src={`${this.props.store.chickenDetails.imageUrl}`}
+            alt={this.props.store.chickenDetails}
+          />
+        </div>
         <div>
-          <input
+          <h5>Name: 
+            <input
             type="text"
             name="chickenName"
             placeholder={this.props.store.chickenDetails.name}
             value={this.state.updatedChickenDetails.chickenName}
             onChange={this.handleInputChangeFor('chickenName')}
           />
+          </h5>
         </div>
         <div>  
-          <input
-            type="text"
-            name="breed"
-            placeholder={this.props.store.chickenDetails.breed}
-            value={this.state.updatedChickenDetails.breed}
-            onChange={this.handleInputChangeFor('breed')}
-          />
+          <h5>Breed:
+            <input
+              type="text"
+              name="breed"
+              placeholder={this.props.store.chickenDetails.breed}
+              value={this.state.updatedChickenDetails.breed}
+              onChange={this.handleInputChangeFor('breed')}
+            />         
+          </h5>
+        </div>  
+        <div>
+          <h5>Birthday:
+            <input
+              type="date"
+              name="birthday"
+              placeholder={this.props.store.chickenDetails.birthday}
+              value={this.state.updatedChickenDetails.birthday}               
+              onChange={this.handleInputChangeFor('birthday')}
+            />
+          </h5>
         </div>
         <div>
-          <input
-            type="date"
-            name="birthday"
-            placeholder={this.props.store.chickenDetails.birthday}
-            value={this.state.updatedChickenDetails.birthday}               
-            onChange={this.handleInputChangeFor('birthday')}
-          /> 
+          <h5>Character/Habits:</h5>
+            <textarea
+              type="textarea"
+              name="bio"
+              placeholder={this.props.store.chickenDetails.bio}
+              value={this.state.updatedChickenDetails.bio}
+              onChange={this.handleInputChangeFor('bio')}
+            />
         </div>
-        <div>
-          <textarea
-            type="textarea"
-            name="bio"
-            placeholder={this.props.store.chickenDetails.bio}
-            value={this.state.updatedChickenDetails.bio}
-            onChange={this.handleInputChangeFor('bio')}
-          />
+        <div className="EditDetailsButtons">
+          <button onClick={this.returnToChickenDetails}>Cancel Update</button>
+          <button onClick={this.editChickenDetails}>Update Details</button>
         </div>
-    </div>
+      </div>
     );
   }
 }

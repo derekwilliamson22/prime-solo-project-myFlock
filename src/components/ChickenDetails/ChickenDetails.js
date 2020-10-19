@@ -38,13 +38,13 @@ class ChickenDetails extends Component {
           <h5>Breed: {this.props.store.chickenDetails.breed}</h5>
           <h5>Birthday: {this.props.store.chickenDetails.birthday}</h5>
         </div>
-        <div className="DetailsBio">
-          <h4>Character/Habits:</h4>
-          <p>{this.props.store.chickenDetails.bio}</p>
+        <div className="DetailsNotes">
+          <h5>Notes:</h5>
+          <p>{this.props.store.chickenDetails.notes}</p>
         </div>
         <div className="DetailsButtons">
           <button onClick={this.returnToMyCoop}>Return to myCoop</button>
-          <button>Edit Details</button>
+          <button onClick={this.editChickenDetails}>Edit Details</button>
         </div>
       </div>
     );

@@ -55,6 +55,7 @@ function* logoutUser(action) {
     yield put({ type: 'UNSET_USER' });
     yield put({type: 'UNSET_COOP' });
     yield put({type: 'UNSET_CHICKENS' });
+    yield put({type: 'UNSET_DATE' })
   } catch (error) {
     console.log('Error with user logout:', error);
   }

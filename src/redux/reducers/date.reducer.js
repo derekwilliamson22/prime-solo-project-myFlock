@@ -17,6 +17,9 @@ const dateReducer = (state = counterForDate, action) => {
       counterForDate: state.counterForDate - 1
     }
   }
+  if(action.type === "UNSET_DATE") {
+    return {}
+  }
   return state
 
 }
