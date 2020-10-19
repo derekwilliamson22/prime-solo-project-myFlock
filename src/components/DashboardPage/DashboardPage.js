@@ -13,6 +13,7 @@ class DashboardPage extends Component {
         <h1 id="welcome">Welcome, {this.props.store.user.username}!</h1>
         <p>Your ID is: {this.props.store.user.id}</p>
         <p>Your Coop Name is: {this.props.store.coop.name}</p>
+        <p>Your Coop Id is: {this.props.store.coop.id}</p>
         <DateBar />
         {/* <ChickenLayingList /> */}
         

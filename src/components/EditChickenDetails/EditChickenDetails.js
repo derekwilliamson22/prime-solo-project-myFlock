@@ -9,52 +9,124 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // component.
 class EditChickenDetails extends Component {
   state = {
-    updatedChickenDetails: {
-      chicken_name: '',
-      breed: '',
-      birthday: '',
-      notes: '',
+    updatedChicken: {
+      chicken_name: this.props.store.chickenDetails.name,
+      breed: this.props.store.chickenDetails.breed,
+      birthday: this.props.store.chickenDetails.birthday,
+      notes: this.props.store.chickenDetails.notes,
     }
-  };
+  }
+
+  componentDidMount() {
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_DETAILS',
+      payload: parseInt(this.props.match.params.id),
+    });
+  }
 
   returnToChickenDetails = () => {
     this.props.history.push(`/chicken_details/${this.props.match.params.id}`);
   }
 
   updateChicken = (event) => {
+      
     event.preventDefault();
     this.props.dispatch({
       type: 'UPDATE_CHICKEN_DETAILS',
-      payload: this.state.updatedChickenDetails
+      url: `api/chicken/details/${this.props.match.params.id}`,
+      payload: this.state.updatedChicken
     })
     this.returnToChickenDetails()
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
-      updatedChickenDetails: {
-      ...this.state.updatedChickenDetails,
+      updatedChicken:{
+        ...this.state.updatedChicken,
       [propertyName]: event.target.value,
       }
     });
   };
 
-  render() {
-    return (
-      <div className="EditDetails">
-        <div className="DetailsImg">
-          <img
-            src={`${this.props.store.chickenDetails.image_url}`}
-            alt={this.props.store.chickenDetails}
-          />
-        </div>
+//   render() {
+//     return (
+//       <div className="EditDetails">
+//         <div className="DetailsImg">
+//           <img
+//             src={`${this.props.store.chickenDetails.image_url}`}
+//             alt={this.props.store.chickenDetails}
+//           />
+//         </div>
+//         <div>
+//           <h5>Name: 
+//             <input
+//             type="text"
+//             name="chicken_name"
+//             placeholder={this.props.store.chickenDetails.name}
+//             //value={this.state.updatedChickenDetails.chicken_name}
+//             onChange={this.handleInputChangeFor('chicken_name')}
+//           />
+//           </h5>
+//         </div>
+//         <div>  
+//           <h5>Breed:
+//             <input
+//               type="text"
+//               name="breed"
+//               placeholder={this.props.store.chickenDetails.breed}
+//               value={this.state.updatedChickenDetails.breed}
+//               onChange={this.handleInputChangeFor('breed')}
+//             />         
+//           </h5>
+//         </div>  
+//         <div>
+//           <h5>Birthday:
+//             <input
+//               type="date"
+//               name="birthday"
+//               placeholder={this.props.store.chickenDetails.birthday}
+//               value={this.state.updatedChickenDetails.birthday}               
+//               onChange={this.handleInputChangeFor('birthday')}
+//             />
+//           </h5>
+//         </div>
+//         <div>
+//           <h5>Notes:</h5>
+//             <textarea
+//               type="textarea"
+//               name="notes"
+//               placeholder={this.props.store.chickenDetails.notes}
+//               value={this.state.updatedChickenDetails.notes}
+//               onChange={this.handleInputChangeFor('notes')}
+//             />
+//         </div>
+//         <div className="EditDetailsButtons">
+//           <button onClick={this.returnToChickenDetails}>Cancel Update</button>
+//           <button onClick={this.updateChicken}>Update Details</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
+
+render() {
+  return (
+    <div className="EditDetails">
+      <div className="DetailsImg">
+        <img
+          src={`${this.props.store.chickenDetails.image_url}`}
+          alt={this.props.store.chickenDetails}
+        />
+      </div>
+      {/* <form onSubmit={this.updateChicken}> */}
         <div>
+          
           <h5>Name: 
             <input
             type="text"
             name="chicken_name"
-            placeholder={this.props.store.chickenDetails.name}
-            value={this.state.updatedChickenDetails.chicken_name}
+            //placeholder="Chicken Name"
+            value={this.state.updatedChicken.chicken_name}
             onChange={this.handleInputChangeFor('chicken_name')}
           />
           </h5>
@@ -64,8 +136,8 @@ class EditChickenDetails extends Component {
             <input
               type="text"
               name="breed"
-              placeholder={this.props.store.chickenDetails.breed}
-              value={this.state.updatedChickenDetails.breed}
+              //placeholder="Breed"
+              value={this.state.updatedChicken.breed}
               onChange={this.handleInputChangeFor('breed')}
             />         
           </h5>
@@ -75,8 +147,8 @@ class EditChickenDetails extends Component {
             <input
               type="date"
               name="birthday"
-              placeholder={this.props.store.chickenDetails.birthday}
-              value={this.state.updatedChickenDetails.birthday}               
+              //placeholder="Birthday"
+              value={this.state.updatedChicken.birthday}               
               onChange={this.handleInputChangeFor('birthday')}
             />
           </h5>
@@ -86,18 +158,20 @@ class EditChickenDetails extends Component {
             <textarea
               type="textarea"
               name="notes"
-              placeholder={this.props.store.chickenDetails.notes}
-              value={this.state.updatedChickenDetails.notes}
+              //placeholder="Notes"
+              value={this.state.updatedChicken.notes}
               onChange={this.handleInputChangeFor('notes')}
             />
         </div>
         <div className="EditDetailsButtons">
           <button onClick={this.returnToChickenDetails}>Cancel Update</button>
-          <button onClick={this.editChickenDetails}>Update Details</button>
+          <button onClick={this.updateChicken}>Update Details</button>
         </div>
-      </div>
-    );
-  }
+        {/* <input className="btn" type="submit" name="submit" value="Submit" />
+        </form> */}
+    </div>
+  );
+}
 }
 
 export default connect(mapStoreToProps)(withRouter(EditChickenDetails));

@@ -12,7 +12,9 @@ class ChickenList extends Component {
         <ul className="bars">
           {this.props.store.chicken.map((item, index) => {
             return (
-              <li key={index}>
+              <li 
+              className="ChickenListItem"
+              key={index}>
                 <ChickenListItem
                   index={index}
                   chicken={item}

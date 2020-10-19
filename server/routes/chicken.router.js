@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // GET route code here
-  console.log("What happened to my get request?:", req.body, req.params.id, req.user);
+  console.log("What is my req.user:", req.user);
   const queryString = `
   SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
@@ -37,6 +37,33 @@ router.post('/', (req, res) => {
     req.body.birthday,
     req.body.notes,
     req.body.coop_id
+  ]
+  pool.query(queryString, queryParams)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in POSTing chicken', err);
+      res.sendStatus(500);
+    });
+})
+
+router.put('/details/:id', (req, res) => {
+  console.log('what is the put', req.body, req.params.id);
+  const queryString = `
+  UPDATE "chicken" 
+  SET 
+  "name" = $2,
+  "breed" = $3,
+  "birthday" = $4,
+  "notes" = $5 
+  WHERE "id" = $1;`;
+  const queryParams = [
+    req.params.id,
+    req.body.chicken_name,
+    req.body.breed,
+    req.body.birthday,
+    req.body.notes,
   ]
   pool.query(queryString, queryParams)
     .then(result => {

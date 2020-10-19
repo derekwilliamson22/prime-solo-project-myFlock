@@ -10,12 +10,11 @@ import { withRouter } from 'react-router-dom';
 // component.
 class MyCoopPage extends Component {
 
-  // componentDidMount(){
-  //   this.props.dispatch({
-  //     type: 'FETCH_CHICKENS',
-  //     url: `api/chicken/${this.props.store.coop.id}`
-  //   });
-  // }
+  componentDidMount(){
+    this.props.dispatch({
+      type: 'FETCH_CHICKENS'
+    });
+  }
 
   addChicken = () => {
     this.props.history.push('/chicken_form')
@@ -26,7 +25,7 @@ class MyCoopPage extends Component {
       <div className="Dashboard">
        <h3>myCoop</h3>
        <ChickenList />
-       <button onClick={this.addChicken}>Add a Chicken</button>
+       <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
       </div>
     );
   }

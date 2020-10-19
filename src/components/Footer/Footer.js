@@ -13,8 +13,7 @@ class Footer extends Component {
 
   fetchChickens = () => {
     this.props.dispatch({
-      type: 'FETCH_CHICKENS',
-      url: 'api/chicken'
+      type: 'FETCH_CHICKENS'
     });
   }
 
@@ -31,12 +30,6 @@ class Footer extends Component {
     this.props.history.push('/service');
   }
 
-  fetchAndGoToMyCoop = () => {
-    this.fetchChickens();
-    this.goToMyCoop();
-  }
-
-
   render() {
     return (
         <footer>
@@ -45,7 +38,7 @@ class Footer extends Component {
             '' : 
             <div>
               <button onClick={this.goToDashboard}>Dashboard</button>
-              <button onClick={this.fetchAndGoToMyCoop}>myCoop</button>
+              <button onClick={this.goToMyCoop}>myCoop</button>
               <button onClick={this.goToMyStats}>myStats</button>
               <button onClick={this.goToService}>Service Request</button>
             </div>

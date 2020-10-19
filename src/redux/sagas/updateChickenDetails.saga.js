@@ -2,15 +2,16 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* updateChickenDetails(action) {
-  console.log('hit updateChickenDetails with chicken id:', action.payload);
-  // let response = yield axios({
-  //   method: "PUT",
-  //   url: `api/chicken/details/${action.payload}`
-  // });
-  // yield put({
-  //   type: 'SET_CHICKEN_DETAILS',
-  //   payload: response.data
-  // });
+  console.log('hit updateChickenDetails with chicken id:', action.payload, action.url);
+  let response = yield axios({
+    method: "PUT",
+    url: action.url,
+    data: action.payload
+  });
+  yield put({
+    type: 'SET_CHICKEN_DETAILS',
+    payload: response.data
+  });
 }
 
 

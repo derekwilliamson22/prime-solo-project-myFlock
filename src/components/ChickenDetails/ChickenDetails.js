@@ -27,8 +27,9 @@ class ChickenDetails extends Component {
   render() {    
     return (
       <div className="Details">
-        <div className="DetailsImg">
+        <div>
           <img
+            className="DetailsImg"
             src={`${this.props.store.chickenDetails.image_url}`}
             alt={this.props.store.chickenDetails}
           />

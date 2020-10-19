@@ -2,7 +2,6 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchChickens(action) {
-  console.log('hit fetchChickens', action.url);
   let response = yield axios({
     method: "GET",
     url: 'api/chicken'
