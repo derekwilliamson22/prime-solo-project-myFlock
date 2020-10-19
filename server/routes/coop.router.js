@@ -5,7 +5,7 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   // GET route code here
   const queryString = `SELECT * FROM "coop" WHERE "user_id" = $1;`;
   pool.query(queryString, [req.user.id])

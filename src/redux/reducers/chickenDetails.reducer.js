@@ -1,4 +1,4 @@
-const chickenDetailsReducer = (state = {}, action) => 
+const chickenDetailsReducer = (state = {}, action) => {
   
   switch (action.type) {    
     case 'SET_CHICKEN_DETAILS':

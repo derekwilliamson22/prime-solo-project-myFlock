@@ -5,7 +5,7 @@ function* fetchCoop(action) {
   console.log('hit fetchCoop', action.payload);
   let response = yield axios({
     method: 'GET',
-    url: `/api/coop/${action.payload}`
+    url: `/api/coop`
   });
   yield put({
     type: 'SET_COOP',

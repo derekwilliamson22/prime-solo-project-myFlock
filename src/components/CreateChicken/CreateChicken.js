@@ -13,7 +13,7 @@ class CreateChicken extends Component {
       breed: '',
       birthday: '',
       notes: '',
-      image_url: '',
+      image_url: 'images/chicken_img.jpg',
       coop_id: `${this.props.store.coop.id}`
     }
   };
@@ -29,8 +29,7 @@ class CreateChicken extends Component {
         chicken_name: '',
         breed: '',
         birthday: '',
-        notes: '',
-        image_url: ''
+        notes: ''
       }
     })
     this.props.history.push('/mycoop');
@@ -53,6 +52,8 @@ class CreateChicken extends Component {
   }
 
   render() {
+    console.log('what is the coop id:', this.props.store.coop.id);
+    
     return (
       <div className="Dashboard">
         <form className="formPanel" onSubmit={this.createChicken}>

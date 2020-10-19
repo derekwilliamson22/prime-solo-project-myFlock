@@ -30,7 +30,6 @@ class DateBar extends Component {
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
-    console.log('what is date change', event.target.value);
     let date = event.target.value;
     if(date === "increase") {
       this.props.dispatch({
@@ -52,7 +51,6 @@ class DateBar extends Component {
    // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
   
   // console.log('what is date', date);
-  console.log('what is date change', event.target.value);
   let date = event.target.value;
   if(date === "decrease") {
     this.props.dispatch({
