@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // Basic class component structure for React with default state
@@ -13,11 +14,17 @@ class ChickenDetails extends Component {
       payload: parseInt(this.props.match.params.id),
     });
   }
+
+  returnToMyCoop = () => {
+    this.props.history.push('/mycoop')
+  }
+
+  editChickenDetails = () => {
+    this.props.history.push(`/chicken_edit/${this.props.store.chickenDetails.id}`)
+  }
   
 
-  render() {
-    console.log('what are the chicken details', this.props.store.chickenDetails);
-    
+  render() {    
     return (
       <div className="Details">
         <div className="DetailsImg">
@@ -25,10 +32,23 @@ class ChickenDetails extends Component {
             src={`${this.props.store.chickenDetails.imageUrl}`}
             alt={this.props.store.chickenDetails}
           />
-        </div>          
+        </div>
+        <div className="DetailsInfo">
+          <h5>Name: {this.props.store.chickenDetails.name}</h5>
+          <h5>Breed: {this.props.store.chickenDetails.breed}</h5>
+          <h5>Birthday: {this.props.store.chickenDetails.birthday}</h5>
+        </div>
+        <div className="DetailsBio">
+          <h4>Character/Habits:</h4>
+          <p>{this.props.store.chickenDetails.bio}</p>
+        </div>
+        <div className="DetailsButtons">
+          <button onClick={this.returnToMyCoop}>Return to myCoop</button>
+          <button>Edit Details</button>
+        </div>
       </div>
     );
   }
 }
 
-export default connect(mapStoreToProps)(ChickenDetails);
+export default connect(mapStoreToProps)(withRouter(ChickenDetails));

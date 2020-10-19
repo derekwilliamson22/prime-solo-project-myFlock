@@ -24,7 +24,6 @@ class CreateChicken extends Component {
       type: 'CREATE_CHICKEN',
       payload: this.state.newChicken
     })
-    this.props.history.push('/mycoop');
     this.setState({
       newChicken: {
         chickenName: '',
@@ -34,6 +33,7 @@ class CreateChicken extends Component {
         imageUrl: ''
       }
     })
+    this.props.history.push('/mycoop');
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {

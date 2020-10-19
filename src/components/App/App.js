@@ -26,6 +26,7 @@ import MyStatsPage from '../MyStatsPage/MyStatsPage';
 import ServicePage from '../ServicePage/ServicePage';
 import CreateChicken from '../CreateChicken/CreateChicken';
 import ChickenDetails from '../ChickenDetails/ChickenDetails';
+import EditChickenDetails from '../EditChickenDetails/EditChickenDetails';
 
 import './App.css';
 
@@ -73,6 +74,11 @@ class App extends Component {
               exact
               path="/chicken_details/:id"
               component={ChickenDetails}
+            />
+             <ProtectedRoute
+              exact
+              path="/chicken_edit/:id"
+              component={EditChickenDetails}
             />
             <ProtectedRoute
               exact
