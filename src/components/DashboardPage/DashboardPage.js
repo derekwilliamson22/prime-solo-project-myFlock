@@ -35,6 +35,13 @@ class DashboardPage extends Component {
     dateBarDate: '',
   }
 
+  componentDidMount(){
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA'
+    });
+  }
+
+
   getDateBarDate = (dataDate) => {
     console.log('in getDashboardData with this:', dataDate);
     this.setState({

@@ -152,6 +152,7 @@ DashBoard View
 
 .DateBar{
   display: inline;
+  text-align: center;
 }
 
 .DateBar > input, h3 {
