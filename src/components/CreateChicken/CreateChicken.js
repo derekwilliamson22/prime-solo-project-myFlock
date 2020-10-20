@@ -56,12 +56,21 @@ class CreateChicken extends Component {
     return (
       <div className="Dashboard">
         <form className="formPanel" onSubmit={this.createChicken}>
-          <h2>Add a Chicken</h2>
           {this.props.store.errors.registrationMessage && (
             <h3 className="alert" role="alert">
               {this.props.store.errors.registrationMessage}
             </h3>
           )}
+
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                this.props.history.push('/mycoop');
+              }}
+            >
+              Return to myCoop
+            </button>
           <div>
               <input
                 type="text"
@@ -127,15 +136,6 @@ class CreateChicken extends Component {
             
           </div>
           
-            <button
-              type="button"
-              className="btn"
-              onClick={() => {
-                this.props.history.push('/mycoop');
-              }}
-            >
-              Return to myCoop
-            </button>
             <input className="btn" type="submit" name="submit" value="Submit" />
         </form>
       </div>

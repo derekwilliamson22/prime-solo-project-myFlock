@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   // GET route code here
   console.log("What is my req.user:", req.user);
   const queryString = `
-  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"
@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 
 router.get('/layingData', (req, res) => {
   // GET route code here
-  console.log("What is my req.user:", req.);
+  console.log("What is my req.user:", req.body);
   const queryString = `SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
@@ -51,12 +51,13 @@ router.post('/', (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `
   INSERT INTO "chicken" 
-  ("name", "breed", "image_url", "birthday", "notes", "coop_id")
-  VALUES ($1, $2, $3, $4, $5, $6);`;
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ($1, $2, $3, $4, $5, $6, $7);`;
   const queryParams = [
     req.body.chicken_name,
     req.body.breed,
-    req.body.image_url,
+    req.body.chicken_image_url,
+    req.body.chicken_egg_image_url,
     req.body.birthday,
     req.body.notes,
     req.body.coop_id
@@ -101,7 +102,7 @@ router.put('/details/:id', (req, res) => {
 router.get('/details/:id', (req, res) => {
   // GET route code here
   console.log("What happened to my get details request?:", req.body, req.params.id);
-  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"

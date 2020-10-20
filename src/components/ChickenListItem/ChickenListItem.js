@@ -17,9 +17,9 @@ class ChickenListItem extends Component {
       <div className="MyCoopBar"
       onClick={this.getChickenDetails}
       >
-      <img className="ChickenListImg" src={this.props.chicken.image_url}/> 
+      <img className="ChickenListImg" src={this.props.chicken.chicken_image_url}/> 
       <h4 className="ChickenListItem">{this.props.chicken.name}</h4>
-      <img className="ChickenListImg" src={this.props.chicken.chicken_egg_image_url}/>
+      <img className="ChickenListEggImg" src={this.props.chicken.chicken_egg_image_url}/>
                     
       </div>
     );

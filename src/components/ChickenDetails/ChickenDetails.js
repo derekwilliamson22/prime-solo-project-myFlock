@@ -30,7 +30,14 @@ class ChickenDetails extends Component {
         <div>
           <img
             className="DetailsImg"
-            src={`${this.props.store.chickenDetails.image_url}`}
+            src={`${this.props.store.chickenDetails.chicken_image_url}`}
+            alt={this.props.store.chickenDetails}
+          />
+        </div>
+        <div>
+          <img
+            className="DetailsEggImg"
+            src={`${this.props.store.chickenDetails.chicken_egg_image_url}`}
             alt={this.props.store.chickenDetails}
           />
         </div>

@@ -82,7 +82,7 @@ class DashboardPage extends Component {
             <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar_egg.png"/>
             <h4 className="DashboardListItem">Mabel</h4>
             <FormControlLabel
-              label="Egg Today?"
+              label="Laid Today?"
               labelPlacement="start"
               value="true"
               control={<DashboardSwitch
