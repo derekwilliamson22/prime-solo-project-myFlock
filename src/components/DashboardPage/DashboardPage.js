@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DateBar from '../DateBar/DateBar';
+import LayingForm from '../LayingForm/LayingForm';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import { withStyles } from '@material-ui/core/styles';
 import { green, red } from '@material-ui/core/colors';
@@ -36,6 +37,10 @@ class DashboardPage extends Component {
   }
 
   componentDidMount(){
+    this.getChickenLayingData();
+  }
+
+  getChickenLayingData = () => {
     this.props.dispatch({
       type: 'FETCH_CHICKEN_LAYING_DATA'
     });
@@ -59,6 +64,8 @@ class DashboardPage extends Component {
 
   render() {
     console.log('what is this state', this.state.checkedA);
+    console.log('what is the date', this.state.dateBarDate);
+    
     console.log('what are my props', this.props.store);
     
     
@@ -67,9 +74,12 @@ class DashboardPage extends Component {
         <div className="DateContents">
           <DateBar getDateBarDate={this.getDateBarDate}/>
         </div>
+        <LayingForm 
+        dateBarDate={this.state.dateBarDate}
+        />
         <FormGroup>
-          <div>
-            <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar.jpg"/>
+          <div className="LayingBar">
+            <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar_egg.png"/>
             <h4 className="DashboardListItem">Mabel</h4>
             <FormControlLabel
               label="Egg Today?"
@@ -86,7 +96,7 @@ class DashboardPage extends Component {
             />
           </div>
           {/* <div>
-            <img id="DashboardListImg" className="DashboardListItem" src="images/california_white.png"/>
+            <img id="DashboardListImg" className="DashboardListItem" src="images/california_white_egg.png"/>
             <h4 className="DashboardListItem">Pancake</h4>
             <FormControlLabel
             <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
@@ -94,7 +104,7 @@ class DashboardPage extends Component {
             />
           </div>
           <div>
-            <img id="DashboardListImg" className="DashboardListItem" src="images/black_australorp.jpg"/>
+            <img id="DashboardListImg" className="DashboardListItem" src="images/australorp_egg.png"/>
             <h4 className="DashboardListItem">Gertie</h4>
             <FormControlLabel
             <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
@@ -102,7 +112,7 @@ class DashboardPage extends Component {
             />
           </div>
           <div>
-            <img id="DashboardListImg" className="DashboardListItem" src="images/barred_rock.jpg"/>
+            <img id="DashboardListImg" className="DashboardListItem" src="images/barred_rock_egg.png"/>
             <h4 className="DashboardListItem">Norma</h4>
             <FormControlLabel
             <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />

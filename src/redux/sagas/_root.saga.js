@@ -7,6 +7,7 @@ import addChickenSaga from './addChicken.saga';
 import fetchChickensSaga from './fetchChickens.saga';
 import fetchChickenDetailsSaga from './fetchChickenDetails.saga';
 import updateChickenDetailsSaga from './updateChickenDetails.saga';
+import fetchChickenLayingDataSaga from './fetchChickenLayingData.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     fetchChickensSaga(),
     fetchChickenDetailsSaga(),
     updateChickenDetailsSaga(),
+    fetchChickenLayingDataSaga(),
   ]);
 }

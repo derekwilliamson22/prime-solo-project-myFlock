@@ -13,7 +13,8 @@ class CreateChicken extends Component {
       breed: '',
       birthday: '',
       notes: '',
-      image_url: 'images/chicken_img.jpg',
+      chicken_image_url: 'images/chicken_img.jpg',
+      chicken_egg_image_url: 'images/california_white_egg.png',
       coop_id: this.props.store.coop.id,
     }
   };
@@ -107,10 +108,21 @@ class CreateChicken extends Component {
             
               <input
                 type="text"
-                name="image_url"
-                placeholder="Image Url"
-                value={this.state.newChicken.image_url}
-                onChange={this.handleInputChangeFor('image_url')}
+                name="chicken_image_url"
+                placeholder="Chicken Image Url"
+                value={this.state.newChicken.chicken_image_url}
+                onChange={this.handleInputChangeFor('chicken_image_url')}
+              />
+            
+          </div>
+          <div>
+            
+              <input
+                type="text"
+                name="chicken_egg_image_url"
+                placeholder="Chicken Egg Image Url"
+                value={this.state.newChicken.chicken_egg_image_url}
+                onChange={this.handleInputChangeFor('chicken_egg_image_url')}
               />
             
           </div>

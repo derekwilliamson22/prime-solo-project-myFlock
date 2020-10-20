@@ -34,7 +34,7 @@ Button
   display: inline-block;
   padding: 10px 20px;
   border-color: #014041;
-  border-width: 1px 1px 3px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
   border-radius: 4px;
   background-color: rgb(190,0,10);
   color: #f8f8f8;
@@ -126,7 +126,7 @@ Form Treatment
   margin: 0 auto 20px;
   background-color: #efefef;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
 }
 
 input {
@@ -145,9 +145,10 @@ DashBoard View
   max-width: 100%;
   padding: 65px 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color: rgb(80, 79, 79);
+  color: #efefef;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
 }
 
 /* .DateBar{
@@ -167,8 +168,16 @@ myCoop View
   display: inline-block;
 }
 
-.bar {
-  border: 2px solid black;
+.MyCoopBar {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 img {
@@ -183,7 +192,7 @@ img {
   margin: 0 auto 20px;
   background-color: #efefef;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
 }
 
 .DetailsInfo {
@@ -202,19 +211,29 @@ img {
   margin: 0 auto 20px;
   background-color: #efefef;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+}
+
+.ChickenListImg {
+  width: 75px;
+  display: inline;
+  padding:5px;
 }
 
 .ChickenListItem {
   display: inline;
+  padding:5px;
 }
 
 .DashboardListItem {
   display: inline;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #DashboardListImg {
-  width: 100px;
+  width: 60px;
+  padding:5px;
 }
 
 .CoopForm {
@@ -225,6 +244,9 @@ display: inline;
   width:20px;
   height:20px;
   margin:10px;
+  border: 1px solid white;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  border-radius: 10%;
 }
 
 .HiddenArrowLeft {
@@ -245,12 +267,34 @@ display: inline;
 
 
 .DateContents {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin:5px;
   
 }
 
 .welcome {
   text-align: center;
+}
+
+.LayingBar {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+.bars {
+  padding: 0;
 }

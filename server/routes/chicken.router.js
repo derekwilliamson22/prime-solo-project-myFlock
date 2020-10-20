@@ -24,6 +24,29 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/layingData', (req, res) => {
+  // GET route code here
+  console.log("What is my req.user:", req.);
+  const queryString = `SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
+  JOIN "layingData"
+  ON "chicken"."id" = "layingData"."chicken_id"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coop_id"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "layingData"."date" = $1
+  AND
+  "chicken"."coop_id" = $2;`;
+  pool.query(queryString, [req.body.date, req.body.coop_id])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in GETting chickens', err);
+      res.sendStatus(500);
+    });
+});
+
 router.post('/', (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `

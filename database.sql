@@ -22,7 +22,8 @@ CREATE TABLE "chicken" (
    "id" SERIAL PRIMARY KEY,
    "name" VARCHAR NOT NULL,
    "breed" VARCHAR,
-   "image_url" TEXT,
+   "chicken_image_url" TEXT,
+   "chicken_egg_image_url" TEXT,
    "birthday" VARCHAR,
    "notes" TEXT,
    "coop_id" INT references "coop"
@@ -73,3 +74,19 @@ SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url
   on "coop"."user_id" = "user"."id"
   WHERE "user"."id" = $1
   ORDER BY "chicken"."id" ASC;
+
+-- select for laying data
+
+SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
+JOIN "layingData"
+ON "chicken"."id" = "layingData"."chicken_id"
+JOIN "coop"
+ON "coop"."id" = "chicken"."coop_id"
+JOIN "user"
+on "coop"."user_id" = "user"."id"
+WHERE "layingData"."date" = 'October - 20 - 2020'
+AND
+"chicken"."coop_id" = 4;
+
+-- beginning values for users
+INSERT INTO  
