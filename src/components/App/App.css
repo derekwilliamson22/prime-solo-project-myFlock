@@ -43,6 +43,25 @@ Button
   cursor: pointer;
 }
 
+.PasswordInput {
+  margin-left: 10px;
+}
+
+.LoginWelcome {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #820303;
+  text-shadow: -1px 1px white;
+  padding-left: 10px;
+}
+
+.CenterBtn input {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;

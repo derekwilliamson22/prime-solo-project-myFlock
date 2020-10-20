@@ -36,11 +36,11 @@ const Nav = (props) => {
       </div>
       {props.store.user.id === undefined ?
         <div className="BlankHeader"></div> : 
-        <div class="dropdown">
+        <div className="dropdown">
           <img className="dropbtn" src="images/nav_icon_menu.png"/>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
-            <a href="#">Link 2</a>
+          <div className="dropdown-content">
+            <a href="#">EDIT USER</a>
+            <a href="#">EDIT COOP</a>
             <a
     // This button shows up in multiple locations and is styled differently
     // because it's styled differently depending on where it is used, the className
