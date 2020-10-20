@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 //import AboutPage from '../AboutPage/AboutPage';
 
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+//import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
@@ -118,7 +118,7 @@ class App extends Component {
               component={RegisterPage}
               authRedirect="/dashboard"
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
@@ -126,7 +126,7 @@ class App extends Component {
               path="/home"
               component={LandingPage}
               authRedirect="/dashboard"
-            />
+            /> */}
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

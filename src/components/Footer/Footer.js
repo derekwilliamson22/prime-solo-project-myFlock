@@ -37,10 +37,10 @@ class Footer extends Component {
             {this.props.store.user.id === undefined ?
             '' : 
             <div>
-              <button onClick={this.goToDashboard}>Dashboard</button>
-              <button onClick={this.goToMyCoop}>myCoop</button>
-              <button onClick={this.goToMyStats}>myStats</button>
-              <button onClick={this.goToService}>Service Request</button>
+              <img className="NavIcons" src="images/nav_icon_dashboard.png" onClick={this.goToDashboard}/>
+              <img className="NavIcons" src="images/nav_icon_mycoop.png" onClick={this.goToMyCoop}/>
+              <img className="NavIcons" src="images/nav_icon_mystats.png" onClick={this.goToMyStats}/>
+              <img className="NavIcons" src="images/nav_icon_service.png" onClick={this.goToService}/>
             </div>
             }
           </nav>
