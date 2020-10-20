@@ -154,9 +154,8 @@ DashBoard View
   display: inline;
 }
 
-.DateBar > button, h3 {
+.DateBar > input, h3 {
   display: inline;
-  width: 75px;
 }
 /* --------------------------------------------------------------------------------
 myCoop View
@@ -220,3 +219,33 @@ img {
 display: inline;
 }
 
+.DateArrows {
+  width:20px;
+  height:20px;
+  margin:10px;
+}
+
+.HiddenArrowLeft {
+  background-color: empty;
+  width:20px;
+  height:20px;
+  margin:20px;
+  display: inline;
+}
+
+.HiddenArrowRight {
+  background-color: empty;
+  width:20px;
+  height:20px;
+  margin:20px;
+  display: inline;
+}
+
+
+.DateContents {
+  text-align: center;
+}
+
+.welcome {
+  text-align: center;
+}
