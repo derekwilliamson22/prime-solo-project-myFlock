@@ -34,15 +34,24 @@ const Nav = (props) => {
       <div className="NavTitle">
           <h2 className="nav-title">{title.text}</h2>
       </div>
-      <div class="dropdown">
-      <img className="dropbtn" src="images/nav_icon_menu.png"/>
-        <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+      {props.store.user.id === undefined ?
+        <div className="BlankHeader"></div> : 
+        <div class="dropdown">
+          <img className="dropbtn" src="images/nav_icon_menu.png"/>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a
+    // This button shows up in multiple locations and is styled differently
+    // because it's styled differently depending on where it is used, the className
+    // is passed to it from it's parents through React props
+    className={props.className}
+    onClick={() => props.dispatch({ type: 'LOGOUT' })}>
+    Log Out
+  </a>
+          </div>
         </div>
-      </div>
-      
+      }
       {/* <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
           Show this link if they are logged in or not,
