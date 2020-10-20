@@ -99,7 +99,7 @@ class DateBar extends Component {
   const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
 
     return (
-      <div className="DateBar">
+      <>
         {this.props.store.date.counterForDate <= 6 ? 
         <input type="image" className="DateArrows" src="images/left_arrow.png" value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}/> :
         <div className="HiddenArrowLeft" ></div>} 
@@ -110,7 +110,7 @@ class DateBar extends Component {
         {this.props.store.date.counterForDate > 0 ? 
         <input type="image" className="DateArrows" src="images/right_arrow.png" value="decrease" onMouseDown={this.changeToTomorrow} onMouseUp={this.goToTomorrow(date)}/> :
         <div className="HiddenArrowRight" ></div>}      
-      </div>
+      </>
     );
   }
 }

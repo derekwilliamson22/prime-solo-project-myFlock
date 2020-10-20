@@ -150,14 +150,15 @@ DashBoard View
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
 }
 
-.DateBar{
+/* .DateBar{
   display: inline;
   text-align: center;
+  height:44px;
 }
 
-.DateBar > input, h3 {
+.DateBar  input, h3 {
   display: inline;
-}
+} */
 /* --------------------------------------------------------------------------------
 myCoop View
 -------------------------------------------------------------------------------- */
@@ -230,7 +231,7 @@ display: inline;
   background-color: empty;
   width:20px;
   height:20px;
-  margin:20px;
+  margin:10px;
   display: inline;
 }
 
@@ -238,13 +239,16 @@ display: inline;
   background-color: empty;
   width:20px;
   height:20px;
-  margin:20px;
+  margin:10px;
   display: inline;
 }
 
 
 .DateContents {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .welcome {

@@ -64,9 +64,6 @@ class DashboardPage extends Component {
     
     return (
       <div className="Dashboard">
-        <div className="welcome">
-          <h3>Welcome, {this.props.store.user.username}!</h3>
-        </div>
         <div className="DateContents">
           <DateBar getDateBarDate={this.getDateBarDate}/>
         </div>
