@@ -36,7 +36,6 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickenLayingData();
-    this.getDateBarDate();
   }
 
   getChickenLayingData = () => {
@@ -46,11 +45,11 @@ class DashboardPage extends Component {
   }
 
 
-  getDateBarDate = (dataDate) => {
-    console.log('in getDashboardData with this:', dataDate);
+  getDateBarDate = (dateId) => {
+    console.log('in getDashboardData with this:', dateId);
     this.setState({
       ...this.state,
-      dateBarDate: dataDate
+      dateBarDate: dateId
     })
   }
 
@@ -62,7 +61,7 @@ class DashboardPage extends Component {
  
 
   render() {
-    console.log('what is this state', this.state.checkedA);
+    
     console.log('what is the date', this.state.dateBarDate);
     
     console.log('what are my props', this.props.store);

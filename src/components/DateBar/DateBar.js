@@ -70,9 +70,12 @@ class DateBar extends Component {
   // })
  }
 
- sendDateBarDate = () => {
+ sendDateBarDate = (dateId) => {
   const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
-   this.props.getDateBarDate(date);
+   console.log('in send datebar date', dateId);
+   
+  //const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
+   this.props.getDateBarDate(dateId);
  }
 
  goToYesterday = (dateId) => {
