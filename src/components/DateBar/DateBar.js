@@ -98,8 +98,8 @@ class DateBar extends Component {
 
  
   render() {
-let date = this.props.date
-const newDate = format(date, 'MMMM - dd - yyyy');
+
+const newDate = format(this.props.date, 'MMMM - dd - yyyy');
 console.log('what is the date', this.props);
 
     return (
