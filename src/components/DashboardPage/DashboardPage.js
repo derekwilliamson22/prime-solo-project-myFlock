@@ -36,6 +36,7 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickenLayingData();
+    this.getDateBarDate();
   }
 
   getChickenLayingData = () => {
