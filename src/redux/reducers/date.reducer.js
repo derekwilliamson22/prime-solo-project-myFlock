@@ -1,23 +1,18 @@
-const counterForDate = {
-  counterForDate: 0
-}
-// speed reducer
-const dateReducer = (state = counterForDate, action) => {
+import {addDays, subDays} from 'date-fns';
+// date reducer
+const dateReducer = (state = new Date(), action) => {
   
   if(action.type === "SET_INCREASE") {
-    return {
-      ...state,
-      counterForDate: state.counterForDate + 1
-    }
+    let nextDate = subDays(state, 1);
+      return nextDate;
   }
+  
   if(action.type === "SET_DECREASE") {
-    return {
-      ...state,
-      counterForDate: state.counterForDate - 1
-    }
+    let nextDate = addDays(state, 1);
+      return nextDate;
   }
   if(action.type === "UNSET_DATE") {
-    return {}
+    return new Date();
   }
   return state
 

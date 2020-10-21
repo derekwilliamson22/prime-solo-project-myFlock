@@ -34,9 +34,9 @@ class DateBar extends Component {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
     let date = event.target.value;
-    if(date === "increase") {
+    if(date === "yesterday") {
       this.props.dispatch({
-        type: "SET_INCREASE",
+        type: "SET_YESTERDAY",
       });
     }
     // this.setState({
@@ -55,9 +55,9 @@ class DateBar extends Component {
   
   // console.log('what is date', date);
   let date = event.target.value;
-  if(date === "decrease") {
+  if(date === "tomorrow") {
     this.props.dispatch({
-      type: "SET_DECREASE",
+      type: "SET_TOMORROW",
     });
   }
   // this.setState({
@@ -70,12 +70,12 @@ class DateBar extends Component {
   // })
  }
 
- sendDateBarDate = (dateId) => {
-  const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
-   console.log('in send datebar date', dateId);
+ sendDateBarDate = (date) => {
+  
+   console.log('in send datebar date', date);
    
   //const date = format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy');
-   this.props.getDateBarDate(dateId);
+   this.props.getDateBarDate(date);
  }
 
  goToYesterday = (dateId) => {
@@ -104,14 +104,14 @@ class DateBar extends Component {
     return (
       <>
         {this.props.store.date.counterForDate <= 6 ? 
-        <input type="image" className="DateArrows" src="images/left_arrow.png" value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}/> :
+        <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday} onMouseUp={this.sendDateBarDate(date)}/> :
         <div className="HiddenArrowLeft" ></div>} 
         {/* <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button> */}
         {/* <h3>{this.state.date}</h3> */}
         <h3>{date}</h3>
         {/* <h3>{this.props.store.date}</h3> */}
         {this.props.store.date.counterForDate > 0 ? 
-        <input type="image" className="DateArrows" src="images/right_arrow.png" value="decrease" onMouseDown={this.changeToTomorrow} onMouseUp={this.goToTomorrow(date)}/> :
+        <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow} onMouseUp={this.sendDateBarDate(date)}/> :
         <div className="HiddenArrowRight" ></div>}      
       </>
     );
