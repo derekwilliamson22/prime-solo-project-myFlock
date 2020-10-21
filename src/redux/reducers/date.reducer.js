@@ -2,12 +2,12 @@ import {addDays, subDays} from 'date-fns';
 // date reducer
 const dateReducer = (state = new Date(), action) => {
   
-  if(action.type === "SET_INCREASE") {
+  if(action.type === "SET_YESTERDAY") {
     let nextDate = subDays(state, 1);
       return nextDate;
   }
   
-  if(action.type === "SET_DECREASE") {
+  if(action.type === "SET_TOMORROW") {
     let nextDate = addDays(state, 1);
       return nextDate;
   }

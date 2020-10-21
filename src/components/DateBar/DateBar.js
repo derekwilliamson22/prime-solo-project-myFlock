@@ -98,13 +98,13 @@ class DateBar extends Component {
 
  
   render() {
-
-const newDate = format(this.props.date, 'MMMM - dd - yyyy');
-console.log('what is the date', this.props);
+let testDate = this.props.store.date
+const newDate = format(testDate, 'MMMM - dd - yyyy');
+console.log('what is the date', this.props.store.date, testDate);
 
     return (
       <>
-        <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday}/> 
+       <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday}/> 
 
 
 
