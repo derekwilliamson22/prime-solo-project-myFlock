@@ -8,8 +8,7 @@ import { green, red } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
+
 
 
 const DashboardSwitch = withStyles({
@@ -32,7 +31,6 @@ class DashboardPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
  
   state = {
-    checkedA: false,
     dateBarDate: '',
   }
 
@@ -77,7 +75,7 @@ class DashboardPage extends Component {
         <LayingForm 
         dateBarDate={this.state.dateBarDate}
         />
-        <FormGroup>
+        {/* <FormGroup>
           <div className="LayingBar">
             <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar_egg.png"/>
             <h4 className="DashboardListItem">Mabel</h4>
@@ -94,7 +92,7 @@ class DashboardPage extends Component {
             // <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
             // <label htmlFor="didLayEgg">Egg?</label>
             />
-          </div>
+          </div> */}
           {/* <div>
             <img id="DashboardListImg" className="DashboardListItem" src="images/california_white_egg.png"/>
             <h4 className="DashboardListItem">Pancake</h4>
@@ -133,7 +131,7 @@ class DashboardPage extends Component {
               <input className="CoopForm" type="checkbox" id="didCleanCoop" name="didCleanCoop" value="TRUE" />
             />
           </div> */}
-        </FormGroup>
+        {/* </FormGroup> */}
       </div>
     );
   }

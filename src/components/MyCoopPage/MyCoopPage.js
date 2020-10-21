@@ -11,10 +11,15 @@ import { withRouter } from 'react-router-dom';
 class MyCoopPage extends Component {
 
   componentDidMount(){
+  this.getChickens();
+  }
+  
+  getChickens = () => {
     this.props.dispatch({
       type: 'FETCH_CHICKENS'
     });
   }
+  
 
   addChicken = () => {
     this.props.history.push('/chicken_form')

@@ -54,6 +54,7 @@ Button
   color: #820303;
   text-shadow: -1px 1px white;
   padding-left: 10px;
+  margin-top: 50px;
 }
 
 .CenterBtn input {
