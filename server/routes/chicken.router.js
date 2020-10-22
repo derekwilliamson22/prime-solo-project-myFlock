@@ -1,9 +1,12 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryString = `
   SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
@@ -23,7 +26,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/layingData', (req, res) => {
+router.get('/layingData', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
   const queryString = `SELECT "layingData"."didLay" FROM "chicken"
@@ -46,7 +49,7 @@ router.get('/layingData', (req, res) => {
     });
 });
 
-router.post('/laying', (req, res) => {
+router.post('/laying', rejectUnauthenticated, (req, res) => {
   console.log('what is the post add egg', req.body);
   const queryString = `
   INSERT INTO "layingData"
@@ -62,7 +65,7 @@ router.post('/laying', (req, res) => {
   });
 })
 
-router.delete('/laying', (req,res) => {
+router.delete('/laying', rejectUnauthenticated, (req,res) => {
 console.log('what is the delete egg', req.body);
 queryText = `
 DELETE FROM "layingData"
@@ -79,7 +82,7 @@ pool.query(queryText, [req.body.chicken_id, req.body.date])
 
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `
   INSERT INTO "chicken" 
@@ -104,7 +107,7 @@ router.post('/', (req, res) => {
     });
 })
 
-router.put('/details/:id', (req, res) => {
+router.put('/details/:id',rejectUnauthenticated, (req, res) => {
   console.log('what is the put', req.body, req.params.id);
   const queryString = `
   UPDATE "chicken" 
@@ -131,7 +134,7 @@ router.put('/details/:id', (req, res) => {
     });
 })
 
-router.get('/details/:id', (req, res) => {
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What happened to my get details request?:", req.body, req.params.id);
   const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
@@ -150,7 +153,7 @@ router.get('/details/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id', rejectUnauthenticated, (req,res) => {
   console.log('what is the delete chicken', req.params);
   queryText = `
   DELETE FROM "chicken"
@@ -165,7 +168,7 @@ router.delete('/:id', (req,res) => {
   
   });
 
-  router.get('/data', (req,res) => {
+  router.get('/data',rejectUnauthenticated, (req,res) => {
     console.log('What is my data :', req.query);
     const queryString = `SELECT "chicken"."name", "chicken"."id", SUM("didLay") FROM "chicken"
     JOIN "layingData"
