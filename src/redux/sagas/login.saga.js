@@ -20,10 +20,11 @@ function* loginUser(action) {
     // after the user has logged in
     // get the user information from the server
     yield put({ type: 'FETCH_USER' });
+    yield put({ type: 'FETCH_COOP' });
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
-      // The 401 is the error status sent from passport
+      // The 401 is the error status sent from passport 
       // if user isn't in the database or
       // if the username and password don't match in the database
       yield put({ type: 'LOGIN_FAILED' });
@@ -54,6 +55,8 @@ function* logoutUser(action) {
     // the client-side code know the user is logged out
     yield put({ type: 'UNSET_USER' });
     yield put({type: 'UNSET_COOP' });
+    yield put({type: 'UNSET_CHICKENS' });
+    yield put({type: 'UNSET_DATE' })
   } catch (error) {
     console.log('Error with user logout:', error);
   }

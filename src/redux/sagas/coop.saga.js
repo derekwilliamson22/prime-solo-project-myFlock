@@ -2,10 +2,10 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchCoop(action) {
-  console.log('hit fetchCoop', action.payload);
+  console.log('hit fetchCoop')
   let response = yield axios({
     method: 'GET',
-    url: `/api/coop/${action.payload}`
+    url: `/api/coop`
   });
   yield put({
     type: 'SET_COOP',

@@ -5,11 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/:id', (req, res) => {
+router.get('/', (req, res) => {
   // GET route code here
-  console.log("What are my body and params?:", req.body, req.params.id);
   const queryString = `SELECT * FROM "coop" WHERE "user_id" = $1;`;
-  pool.query(queryString, [req.params.id])
+  pool.query(queryString, [req.user.id])
     .then(result => {
       res.send(result.rows[0]);
     })

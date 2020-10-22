@@ -2,19 +2,25 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { format } from 'date-fns';
+
+const date = format(new Date(), 'MMMM - dd - yyyy');
 
 class RegisterForm extends Component {
+  
+
   state = {
     newUser: {
-      coopName: '',
-      firstName: '',
-      lastName: '',
+      coop_name: '',
+      first_name: '',
+      last_name: '',
       username: '',
       password: '',
       address: '',
       zipcode: '',
       email: '',
       phone: '',
+      registration_date: date
     }
   };
 
@@ -50,22 +56,22 @@ class RegisterForm extends Component {
           <div>
               <input
                 type="text"
-                name="coopName"
+                name="coop_name"
                 placeholder="Coop Name"
-                value={this.state.newUser.coopName}
+                value={this.state.newUser.coop_name}
                 required
-                onChange={this.handleInputChangeFor('coopName')}
+                onChange={this.handleInputChangeFor('coop_name')}
               />
           </div>
           <div>
             
               <input
                 type="text"
-                name="firstName"
+                name="first_name"
                 placeholder="First Name"
-                value={this.state.newUser.firstName}
+                value={this.state.newUser.first_name}
                 required
-                onChange={this.handleInputChangeFor('firstName')}
+                onChange={this.handleInputChangeFor('first_name')}
               />
             
           </div>
@@ -73,11 +79,11 @@ class RegisterForm extends Component {
             
               <input
                 type="text"
-                name="lastName"
+                name="last_name"
                 placeholder="Last Name"
-                value={this.state.newUser.lastName}
+                value={this.state.newUser.last_name}
                 required
-                onChange={this.handleInputChangeFor('lastName')}
+                onChange={this.handleInputChangeFor('last_name')}
               />
             
           </div>

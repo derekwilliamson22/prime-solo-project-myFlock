@@ -2,6 +2,10 @@ import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
 import coop from './coop.reducer';
+import date from './date.reducer';
+import chicken from './chicken.reducer';
+import chickenDetails from './chickenDetails.reducer';
+import chickenLayingData from './chickenLayingData.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -13,6 +17,10 @@ const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
   coop,
+  date,
+  chicken,
+  chickenDetails,
+  chickenLayingData,
 });
 
 export default rootReducer;

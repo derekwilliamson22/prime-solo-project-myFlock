@@ -1,132 +1,104 @@
-
--- USER is a reserved keyword with Postgres
--- You must use double quotes in every query that user is in:
--- ex. SELECT * FROM "user";
--- Otherwise you will have errors!
--- CREATE TABLE "user" (
---     "id" SERIAL PRIMARY KEY,
---     "username" VARCHAR (80) UNIQUE NOT NULL,
---     "password" VARCHAR (1000) NOT NULL
--- );
-
--- Creating tables
-
 CREATE TABLE "user" (
   "id" SERIAL PRIMARY KEY,
-  "coopName" VARCHAR NOT NULL,
-  "firstName" VARCHAR NOT NULL,
-  "lastName" VARCHAR NOT NULL,
-  "username" VARCHAR UNIQUE NOT NULL,
-  "password" VARCHAR NOT NULL,
-  "address" VARCHAR NOT NULL,
-  "zipcode" INT NOT NULL,
-  "email" VARCHAR NOT NULL,
-  "phone" VARCHAR NOT NULL,
-  "authLevel" VARCHAR DEFAULT USER 
-);
-
-CREATE TABLE "coop" (
-  "id" SERIAL PRIMARY KEY,
-  "name" VARCHAR NOT NULL,
-  "userId" INT references "user"
-);
-
-CREATE TABLE "chicken" (
-   "id" SERIAL PRIMARY KEY,
-   "name" VARCHAR NOT NULL,
-   "breed" VARCHAR,
-   "imageUrl" TEXT,
-   "birthday" VARCHAR,
-   "bio" TEXT,
-   "coopId" INT references "coop"
-);
- 
-CREATE TABLE "layingData" (
-  "id" SERIAL PRIMARY KEY,
-  "date" DATE,
-  "didLay" BOOLEAN,
-  "chickenId" INT references "chicken"
-);
-
-CREATE TABLE "coopData" (
-  "id" SERIAL PRIMARY KEY,
-  "date" DATE NOT NULL,
-  "notes" VARCHAR,
-  "isClean" BOOLEAN DEFAULT FALSE,
-  "hasFood" BOOLEAN DEFAULT FALSE,
-  "hasWater" BOOLEAN DEFAULT FALSE,
-  "coopId" INT references "coop"
-);
-
-CREATE TABLE "serviceData" (
-  "id" SERIAL PRIMARY KEY,
-  "date" DATE,
-  "userId" INT references "user",
-  "requestForFeed" BOOLEAN DEFAULT FALSE,
-  "requestForCleaning" BOOLEAN DEFAULT FALSE,
-  "otherNotes" VARCHAR,
-  "didSendEmail" BOOLEAN DEFAULT FALSE,
-  "sendEmailDate" DATE
-);
-
-
-CREATE TABLE "user" (
-  "id" SERIAL PRIMARY KEY,
-  "coopName" VARCHAR,
-  "firstName" VARCHAR,
-  "lastName" VARCHAR,
+  "first_name" VARCHAR,
+  "last_name" VARCHAR,
   "username" VARCHAR UNIQUE,
   "password" VARCHAR,
   "address" VARCHAR,
   "zipcode" VARCHAR,
   "email" VARCHAR,
   "phone" VARCHAR,
-  "authLevel" VARCHAR DEFAULT USER 
+  "registration_date" VARCHAR,
+  "authLevel" VARCHAR DEFAULT 'user' 
 );
 
 CREATE TABLE "coop" (
   "id" SERIAL PRIMARY KEY,
-  "name" VARCHAR NOT NULL,
-  "userId" INT references "user"
+  "name" VARCHAR,
+  "user_id" INT references "user"
 );
 
 CREATE TABLE "chicken" (
    "id" SERIAL PRIMARY KEY,
    "name" VARCHAR NOT NULL,
    "breed" VARCHAR,
-   "imageUrl" TEXT,
+   "chicken_image_url" TEXT,
+   "chicken_egg_image_url" TEXT,
    "birthday" VARCHAR,
-   "bio" TEXT,
-   "coopId" INT references "coop"
+   "notes" TEXT,
+   "coop_id" INT references "coop"
 );
  
 CREATE TABLE "layingData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE,
-  "didLay" BOOLEAN,
-  "chickenId" INT references "chicken"
+  "date" VARCHAR,
+  "didLay" INT,
+  "chicken_id" INT references "chicken"
 );
 
 CREATE TABLE "coopData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE NOT NULL,
+  "date" VARCHAR NOT NULL,
   "notes" VARCHAR,
   "isClean" BOOLEAN DEFAULT FALSE,
   "hasFood" BOOLEAN DEFAULT FALSE,
   "hasWater" BOOLEAN DEFAULT FALSE,
-  "coopId" INT references "coop"
+  "coop_id" INT references "coop"
 );
 
 CREATE TABLE "serviceData" (
   "id" SERIAL PRIMARY KEY,
-  "date" DATE,
-  "userId" INT references "user",
+  "date" VARCHAR,
+  "user_id" INT references "user",
   "requestForFeed" BOOLEAN DEFAULT FALSE,
   "requestForCleaning" BOOLEAN DEFAULT FALSE,
   "otherNotes" VARCHAR,
   "didSendEmail" BOOLEAN DEFAULT FALSE,
-  "sendEmailDate" DATE
+  "sendEmailDate" VARCHAR
 );
 
-INSERT INTO "user" ("coopName", "firstName", "lastName", "username", "password", "address", "zipcode", "email", "phone")
-VALUES ('logan', 'derek', 'coop', 'coop', 'coop', 'coop', 55431, 'coop', 'coop');
+
+-- select for GET CHICKEN DETAILS
+SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coop_id"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "chicken"."id" = $1;
+  
+  -- select for GET CHICKENS
+  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coop_id"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "user"."id" = $1
+  ORDER BY "chicken"."id" ASC;
+
+-- select for laying data
+
+  SELECT "chicken"."name", "chicken"."id", "layingData"."didLay" FROM "chicken"
+  JOIN "layingData"
+  ON "chicken"."id" = "layingData"."chicken_id"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coop_id"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "layingData"."date" = 'October - 22 - 2020'
+  AND
+  "chicken"."coop_id" = 2;
+
+-- beginning values for users
+INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Pancake', 'California White', 'images/california_white.png', 'images/california_white_egg.png', '2018-05-02', 'Once almost eaten by a fox. A bit of a bully.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Mabel', 'Goldstar', 'images/goldstar.jpg', 'images/goldstar_egg.png', '2018-05-02', 'Definitely a bully.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Norma', 'Barred Rock', 'images/barred_rock.jpg', 'images/barred_rock_egg.png', '2018-05-02', 'A sweet bird. Picked on for months. Full recovery.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Gertie', 'Black Australorp', 'images/black_australorp.jpg', 'images/australorp_egg.png', '2018-05-02', 'The Death Metal Hen', 2);
+

@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 //import AboutPage from '../AboutPage/AboutPage';
 
 import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
+//import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
@@ -24,6 +24,9 @@ import DashboardPage from '../DashboardPage/DashboardPage';
 import MyCoopPage from '../MyCoopPage/MyCoopPage';
 import MyStatsPage from '../MyStatsPage/MyStatsPage';
 import ServicePage from '../ServicePage/ServicePage';
+import CreateChicken from '../CreateChicken/CreateChicken';
+import ChickenDetails from '../ChickenDetails/ChickenDetails';
+import EditChickenDetails from '../EditChickenDetails/EditChickenDetails';
 
 import './App.css';
 
@@ -39,7 +42,7 @@ class App extends Component {
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-            <Redirect exact from="/" to="/home" />
+            <Redirect exact from="/" to="/login" />
             {/* Visiting localhost:3000/about will show the about page. */}
             {/* <Route
               // shows AboutPage at all times (logged in or not)
@@ -64,6 +67,21 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/chicken_form"
+              component={CreateChicken}
+            />
+            <ProtectedRoute
+              exact
+              path="/chicken_details/:id"
+              component={ChickenDetails}
+            />
+             <ProtectedRoute
+              exact
+              path="/chicken_edit/:id"
+              component={EditChickenDetails}
+            />
+            <ProtectedRoute
+              exact
               path="/mystats"
               component={MyStatsPage}
             />
@@ -71,6 +89,7 @@ class App extends Component {
               exact
               path="/service"
               component={ServicePage}
+             
             />
             <ProtectedRoute
               // logged in shows InfoPage else shows LoginPage
@@ -99,7 +118,7 @@ class App extends Component {
               component={RegisterPage}
               authRedirect="/dashboard"
             />
-            <ProtectedRoute
+            {/* <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
@@ -107,7 +126,7 @@ class App extends Component {
               path="/home"
               component={LandingPage}
               authRedirect="/dashboard"
-            />
+            /> */}
             <ProtectedRoute
               // with authRedirect:
               // - if logged in, redirects to "/user"

@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Footer.css';
@@ -9,20 +9,44 @@ import './Footer.css';
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const Footer = (props) => {
+class Footer extends Component {
 
-return (
-    <footer>
-      <nav>
-        <ul>
-          <li><Link to="/dashboard">Dashboard</Link></li>
-          <li><Link to="/mycoop">myCoop</Link></li>
-          <li><Link to="/mystats">myStats</Link></li>
-          <li><Link to="/service">Service Request</Link></li>
-        </ul>
-      </nav>
-  </footer>
-)
-};
+  fetchChickens = () => {
+    this.props.dispatch({
+      type: 'FETCH_CHICKENS'
+    });
+  }
 
-export default connect(mapStoreToProps)(Footer);
+  goToDashboard = () => {
+    this.props.history.push('/dashboard');
+  }
+  goToMyCoop = () => {
+    this.props.history.push('/mycoop');
+  }
+  goToMyStats = () => {
+    this.props.history.push('/mystats');
+  }
+  goToService = () => {
+    this.props.history.push('/service');
+  }
+
+  render() {
+    return (
+        <footer>
+          <nav>
+            {this.props.store.user.id === undefined ?
+            '' : 
+            <div>
+              <img className="NavIcons" src="images/nav_icon_dashboard.png" onClick={this.goToDashboard}/>
+              <img className="NavIcons" src="images/nav_icon_mycoop.png" onClick={this.goToMyCoop}/>
+              <img className="NavIcons" src="images/nav_icon_mystats.png" onClick={this.goToMyStats}/>
+              <img className="NavIcons" src="images/nav_icon_service.png" onClick={this.goToService}/>
+            </div>
+            }
+          </nav>
+        </footer>
+    )
+  };
+}
+
+export default connect(mapStoreToProps)(withRouter(Footer));

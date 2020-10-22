@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const coopRouter = require('./routes/coop.router');
+const chickenRouter = require('./routes/chicken.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +27,7 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/coop', coopRouter);
+app.use('/api/chicken', chickenRouter);
 
 // Serve static files
 app.use(express.static('build'));
