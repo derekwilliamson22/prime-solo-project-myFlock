@@ -77,16 +77,17 @@ class LayingFormItem extends Component {
             <div className="LayingBar">
               <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
               <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-              <FormControlLabel
-                      label="Laid Today?"
-                      labelPlacement="start"
-                      value="true"
-                      control={<DashboardSwitch
-                        checked={this.state.checkedA}
-                        onChange={this.handleChange} 
-                        name="checkedA"
-                      />}
-                    />
+              <ul>
+                {this.props.store.layingData.map((item, index) => {
+                  if(item.didLay === 1) {
+                    return(
+                    <p>ok</p>
+                    )
+                  }
+                 
+                })}
+              </ul>
+            
               
               
               {/* {this.props.store.layingData.map((item, index) => {

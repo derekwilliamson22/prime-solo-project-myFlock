@@ -1,4 +1,4 @@
-const chickenLayingDataReducer = (state = {}, action) => {
+const chickenLayingDataReducer = (state = [], action) => {
   
   switch (action.type) {    
     case 'SET_CHICKEN_LAYING_DATA':
