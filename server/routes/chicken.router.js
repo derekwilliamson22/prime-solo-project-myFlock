@@ -166,7 +166,7 @@ router.delete('/:id', (req,res) => {
   });
 
   router.get('/data', (req,res) => {
-    console.log('What is my data :', req.body);
+    console.log('What is my data :', req.query);
     const queryString = `SELECT "chicken"."name", "chicken"."id", SUM("didLay") FROM "chicken"
     JOIN "layingData"
     ON "chicken"."id" = "layingData"."chicken_id"
@@ -176,9 +176,9 @@ router.delete('/:id', (req,res) => {
     ON "coop"."user_id" = "user"."id"
     WHERE "chicken"."coop_id" = $1
     AND
-    "date" BETWEEN '$2' AND '$3'
+    "date" BETWEEN $2 AND $3
     GROUP BY "chicken"."id";`;
-    pool.query(queryString, [req.query.coop_id, ])
+    pool.query(queryString, [req.query.coopId, req.query.previousDate, req.query.newDate])
       .then(result => {
         res.send(result.rows);
       })

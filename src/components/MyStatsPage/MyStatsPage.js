@@ -13,24 +13,35 @@ class MyStatsPage extends Component {
   }
 
   getLayingData = () => {
-    const newDate = format(subMonths(new Date(), 6),'MMMM - dd - yyyy');
+    const previousDate = format(subMonths(this.props.store.date, 6), 'MMMM - dd - yyyy');
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const coopId = this.props.store.coop.id
+    const dateObject = {
+      newDate,
+      previousDate,
+      coopId
+    }
+
     this.props.dispatch({
       type: "FETCH_LAYING_DATA",
-      payload: newDate
+      payload: dateObject
     })
   }
 
   render() {
     return (
       <div className="Dashboard">
-        <div>
+        <ul>
           {this.props.store.data.map((item, index) => {
+            return (
+            <li key={index}>
+                <h5>Name: {item.name}</h5>
+                <h5>Total Eggs in the last six months: {item.sum}</h5>
 
-
-
-
+            </li>
+            )
           })}
-        </div>
+        </ul>
       </div>
     );
   }
