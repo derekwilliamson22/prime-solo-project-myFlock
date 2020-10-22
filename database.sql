@@ -77,16 +77,16 @@ SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."image_url
 
 -- select for laying data
 
-SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
-JOIN "layingData"
-ON "chicken"."id" = "layingData"."chicken_id"
-JOIN "coop"
-ON "coop"."id" = "chicken"."coop_id"
-JOIN "user"
-on "coop"."user_id" = "user"."id"
-WHERE "layingData"."date" = 'October - 20 - 2020'
-AND
-"chicken"."coop_id" = 4;
+  SELECT "chicken"."name", "chicken"."id", "layingData"."didLay" FROM "chicken"
+  JOIN "layingData"
+  ON "chicken"."id" = "layingData"."chicken_id"
+  JOIN "coop"
+  ON "coop"."id" = "chicken"."coop_id"
+  JOIN "user"
+  on "coop"."user_id" = "user"."id"
+  WHERE "layingData"."date" = 'October - 22 - 2020'
+  AND
+  "chicken"."coop_id" = 2;
 
 -- beginning values for users
 INSERT INTO "chicken" 
@@ -101,3 +101,4 @@ INSERT INTO "chicken"
   INSERT INTO "chicken" 
   ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
   VALUES ('Gertie', 'Black Australorp', 'images/black_australorp.jpg', 'images/australorp_egg.png', '2018-05-02', 'The Death Metal Hen', 2);
+

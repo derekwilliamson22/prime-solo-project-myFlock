@@ -70,6 +70,7 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
   overflow: auto;
+  cursor: pointer;
 }
 
 /* Links inside the dropdown */
@@ -79,6 +80,7 @@
   text-decoration: none;
   display: block;
   text-align: left;
+  cursor: pointer;
 }
 
 /* Change color of dropdown links on hover */
