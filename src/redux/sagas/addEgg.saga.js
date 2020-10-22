@@ -14,8 +14,8 @@ function* addEgg(action) {
     });
 }
 
-function* createChickenSaga() {
-  yield takeLatest('ADD_EGG', addEgg);
+function* addEggSaga() {
+  yield takeLatest("ADD_EGG", addEgg);
 }
 
-export default createChickenSaga;
+export default addEggSaga;

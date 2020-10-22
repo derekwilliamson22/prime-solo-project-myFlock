@@ -32,7 +32,7 @@ CREATE TABLE "chicken" (
 CREATE TABLE "layingData" (
   "id" SERIAL PRIMARY KEY,
   "date" VARCHAR,
-  "didLay" BOOLEAN DEFAULT FALSE,
+  "didLay" INT,
   "chicken_id" INT references "chicken"
 );
 

@@ -62,7 +62,18 @@ router.get('/layingData', (req, res) => {
 
 router.post('/laying', (req, res) => {
   console.log('what is the post add egg', req.body);
-
+  const queryString = `
+  INSERT INTO "layingDataTwo"
+  ("date", "didLay", "chicken_id")
+  VALUES ($1, $2, $3);`;
+  pool.query(queryString, [req.body.date, req.body.didLay, req.body.chicken_id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(err => {
+    console.log('error in posting laying data', err);
+    res.sendStatus(500);
+  });
 })
 
 router.post('/', (req, res) => {
