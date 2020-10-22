@@ -23,23 +23,10 @@ router.get('/', (req, res) => {
     });
 });
 
-// router.post('/layingData', req, res) => {
-
-// const queryString = `
-// INSERT INTO "layingData"
-// ("date", "chicken_id")
-// `
-
-//     .catch(err => {
-//       console.log('error in POSTing layingData', err);
-//       res.sendStatus(500);
-//     });
-// });
-
 router.get('/layingData', (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "chicken"."name", "chicken"."id", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"
@@ -54,7 +41,7 @@ router.get('/layingData', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('error in GETting chickens', err);
+      console.log('error in GETting chickens laying data', err);
       res.sendStatus(500);
     });
 });
@@ -177,6 +164,30 @@ router.delete('/:id', (req,res) => {
   })
   
   });
+
+  router.get('/data', (req,res) => {
+    console.log('What is my data :', req.body);
+    const queryString = `SELECT "chicken"."name", "chicken"."id", SUM("didLay") FROM "chicken"
+    JOIN "layingData"
+    ON "chicken"."id" = "layingData"."chicken_id"
+    JOIN "coop"
+    ON "coop"."id" = "chicken"."coop_id"
+    JOIN "user"
+    ON "coop"."user_id" = "user"."id"
+    WHERE "chicken"."coop_id" = $1
+    AND
+    "date" BETWEEN '$2' AND '$3'
+    GROUP BY "chicken"."id";`;
+    pool.query(queryString, [req.query.coop_id, ])
+      .then(result => {
+        res.send(result.rows);
+      })
+      .catch(err => {
+        console.log('error in GETting chickens laying data', err);
+        res.sendStatus(500);
+      });
+  });
+  
 
 
 

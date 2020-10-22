@@ -30,7 +30,8 @@ const DashboardSwitch = withStyles({
 class LayingFormItem extends Component {
 
    state = {
-     checked: false,
+     checkedA: false,
+     checkedB: true
    }
 
   dailyEgg = () => {
@@ -45,23 +46,21 @@ class LayingFormItem extends Component {
       chicken_id: this.props.chicken.id
     }
    
-    if(this.state.checked) {
-      console.log('delete an egg');
+    if(this.state.checkedA) {
+      console.log('delete an egg', this.state.checkedA);      
       this.props.dispatch({
         type: "DELETE_EGG",
         payload: deleteEgg
       })
     }
-    if(!this.state.checked) {
-      console.log('add an egg');
+    if(!this.state.checkedA) {
+      console.log('add an egg', this.state.checkedA);
       this.props.dispatch({
         type: "ADD_EGG",
         payload: addEgg
       })
     }
   }
-
-
 
   handleChange = (event) => {
     this.setState({ 
@@ -71,30 +70,47 @@ class LayingFormItem extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
-    return (
-      <div>
-      <FormGroup>
-          <div className="LayingBar">
-          <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
-          <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-          <FormControlLabel
-              label="Laid Today?"
-              labelPlacement="start"
-              value="true"
-              control={<DashboardSwitch
-                checked={this.state.checked}
-                onChange={this.handleChange} 
-                name="checked"
-              />}
-            
-            // <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
-            // <label htmlFor="didLayEgg">Egg?</label>
-            />
-          </div>
-       </FormGroup>   
-      </div>
-    );
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');    
+      return (
+        <div>
+        <FormGroup>
+            <div className="LayingBar">
+              <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
+              <h4 className="ChickenListItem">{this.props.chickenName}</h4>
+              {/* {this.props.store.layingData.map((item, index) => {
+                if(item.didLay === 1) {
+                  return (
+                    <FormControlLabel
+                      label="Laid Today?"
+                      labelPlacement="start"
+                      value="true"
+                      control={<DashboardSwitch
+                        checked={this.state.checkedA}
+                        onChange={this.handleChange} 
+                        name="checkedA"
+                      />}
+                    />
+                  )
+                }
+                if(item.didLay === undefined) {
+                  return (
+                    <FormControlLabel
+                      label="Laid Today?"
+                      labelPlacement="start"
+                      value="true"
+                      control={<DashboardSwitch
+                        checked={this.state.checkedB}
+                        onChange={this.handleChange} 
+                        name="checkedB"
+                      />}
+                    />
+                  )
+                }
+              })} */}
+              </div>
+        </FormGroup>   
+        </div>
+      );
   }
 }
 

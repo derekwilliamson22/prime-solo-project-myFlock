@@ -5,7 +5,8 @@ import coop from './coop.reducer';
 import date from './date.reducer';
 import chicken from './chicken.reducer';
 import chickenDetails from './chickenDetails.reducer';
-import chickenLayingData from './chickenLayingData.reducer';
+import layingData from './chickenLayingData.reducer';
+import data from './layingData.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -20,7 +21,8 @@ const rootReducer = combineReducers({
   date,
   chicken,
   chickenDetails,
-  chickenLayingData,
+  layingData,
+  data,
 });
 
 export default rootReducer;
