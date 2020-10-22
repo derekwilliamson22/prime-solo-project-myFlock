@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import DateBar from '../DateBar/DateBar';
 import LayingForm from '../LayingForm/LayingForm';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { format } from 'date-fns';
 
 
 class DashboardPage extends Component {
@@ -14,11 +15,31 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickens();
+    this.fetchCoop();
+    this.getChickenLayingData();
     }
 
     getChickens = () => {
       this.props.dispatch({
         type: 'FETCH_CHICKENS'
+      });
+    }
+
+    fetchCoop = () => {
+      this.props.dispatch({
+        type: "FETCH_COOP"
+      });
+    }
+
+    getChickenLayingData = () => {
+      const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+      const layingData = {
+        date: newDate,
+        coop_id: this.props.store.coop.id
+      }
+      this.props.dispatch({
+        type: 'FETCH_CHICKEN_LAYING_DATA',
+        payload: layingData
       });
     }
 

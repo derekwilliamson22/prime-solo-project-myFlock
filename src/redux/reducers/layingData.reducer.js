@@ -1,7 +1,7 @@
-const chickenLayingDataReducer = (state = [], action) => {
+const layingDataReducer = (state = [], action) => {
   
   switch (action.type) {    
-    case 'SET_CHICKEN_LAYING_DATA':
+    case 'SET_LAYING_DATA':
       return action.payload;
     default:
       return state;
@@ -10,4 +10,4 @@ const chickenLayingDataReducer = (state = [], action) => {
 
 // user will be on the redux state at:
 // state.user
-export default chickenLayingDataReducer;
+export default layingDataReducer;
