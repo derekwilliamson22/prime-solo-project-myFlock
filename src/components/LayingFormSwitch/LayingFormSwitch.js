@@ -27,7 +27,7 @@ const DashboardSwitch = withStyles({
 
 
 // component.
-class LayingFormItem extends Component {
+class LayingFormSwitch extends Component {
 
    state = {
      checkedA: false,
@@ -70,81 +70,34 @@ class LayingFormItem extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy'); 
-    if(this.props.chickenDidLay === 1) {   
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');   
         return (
           <div>
             <FormGroup>
+              <div>
+              <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
+              <h4 className="ChickenListItem">{this.props.chickenName}</h4>
+              </div>
               <div>
                 <FormControlLabel
                   label="Laid Today?"
                   labelPlacement="start"
                   value="true"
                   control={<DashboardSwitch
-                    checked={this.state.checkedB}
+                    checked={this.state.checkedA}
                     onChange={this.handleChange} 
-                    name="checkedB"
+                    name="checkedA"
                     />}
                   />
               </div>  
           </FormGroup>
           </div>
-        ) 
-      }
-      else {
-        return(
-          <div>
-          <FormGroup>
-            <div>
-              <FormControlLabel
-                label="Laid Today?"
-                labelPlacement="start"
-                value="true"
-                control={<DashboardSwitch
-                  checked={this.state.checkedB}
-                  onChange={this.handleChange} 
-                  name="checkedB"
-                  />}
-                />
-            </div>
-          </FormGroup>
-        </div> 
+        
         )  
       } 
      }       
               
-              
-              /* {this.props.store.layingData.map((item, index) => {
-                if(item.didLay === 1) {
-                  return (
-                    <FormControlLabel
-                      label="Laid Today?"
-                      labelPlacement="start"
-                      value="true"
-                      control={<DashboardSwitch
-                        checked={this.state.checkedA}
-                        onChange={this.handleChange} 
-                        name="checkedA"
-                      />}
-                    />
-                  )
-                }
-                if(item.didLay === undefined) {
-                  return (
-                    <FormControlLabel
-                      label="Laid Today?"
-                      labelPlacement="start"
-                      value="true"
-                      control={<DashboardSwitch
-                        checked={this.state.checkedB}
-                        onChange={this.handleChange} 
-                        name="checkedB"
-                      />}
-                    />
-                  )
-                }
-              })} */}
    
 
 
-export default connect(mapStoreToProps)(LayingFormItem);
+export default connect(mapStoreToProps)(LayingFormSwitch);
