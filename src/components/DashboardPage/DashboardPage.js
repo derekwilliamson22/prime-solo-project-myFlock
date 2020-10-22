@@ -3,29 +3,6 @@ import { connect } from 'react-redux';
 import DateBar from '../DateBar/DateBar';
 import LayingForm from '../LayingForm/LayingForm';
 import mapStoreToProps from '../../redux/mapStoreToProps';
-import { withStyles } from '@material-ui/core/styles';
-import { green, red } from '@material-ui/core/colors';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import { format } from 'date-fns';
-import { actionChannel } from 'redux-saga/effects';
-
-
-const DashboardSwitch = withStyles({
-  switchBase: {
-    color: red[400],
-    '&$checked': {
-      color: green[500],
-    },
-    '&$checked + $track': {
-      backgroundColor: green[500],
-    },
-  },
-  checked: {},
-  track: {},
-})(Switch);
-
 
 
 class DashboardPage extends Component {
@@ -64,20 +41,9 @@ class DashboardPage extends Component {
       ...this.state,
       dateBarDate: dateId
     })
-  }
+  } 
 
-  handleChange = (event) => {
-    this.setState({ 
-      ...this.state,
-      [event.target.name]: event.target.checked });
-  };
- 
-
-  render() {
-    
-    const numberOfChickens = this.props.store.chicken.length
-    console.log('number of chickens', numberOfChickens);
-    
+  render() {    
     return (
       <div className="Dashboard">
         <div className="DateContents">

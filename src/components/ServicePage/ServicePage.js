@@ -9,10 +9,6 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class ServicePage extends Component {
   state = {
     newServiceRequest: {
-
-
-
-
     }
   };
 

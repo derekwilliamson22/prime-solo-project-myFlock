@@ -10,8 +10,6 @@ class LayingForm extends Component {
   
 
   render() {
-    console.log('what is the laying props', this.props.store.chickenLayingData);
-    
     return (
       <div className="chickenBar">
         <ul className="bars">

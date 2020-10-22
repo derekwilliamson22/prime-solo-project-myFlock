@@ -60,6 +60,11 @@ router.get('/layingData', (req, res) => {
     });
 });
 
+router.post('/laying', (req, res) => {
+  console.log('what is the post add egg', req.body);
+
+})
+
 router.post('/', (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `

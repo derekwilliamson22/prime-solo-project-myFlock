@@ -6,9 +6,7 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 class ChickenListItem extends Component {
 
   getChickenDetails = () => {
-    // navigate to creature details page
-    console.log('in get chicken details');
-    
+    // navigate to creature details page    
     this.props.history.push(`/chicken_details/${this.props.chicken.id}`);
   }
 
