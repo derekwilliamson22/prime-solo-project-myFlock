@@ -70,23 +70,23 @@ class LayingFormItem extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');    
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');   
       return (
         <div>
         <FormGroup>
             <div className="LayingBar">
               <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
               <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-              <ul>
-                {this.props.store.layingData.map((item, index) => {
-                  if(item.didLay === 1) {
-                    return(
-                    <p>ok</p>
-                    )
-                  }
-                 
-                })}
-              </ul>
+              <FormControlLabel
+                      label="Laid Today?"
+                      labelPlacement="start"
+                      value="true"
+                      control={<DashboardSwitch
+                        checked={this.state.checkedA}
+                        onChange={this.handleChange} 
+                        name="checkedA"
+                      />}
+                    />
             
               
               

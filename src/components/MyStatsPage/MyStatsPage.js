@@ -13,8 +13,8 @@ class MyStatsPage extends Component {
   }
 
   getLayingData = () => {
-    const previousDate = format(subMonths(this.props.store.date, 6), 'MMMM - dd - yyyy');
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const previousDate = format(subMonths(new Date(), 6), 'MMMM - dd - yyyy');
+    const newDate = format(new Date(), 'MMMM - dd - yyyy');
     const coopId = this.props.store.coop.id
     const dateObject = {
       newDate,

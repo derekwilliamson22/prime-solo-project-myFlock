@@ -26,7 +26,7 @@ router.get('/', (req, res) => {
 router.get('/layingData', (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "chicken"."name", "chicken"."id", "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"
