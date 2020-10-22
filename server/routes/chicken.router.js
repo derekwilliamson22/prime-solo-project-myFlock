@@ -24,9 +24,22 @@ router.get('/', (req, res) => {
     });
 });
 
+// router.post('/layingData', req, res) => {
+
+// const queryString = `
+// INSERT INTO "layingData"
+// ("date", "chicken_id")
+// `
+
+//     .catch(err => {
+//       console.log('error in POSTing layingData', err);
+//       res.sendStatus(500);
+//     });
+// });
+
 router.get('/layingData', (req, res) => {
   // GET route code here
-  console.log("What is my req.user:", req.body);
+  console.log("What is my laying data :", req.query);
   const queryString = `SELECT "chicken"."name", "chicken"."coop_id", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
@@ -37,7 +50,7 @@ router.get('/layingData', (req, res) => {
   WHERE "layingData"."date" = $1
   AND
   "chicken"."coop_id" = $2;`;
-  pool.query(queryString, [req.body.date, req.body.coop_id])
+  pool.query(queryString, [req.query.date, req.query.coop_id])
     .then(result => {
       res.send(result.rows);
     })

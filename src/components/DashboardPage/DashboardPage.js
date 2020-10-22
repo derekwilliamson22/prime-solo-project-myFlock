@@ -8,7 +8,8 @@ import { green, red } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-
+import { format } from 'date-fns';
+import { actionChannel } from 'redux-saga/effects';
 
 
 const DashboardSwitch = withStyles({
@@ -30,19 +31,31 @@ const DashboardSwitch = withStyles({
 class DashboardPage extends Component {
   // this component doesn't do much to start, just renders some user info to the DOM
  
-  state = {
-    dateBarDate: '',
-  }
+  // state = {
+  //   dateBarDate: '',
+  // }
 
   componentDidMount(){
-    this.getChickenLayingData();
-  }
+    this.getChickens();
+    }
 
-  getChickenLayingData = () => {
-    this.props.dispatch({
-      type: 'FETCH_CHICKEN_LAYING_DATA'
-    });
-  }
+    getChickens = () => {
+      this.props.dispatch({
+        type: 'FETCH_CHICKENS'
+      });
+    }
+
+  // getChickenLayingData = () => {
+  //   const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+  //   const layingData = {
+  //     date: newDate,
+  //     coop_id: this.props.store.coop.id
+  //   }
+  //   this.props.dispatch({
+  //     type: 'FETCH_CHICKEN_LAYING_DATA',
+  //     payload: layingData
+  //   });
+  // }
 
 
   getDateBarDate = (dateId) => {
@@ -62,19 +75,16 @@ class DashboardPage extends Component {
 
   render() {
     
-    console.log('what is the date', this.state.dateBarDate);
-    
-    console.log('what are my props', this.props.store);
-    
+    const numberOfChickens = this.props.store.chicken.length
+    console.log('number of chickens', numberOfChickens);
     
     return (
       <div className="Dashboard">
         <div className="DateContents">
           <DateBar getDateBarDate={this.getDateBarDate}/>
         </div>
-        <LayingForm 
-        dateBarDate={this.state.dateBarDate}
-        />
+        
+        <LayingForm />
         {/* <FormGroup>
           <div className="LayingBar">
             <img id="DashboardListImg" className="DashboardListItem" src="images/goldstar_egg.png"/>
@@ -87,9 +97,9 @@ class DashboardPage extends Component {
                 checked={this.state.checkedA}
                 onChange={this.handleChange} 
                 name="checkedA"
-              />}
+              />} */}
             
-            // <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
+            {/* // <input className="DashboardListItem" type="checkbox" id="didLayEgg" name="didLayEgg" value="TRUE" />
             // <label htmlFor="didLayEgg">Egg?</label>
             />
           </div> */}
@@ -131,7 +141,7 @@ class DashboardPage extends Component {
               <input className="CoopForm" type="checkbox" id="didCleanCoop" name="didCleanCoop" value="TRUE" />
             />
           </div> */}
-        {/* </FormGroup> */}
+         {/* </FormGroup> */}
       </div>
     );
   }

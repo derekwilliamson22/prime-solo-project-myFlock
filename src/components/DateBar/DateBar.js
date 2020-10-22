@@ -30,6 +30,18 @@ class DateBar extends Component {
   //   this.sendDateBarDate();
   // }
   
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData = {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
+    });
+  }
+
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
@@ -98,13 +110,12 @@ class DateBar extends Component {
 
  
   render() {
-let testDate = this.props.store.date
-const newDate = format(testDate, 'MMMM - dd - yyyy');
-console.log('what is the date', this.props.store.date, testDate);
+//let testDate = this.props.store.date
+const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
 
     return (
       <>
-       <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday}/> 
+       <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday} onMouseUp={this.getChickenLayingData}/> 
 
 
 
@@ -118,7 +129,7 @@ console.log('what is the date', this.props.store.date, testDate);
         {/* {this.props.store.date.counterForDate > 0 ? 
         <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow} onMouseUp={this.sendDateBarDate(date)}/> :
         <div className="HiddenArrowRight" ></div>}       */}
-        <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow}/>
+        <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow} onMouseUp={this.getChickenLayingData}/>
       </>
     );
   }

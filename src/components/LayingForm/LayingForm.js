@@ -14,8 +14,8 @@ class LayingForm extends Component {
     
     return (
       <div className="chickenBar">
-        {/* <ul className="bars">
-          {this.props.store.chickenLayingData.map((item, index) => {
+        <ul className="bars">
+          {this.props.store.chicken.map((item, index) => {
             return (
               <li 
               className="LayingFormItem"
@@ -23,12 +23,14 @@ class LayingForm extends Component {
                 <LayingFormItem
                   index={index}
                   chicken={item}
+                  chickenName={item.name}
+                  chickenEggImg={item.chicken_egg_image_url}
                   {...this.props}
                 />
               </li>
             );
           })}
-        </ul> */}
+        </ul>
       </div>
     );
   }

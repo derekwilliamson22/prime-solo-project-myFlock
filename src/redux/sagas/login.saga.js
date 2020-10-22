@@ -20,10 +20,12 @@ function* loginUser(action) {
     // after the user has logged in
     // get the user information from the server
     yield put({ type: 'FETCH_USER' });
+    yield put({ type: 'FETCH_COOP' });
+    yield put({ type: 'FETCH_CHICKENS' });
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
-      // The 401 is the error status sent from passport
+      // The 401 is the error status sent from passport 
       // if user isn't in the database or
       // if the username and password don't match in the database
       yield put({ type: 'LOGIN_FAILED' });
