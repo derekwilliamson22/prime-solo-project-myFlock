@@ -89,4 +89,15 @@ AND
 "chicken"."coop_id" = 4;
 
 -- beginning values for users
-INSERT INTO  
+INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Pancake', 'California White', 'images/california_white.png', 'images/california_white_egg.png', '2018-05-02', 'Once almost eaten by a fox. A bit of a bully.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Mabel', 'Goldstar', 'images/goldstar.jpg', 'images/goldstar_egg.png', '2018-05-02', 'Definitely a bully.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Norma', 'Barred Rock', 'images/barred_rock.jpg', 'images/barred_rock_egg.png', '2018-05-02', 'A sweet bird. Picked on for months. Full recovery.', 2);
+  INSERT INTO "chicken" 
+  ("name", "breed", "chicken_image_url", "chicken_egg_image_url", "birthday", "notes", "coop_id")
+  VALUES ('Gertie', 'Black Australorp', 'images/black_australorp.jpg', 'images/australorp_egg.png', '2018-05-02', 'The Death Metal Hen', 2);
