@@ -13,8 +13,8 @@ class CreateChicken extends Component {
       breed: '',
       birthday: '',
       notes: '',
-      chicken_image_url: 'images/chicken_img.jpg',
-      chicken_egg_image_url: 'images/california_white_egg.png',
+      chicken_image_url: 'images/black_australorp.jpg',
+      chicken_egg_image_url: 'images/australorp_egg.png',
       coop_id: this.props.store.coop.id,
     }
   };

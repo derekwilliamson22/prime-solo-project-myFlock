@@ -110,11 +110,19 @@ class EditChickenDetails extends Component {
 // }
 
 render() {
+  console.log('the chicken details props', this.props.store.chickenDetails);
+  
   return (
     <div className="EditDetails">
       <div className="DetailsImg">
         <img
-          src={`${this.props.store.chickenDetails.image_url}`}
+          src={`${this.props.store.chickenDetails.chicken_image_url}`}
+          alt={this.props.store.chickenDetails}
+        />
+      </div>
+      <div className="DetailsEggImg">
+        <img
+          src={`${this.props.store.chickenDetails.chicken_egg_image_url}`}
           alt={this.props.store.chickenDetails}
         />
       </div>
