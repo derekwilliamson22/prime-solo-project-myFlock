@@ -22,6 +22,14 @@ class ChickenDetails extends Component {
   editChickenDetails = () => {
     this.props.history.push(`/chicken_edit/${this.props.store.chickenDetails.id}`)
   }
+
+  removeChicken = () => {
+    this.props.dispatch({
+      type: "REMOVE_CHICKEN",
+      payload: Number(`${this.props.store.chickenDetails.id}`)
+    })
+    this.props.history.push('/mycoop')
+  }
   
 
   render() {    
@@ -53,6 +61,7 @@ class ChickenDetails extends Component {
         <div className="DetailsButtons">
           <button onClick={this.returnToMyCoop}>Return to myCoop</button>
           <button onClick={this.editChickenDetails}>Edit Details</button>
+          <button onClick={this.removeChicken}>Remove Chicken</button>
         </div>
       </div>
     );

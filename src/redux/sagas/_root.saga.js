@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import coopSaga from './coop.saga';
 import addChickenSaga from './addChicken.saga';
+import deleteChickenSaga from './deleteChicken.saga';
 import fetchChickensSaga from './fetchChickens.saga';
 import fetchChickenDetailsSaga from './fetchChickenDetails.saga';
 import updateChickenDetailsSaga from './updateChickenDetails.saga';
@@ -30,5 +31,6 @@ export default function* rootSaga() {
     fetchChickenLayingDataSaga(),
     addEggSaga(),
     deleteEggSaga(),
+    deleteChickenSaga(),
   ]);
 }
