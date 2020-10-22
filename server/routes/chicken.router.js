@@ -9,7 +9,14 @@ const {
 router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryString = `
-  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  SELECT "chicken"."id",
+  "chicken"."name",
+  "chicken"."breed",
+  "chicken"."chicken_image_url",
+  "chicken"."chicken_egg_image_url",
+  "chicken"."notes",
+  "chicken"."birthday"
+  FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"
@@ -29,7 +36,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.get('/layingData', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "chicken"."name", "chicken"."id", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"

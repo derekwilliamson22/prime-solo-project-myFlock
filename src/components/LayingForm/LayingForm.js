@@ -11,22 +11,30 @@ class LayingForm extends Component {
   
 
   render() {
-    const chickenData = this.props.store.chicken
-    const layingData = this.props.store.layingData
-    const chickenAndLayingData = chickenData.concat(layingData);
-    console.log('what is the new array', chickenAndLayingData);
-    
-
     return (
       <div className="chickenBar">
-        <div className="bars">
-          <ul>
-          {this.props.store.chicken.map((item, index) => {
+        {this.props.store.chicken.map((item, index) => (
+          <div key={index}>
+            <LayingFormItem
+              chickenName={item.name}
+              chickenEggImg={item.chicken_egg_image_url}
+            />
+              <div>
+                {this.props.store.layingData.map((item, index) => ( 
+                  <LayingFormSwitch
+                  chickenId={item.id}
+                  chickenDidLay={item.didLay}
+                  />
+                ))}
+              </div>
+          </div>
+        ))}
+          {/* {this.props.store.chicken.map((item, index) => {
             return (
             <li className="LayingFormItem"
-              key={item.id}>
+              key={index}>
                 <LayingFormItem
-                  index={item.id}
+                  index={index}
                   chicken={item}
                   chickenName={item.name}
                   chickenEggImg={item.chicken_egg_image_url}
@@ -36,10 +44,8 @@ class LayingForm extends Component {
                 />                
             </li>
             )
-          })}
-          </ul>
+          })} */}
         </div>
-      </div>
     );
   }
 }
