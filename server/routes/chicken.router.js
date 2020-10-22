@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   // GET route code here
-  console.log("What is my req.user:", req.user);
   const queryString = `
   SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
   JOIN "coop"
@@ -63,7 +62,7 @@ router.get('/layingData', (req, res) => {
 router.post('/laying', (req, res) => {
   console.log('what is the post add egg', req.body);
   const queryString = `
-  INSERT INTO "layingDataTwo"
+  INSERT INTO "layingData"
   ("date", "didLay", "chicken_id")
   VALUES ($1, $2, $3);`;
   pool.query(queryString, [req.body.date, req.body.didLay, req.body.chicken_id])
@@ -75,6 +74,23 @@ router.post('/laying', (req, res) => {
     res.sendStatus(500);
   });
 })
+
+router.delete('/laying', (req,res) => {
+console.log('what is the delete egg', req.body);
+queryText = `
+DELETE FROM "layingData"
+WHERE "chicken_id" = $1
+AND
+"date" = $2;`;
+pool.query(queryText, [req.body.chicken_id, req.body.date])
+.then((result) => {
+  res.send(result.rows);
+}).catch(err => {
+  console.log('got an error in DELETE', err);
+  res.sendStatus(500);
+})
+
+});
 
 router.post('/', (req, res) => {
   console.log('what is the post add chicken', req.body);

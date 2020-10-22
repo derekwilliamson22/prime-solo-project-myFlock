@@ -34,15 +34,23 @@ class LayingFormItem extends Component {
    }
 
   dailyEgg = () => {
-    const newDate = format(this.props.store.date);
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
     const addEgg = {
       date: newDate,
       didLay: 1,
       chicken_id: this.props.chicken.id
     }
+    const deleteEgg = {
+      date: newDate,
+      chicken_id: this.props.chicken.id
+    }
    
     if(this.state.checked) {
       console.log('delete an egg');
+      this.props.dispatch({
+        type: "DELETE_EGG",
+        payload: deleteEgg
+      })
     }
     if(!this.state.checked) {
       console.log('add an egg');
