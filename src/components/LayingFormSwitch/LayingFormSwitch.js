@@ -72,43 +72,46 @@ class LayingFormSwitch extends Component {
 
   render() {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');   
-    const laidEgg = (this.props.didLay === 1)  
-        return (
+         return (
             <div>
+              {this.props.chickenDidLay === 0 ?
               <FormGroup>
-              <div className="LayingBar">
-              <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
-              <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-              {laidEgg ?                                
-                <FormControlLabel
-                  label="Laid Today?"
-                  labelPlacement="start"
-                  value="true"
-                  control={<DashboardSwitch
-                    checked={this.state.checkedB}
-                    onChange={this.handleChange} 
-                    name="checkedB"
-                    />}
-                  /> : 
-                    <FormControlLabel
-                      label="Laid Today?"
-                      labelPlacement="start"
-                      value="true"
-                      control={<DashboardSwitch
-                        checked={this.state.checkedA}
-                        onChange={this.handleChange} 
-                        name="checkedA"
-                        />}
-                      />
-                      }  
-                  </div>   
+                <div className="LayingBar">
+                  <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
+                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>                               
+                  <FormControlLabel
+                    label="Laid Today?"
+                    labelPlacement="start"
+                    value="true"
+                    control={<DashboardSwitch
+                      checked={this.state.checkedA}
+                      onChange={this.handleChange} 
+                      name="checkedA"
+                      />}
+                    />  
+                </div>   
               </FormGroup>
+              :
+              <FormGroup>
+                <div className="LayingBar">
+                  <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
+                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>                               
+                  <FormControlLabel
+                    label="Laid Today?"
+                    labelPlacement="start"
+                    value="true"
+                    control={<DashboardSwitch
+                      checked={this.state.checkedB}
+                      onChange={this.handleChange} 
+                      name="checkedB"
+                    />}
+                  />  
+                </div>   
+              </FormGroup>
+              }
             </div>
-        )  
-  } 
-}       
-              
-   
+    )}             
+} 
 
 
 export default connect(mapStoreToProps)(LayingFormSwitch);

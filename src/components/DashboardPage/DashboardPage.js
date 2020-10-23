@@ -16,8 +16,8 @@ class DashboardPage extends Component {
   componentDidMount(){
     this.getChickens();
     this.createDailyData();
-    //this.getChickenLayingData();
-    }
+    this.getChickenLayingData();
+  }
 
     getChickens = () => {
       this.props.dispatch({
@@ -33,21 +33,27 @@ class DashboardPage extends Component {
 
     createDailyData = () => {
       console.log('in create daily data');
-      const chickens = this.props.store.chicken
-      for(let chicken of chickens) {
-        console.log('say hello', chicken.id);
-        const newDailyData = {
-          date: format(new Date(), 'MMMM - dd - yyyy'),
-          chicken_id: chicken.id,
-          didLay: 0
+      if(this.props.store.layingData.length === 0) {
+          const chickens = this.props.store.chicken
+          for(let chicken of chickens) {
+            console.log('say hello', chicken.id);
+            const newDailyData = {
+              date: format(new Date(), 'MMMM - dd - yyyy'),
+              chicken_id: chicken.id,
+              didLay: 0
+            }
+            this.props.dispatch({
+              type: "CREATE_DAILY_DATA",
+              payload: newDailyData
+            })
+          }
         }
-        this.props.dispatch({
-          type: "CREATE_DAILY_DATA",
-          payload: newDailyData
-        })
-      }
-      this.getChickenLayingData();
-    }
+        else {
+          this.getChickenLayingData();
+          
+        }
+      } 
+    
 
     getChickenLayingData = () => {
       const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
