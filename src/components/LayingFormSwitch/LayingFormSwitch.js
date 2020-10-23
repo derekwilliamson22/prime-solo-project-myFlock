@@ -71,31 +71,45 @@ class LayingFormSwitch extends Component {
 
   render() {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');   
+    const laidEgg = (this.props.didLay === 1)  
         return (
-          <div>
-            <FormGroup>
-              <div>
+            <div>
               <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
               <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-              </div>
-              <div>
-                <FormControlLabel
-                  label="Laid Today?"
-                  labelPlacement="start"
-                  value="true"
-                  control={<DashboardSwitch
-                    checked={this.state.checkedA}
-                    onChange={this.handleChange} 
-                    name="checkedA"
-                    />}
-                  />
-              </div>  
-          </FormGroup>
-          </div>
-        
+             <FormGroup>
+             {laidEgg ?
+                 <div>
+                    
+                      <FormControlLabel
+                        label="Laid Today?"
+                        labelPlacement="start"
+                        value="true"
+                        control={<DashboardSwitch
+                          checked={this.state.checkedA}
+                          onChange={this.handleChange} 
+                          name="checkedA"
+                          />}
+                        />
+                  </div> : 
+                  <div>
+                    
+                      <FormControlLabel
+                        label="Laid Today?"
+                        labelPlacement="start"
+                        value="true"
+                        control={<DashboardSwitch
+                          checked={this.state.checkedB}
+                          onChange={this.handleChange} 
+                          name="checkedB"
+                          />}
+                        />
+                  </div>
+                }   
+              </FormGroup>
+            </div>
         )  
-      } 
-     }       
+  } 
+}       
               
    
 

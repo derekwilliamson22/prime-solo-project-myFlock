@@ -12,6 +12,7 @@ import fetchChickenLayingDataSaga from './fetchChickenLayingData.saga';
 import addEggSaga from './addEgg.saga';
 import deleteEggSaga from './deleteEgg.saga';
 import fetchLayingDataSaga from './fetchLayingData.saga';
+import addDailyDataSaga from './addDailyData.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -34,5 +35,6 @@ export default function* rootSaga() {
     deleteEggSaga(),
     deleteChickenSaga(),
     fetchLayingDataSaga(),
+    addDailyDataSaga(),
   ]);
 }
