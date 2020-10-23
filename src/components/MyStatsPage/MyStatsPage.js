@@ -30,7 +30,8 @@ class MyStatsPage extends Component {
 
   render() {
     return (
-      <div className="DataDashboard">
+      <div className="Dashboard">
+        <div className="Details">
         <table>
           <thead>
           <tr>
@@ -50,6 +51,7 @@ class MyStatsPage extends Component {
           })}
           </tbody>
         </table>
+      </div>
       </div>
     );
   }

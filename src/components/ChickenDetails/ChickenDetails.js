@@ -34,34 +34,36 @@ class ChickenDetails extends Component {
 
   render() {    
     return (
-      <div className="Details">
-        <div>
-          <img
-            className="DetailsImg"
-            src={`${this.props.store.chickenDetails.chicken_image_url}`}
-            alt={this.props.store.chickenDetails}
-          />
-        </div>
-        <div>
-          <img
-            className="DetailsEggImg"
-            src={`${this.props.store.chickenDetails.chicken_egg_image_url}`}
-            alt={this.props.store.chickenDetails}
-          />
-        </div>
-        <div className="DetailsInfo">
-          <h5>Name: {this.props.store.chickenDetails.name}</h5>
-          <h5>Breed: {this.props.store.chickenDetails.breed}</h5>
-          <h5>Birthday: {this.props.store.chickenDetails.birthday}</h5>
-        </div>
-        <div className="DetailsNotes">
-          <h5>Notes:</h5>
-          <p>{this.props.store.chickenDetails.notes}</p>
-        </div>
-        <div className="DetailsButtons">
-          <button onClick={this.returnToMyCoop}>Return to myCoop</button>
-          <button onClick={this.editChickenDetails}>Edit Details</button>
-          <button onClick={this.removeChicken}>Remove Chicken</button>
+      <div className="Dashboard">
+        <div className="Details">
+       
+            <img
+              className="DetailsImg"
+              src={`${this.props.store.chickenDetails.chicken_image_url}`}
+              alt={this.props.store.chickenDetails}
+            />
+       
+      
+            <img
+              className="DetailsImg"
+              src={`${this.props.store.chickenDetails.chicken_egg_image_url}`}
+              alt={this.props.store.chickenDetails}
+            />
+        
+          <div className="DetailsInfo">
+            <h5>Name: {this.props.store.chickenDetails.name}</h5>
+            <h5>Breed: {this.props.store.chickenDetails.breed}</h5>
+            <h5>Birthday: {this.props.store.chickenDetails.birthday}</h5>
+          </div>
+          <div className="DetailsNotes">
+            <h5>Notes:</h5>
+            <p>{this.props.store.chickenDetails.notes}</p>
+          </div>
+          <div className="DetailsButtons">
+            <button className="btn btn_sizeSm" onClick={this.returnToMyCoop}>Return to myCoop</button>
+            <button className="btn btn_sizeSm" onClick={this.editChickenDetails}>Edit Details</button>
+            <button className="btn btn_sizeSm" onClick={this.removeChicken}>Remove Chicken</button>
+          </div>
         </div>
       </div>
     );

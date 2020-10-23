@@ -10,11 +10,6 @@ body {
   margin: 0px;
 }
 
-img {
-  display: inline-block;
-  max-width: 100%;
-}
-
 ul li {
   list-style-type: none;
 }
@@ -42,6 +37,7 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin:10px;
 }
 
 .PasswordInput {
@@ -189,23 +185,28 @@ img {
   width: 100px;
 }
 
-.Details {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 65px 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
-}
+
 
 .DetailsInfo {
-  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:15px;
 }
 
 .DetailsNotes {
-  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:15px;
+  text-align: left;
+  padding: 10px;
 }
 
 .EditDetails {
@@ -352,4 +353,20 @@ table, th, td {
   border-collapse: collapse;
   border: 1px solid white;
   padding: 5px;
+}
+
+.Details {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:10px;
+  text-align: center;
+}
+
+.DetailsImg {
+  display: inline-block;
+  margin:15px;
 }
