@@ -91,7 +91,7 @@ class DashboardPage extends Component {
   render() { 
     return (
       <div className="Dashboard">
-        <div className="DateContents">
+        <div className="DashboardDateContents">
           <DateBar getDateBarDate={this.getDateBarDate}/>
         </div>
         
