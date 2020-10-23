@@ -4,18 +4,16 @@ import axios from 'axios';
 function* addDailyData(action) {
   console.log('hit addDailyData', action.payload); 
     
-  // yield axios({
-  //     method: 'POST',
-  //     url: 'api/chicken',
-  //     data: action.payload
-  //   });
-  // yield put({
-  //   type: 'FETCH_CHICKENS'
-  //   });
+  yield axios({
+      method: 'POST',
+      url: 'api/chicken/dailyData',
+      data: action.payload
+    });
+  
 }
 
 function* addDailyDataSaga() {
-  yield takeLatest('CREATE_DAILY_DATA', addDailyData);
+  yield takeLatest( "CREATE_DAILY_DATA", addDailyData);
 }
 
 export default addDailyDataSaga;
