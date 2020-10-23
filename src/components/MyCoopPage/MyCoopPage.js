@@ -28,7 +28,7 @@ class MyCoopPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-       <h3>myCoop</h3>
+       <h3 className="DateContents">myCoop</h3>
        <ChickenList />
        <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
       </div>

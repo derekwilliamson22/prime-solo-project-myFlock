@@ -2,6 +2,7 @@ html,
 body,
 #react-root {
   height: 100%;
+  background-color: rgb(80, 79, 79);
 }
 
 body {
@@ -128,6 +129,7 @@ Form Treatment
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top: 20px;
 }
 
 input {
@@ -150,6 +152,7 @@ DashBoard View
   color: #efefef;
   border-radius: 3px;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top:20px
 }
 
 /* .DateBar{
@@ -219,7 +222,7 @@ img {
 .ChickenListImg {
   width: 75px;
   display: inline;
-  padding:5px;
+  padding:10px;
 }
 
 .ChickenListEggImg {
@@ -227,7 +230,7 @@ img {
   height: 75px;
   
   float:right;
-  padding:5px;
+  padding:10px;
 }
 
 .ChickenListItem {
@@ -278,6 +281,9 @@ display: inline;
   display: inline;
 }
 
+.DateContents h3 {
+  padding: 10px;
+}
 
 .DateContents {
   box-sizing: border-box;
@@ -290,7 +296,7 @@ display: inline;
   align-items: center;
   justify-content: center;
   margin:5px;
-  
+  padding: 10px;
 }
 
 .welcome {
@@ -306,8 +312,35 @@ display: inline;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .bars {
   padding: 0;
+  margin: 0;
+}
+
+.DataDashboard {
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 100%;
+  padding: 65px 25px;
+  margin: 0 auto 20px;
+  background-color: rgb(80, 79, 79);
+  color: #efefef;
+  border-radius: 3px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top:55px
+}
+
+table {
+  text-align: center;
+  font-size: 25px;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid white;
+  padding: 5px;
 }
