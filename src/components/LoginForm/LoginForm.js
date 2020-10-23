@@ -32,7 +32,8 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <form className="formPanel" onSubmit={this.login}>
+      <div className="Dashboard">
+      <form className="Details" onSubmit={this.login}>
         <div className="LoginWelcome">
           <h2>Welcome to myFlock!</h2>
         </div>
@@ -72,6 +73,7 @@ class LoginForm extends Component {
           </div>
         </div>
       </form>
+      </div>
     );
   }
 }
