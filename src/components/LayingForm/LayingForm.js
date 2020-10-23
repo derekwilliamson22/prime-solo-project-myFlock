@@ -12,15 +12,22 @@ class LayingForm extends Component {
   render() {
     return (
       <div className="chickenBar">
-        {this.props.store.layingData.map((item, index) => (
+        <ul className="bars">
+        {this.props.store.layingData.map((item, index) => {
+          return (
+          <li
+          className="LayingFormItem"
+          key={index}>
           <LayingFormSwitch
           chickenId={item.id}
           chickenName={item.name}
           chickenEggImg={item.chicken_egg_image_url}
           chickenDidLay={item.didLay}
-          /> 
-        ))}
-      
+          />
+          </li> 
+          );
+        })}
+        </ul>
        </div>
     )
         {/* {this.props.store.layingData === [] ?

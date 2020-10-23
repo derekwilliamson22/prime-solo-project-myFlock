@@ -74,37 +74,33 @@ class LayingFormSwitch extends Component {
     const laidEgg = (this.props.didLay === 1)  
         return (
             <div>
+              <FormGroup>
+              <div className="LayingBar">
               <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
               <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-             <FormGroup>
-             {laidEgg ?
-                 <div>
-                    
-                      <FormControlLabel
-                        label="Laid Today?"
-                        labelPlacement="start"
-                        value="true"
-                        control={<DashboardSwitch
-                          checked={this.state.checkedA}
-                          onChange={this.handleChange} 
-                          name="checkedA"
-                          />}
-                        />
-                  </div> : 
-                  <div>
-                    
-                      <FormControlLabel
-                        label="Laid Today?"
-                        labelPlacement="start"
-                        value="true"
-                        control={<DashboardSwitch
-                          checked={this.state.checkedB}
-                          onChange={this.handleChange} 
-                          name="checkedB"
-                          />}
-                        />
-                  </div>
-                }   
+              {laidEgg ?                                
+                <FormControlLabel
+                  label="Laid Today?"
+                  labelPlacement="start"
+                  value="true"
+                  control={<DashboardSwitch
+                    checked={this.state.checkedA}
+                    onChange={this.handleChange} 
+                    name="checkedA"
+                    />}
+                  /> : 
+                    <FormControlLabel
+                      label="Laid Today?"
+                      labelPlacement="start"
+                      value="true"
+                      control={<DashboardSwitch
+                        checked={this.state.checkedB}
+                        onChange={this.handleChange} 
+                        name="checkedB"
+                        />}
+                      />
+                      }  
+                  </div>   
               </FormGroup>
             </div>
         )  
