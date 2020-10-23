@@ -296,6 +296,20 @@ display: inline;
   padding: 10px;
 }
 
+.ServiceContents {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:15px;
+  padding: 10px;
+}
+
 .DashboardDateContents {
   box-sizing: border-box;
   background-color: rgb(65, 64, 64);
@@ -324,6 +338,19 @@ display: inline;
   align-items: center;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.ServiceBar {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
 }
 
 .bars {
@@ -369,4 +396,8 @@ table, th, td {
 .DetailsImg {
   display: inline-block;
   margin:15px;
+}
+
+.eggSwitch {
+  margin-right:15px;
 }

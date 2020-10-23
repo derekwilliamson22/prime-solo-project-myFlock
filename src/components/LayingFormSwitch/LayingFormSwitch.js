@@ -78,7 +78,8 @@ class LayingFormSwitch extends Component {
               <FormGroup>
                 <div className="LayingBar">
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
-                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>                               
+                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>
+                  <div className="eggSwitch">                             
                   <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
@@ -88,14 +89,16 @@ class LayingFormSwitch extends Component {
                       onChange={this.handleChange} 
                       name="checkedA"
                       />}
-                    />  
+                    />
+                 </div>       
                 </div>   
               </FormGroup>
               :
               <FormGroup>
                 <div className="LayingBar">
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
-                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>                               
+                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>
+                  <div className="eggSwitch">                               
                   <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
@@ -105,7 +108,8 @@ class LayingFormSwitch extends Component {
                       onChange={this.handleChange} 
                       name="checkedB"
                     />}
-                  />  
+                  />
+                 </div>   
                 </div>   
               </FormGroup>
               }

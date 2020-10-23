@@ -20,6 +20,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
+import ServiceConfirmationPage from '../ServiceConfirmationPage/ServiceConfirmationPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import MyCoopPage from '../MyCoopPage/MyCoopPage';
 import MyStatsPage from '../MyStatsPage/MyStatsPage';
@@ -156,6 +157,15 @@ class App extends Component {
               exact
               path="/confirmation"
               component={ConfirmationPage}
+              authRedirect="/dashboard"
+            />
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/serviceConfirmation"
+              component={ServiceConfirmationPage}
               authRedirect="/dashboard"
             />
 

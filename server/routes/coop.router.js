@@ -24,8 +24,27 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 /**
  * POST route template
  */
-router.post('/', (req, res) => {
-  // POST route code here
+router.post('/service', rejectUnauthenticated, (req, res) => {
+  console.log('what is the post service', req.body);
+  const queryString = `
+  INSERT INTO "chicken" 
+  ("date", "user_id", "requestForFeed", "requestForCleaning", "otherNotes")
+  VALUES ($1, $2, $3, $4, $5);`;
+  const queryParams = [
+    req.body.date,
+    req.body.user_id,
+    req.body.requestForFeed,
+    req.body.requestForCleaning,
+    req.body.otherNotes,
+  ]
+  pool.query(queryString, queryParams)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in POSTing service', err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;

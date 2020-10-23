@@ -30,28 +30,100 @@ const DashboardSwitch = withStyles({
 
 class ServicePage extends Component {
   state = {
-    newServiceRequest: {
+    serviceRequest: {
       date: format(new Date(), 'MMMM - dd - yyyy'),
       user_id: this.props.store.user.id,
-      requestForFeed: '',
-      requestForCleaning: '',
-      otherNotes: '',
+      requestForFeed: false,
+      requestForCleaning: false,
+      otherNotes: ''
     }
+  }
+  
+ 
+
+  serviceConfirmation = () => {
+    this.props.history.push(`/serviceConfirmation`);
+  }
+
+  sendServiceRequest = (event) => {
+      
+    event.preventDefault();
+    this.props.dispatch({
+      type: 'SEND_SERVICE_REQUEST',
+      url: `api/coop/service`,
+      payload: this.state.serviceRequest
+    })
+    this.serviceConfirmation()
+  }; // end registerUser
+
+  handleInputChangeFor = (propertyName) => (event) => {
+    console.log('what is state for switch', this.state.requestForCleaning);
+    
+    this.setState({
+      serviceRequest:{
+        ...this.state.serviceRequest,
+      [propertyName]: event.target.value,
+      }
+    });
   };
 
-  sendServiceRequest = () => {
-    
-  }
+render() {
+  
+  
+  return (
+    <div className="Dashboard">
+      <div className="Details">
+      <FormGroup>
+        <h3 className="ServiceContents">Service Request Form</h3>
+        <div className="ServiceBar">
+          <div className="eggSwitch">                             
+          <FormControlLabel
+            label="Request Feed Delivery?"
+            labelPlacement="start"
+            value="true"
+            control={<DashboardSwitch
+              checked={this.state.requestForFeed}
+              onChange={this.handleChange} 
+              name="requestForFeed"
+              />}
+            />
+          </div>       
+        </div> 
+        <div className="ServiceBar">
+          <div className="eggSwitch">                             
+          <FormControlLabel
+            label="Request Coop Cleaning?"
+            labelPlacement="start"
+            value="true"
+            control={<DashboardSwitch
+              checked={this.state.requestForCleaning}
+              onChange={this.handleChange} 
+              name="requestForCleaning"
+              />}
+            />
+          </div>       
+        </div>     
+      </FormGroup>
 
-  render() {
-    console.log('what are my service props', this.props);
-    
-    return (
-      <div className="Dashboard">
-        <h2>Service Coming Soon...</h2>
-      </div>
-    );
-  }
+        <div className="DetailsNotes">
+          <h5>Other Notes:</h5>
+            <textarea
+              type="textarea"
+              name="otherNotes"
+              //placeholder="Notes"
+              value={this.state.serviceRequest.otherNotes}
+              onChange={this.handleInputChangeFor('otherNotes')}
+            />
+        </div>
+        <div className="EditDetailsButtons">
+          <button className="btn btn_sizeSm" onClick={this.sendServiceRequest}>Send Request!</button>
+        </div>
+        {/* <input className="btn" type="submit" name="submit" value="Submit" />
+        </form> */}
+        </div>
+    </div>
+  );
+}
 }
 
 export default connect(mapStoreToProps)(ServicePage);

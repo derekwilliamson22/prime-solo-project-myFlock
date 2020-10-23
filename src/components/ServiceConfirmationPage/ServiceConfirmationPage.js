@@ -7,25 +7,23 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
-class ConfirmationPage extends Component {
-  state = {
-    heading: 'Class Component',
-  };
+class ServiceConfirmationPage extends Component {
+  
 
   render() {
     return (
       <div className="Dashboard">
         <div className="Details">
         <h2>BOK! BOK!</h2>
-        <h3>You're registered!</h3>
+        <h3>Service Request Submitted!</h3>
         <button
             type="button"
             className="btn"
             onClick={() => {
-              this.props.history.push('/login');
+              this.props.history.push('/service');
             }}
           >
-            Return to Login
+            Return to Service Page
         </button>
         </div>
       </div>
@@ -33,4 +31,4 @@ class ConfirmationPage extends Component {
   }
 }
 
-export default connect(mapStoreToProps)(withRouter(ConfirmationPage));
+export default connect(mapStoreToProps)(withRouter(ServiceConfirmationPage));
