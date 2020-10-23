@@ -1,12 +1,22 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const {
+  rejectUnauthenticated,
+} = require('../modules/authentication-middleware');
 
 
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryString = `
-  SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
+  SELECT "chicken"."id",
+  "chicken"."name",
+  "chicken"."breed",
+  "chicken"."chicken_image_url",
+  "chicken"."chicken_egg_image_url",
+  "chicken"."notes",
+  "chicken"."birthday"
+  FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
   JOIN "user"
@@ -23,10 +33,27 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/layingData', (req, res) => {
+router.post('/dailyData', rejectUnauthenticated, (req, res) => {
+  console.log('what is the post add daily data', req.body);
+  const queryString = `
+  INSERT INTO "layingData"
+  ("date", "didLay", "chicken_id")
+  VALUES ($1, $2, $3);`;
+  pool.query(queryString, [req.body.date, req.body.didLay, req.body.chicken_id])
+  .then(result => {
+    res.send(result.rows);
+  })
+  .catch(err => {
+    console.log('error in posting laying data', err);
+    res.sendStatus(500);
+  });
+})
+
+
+router.get('/layingData', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "chicken"."name", "chicken"."chicken_egg_image_url", "chicken"."id", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"
@@ -46,13 +73,14 @@ router.get('/layingData', (req, res) => {
     });
 });
 
-router.post('/laying', (req, res) => {
+router.put('/laying/add', rejectUnauthenticated, (req, res) => {
   console.log('what is the post add egg', req.body);
   const queryString = `
-  INSERT INTO "layingData"
-  ("date", "didLay", "chicken_id")
-  VALUES ($1, $2, $3);`;
-  pool.query(queryString, [req.body.date, req.body.didLay, req.body.chicken_id])
+  UPDATE "layingData"
+  SET "didLay" = $1
+  WHERE "date" = $2
+  AND "chicken_id" = $3;`;
+  pool.query(queryString, [req.body.didLay, req.body.date, req.body.chicken_id])
   .then(result => {
     res.send(result.rows);
   })
@@ -62,14 +90,14 @@ router.post('/laying', (req, res) => {
   });
 })
 
-router.delete('/laying', (req,res) => {
+router.put('/laying/remove', rejectUnauthenticated, (req,res) => {
 console.log('what is the delete egg', req.body);
-queryText = `
-DELETE FROM "layingData"
-WHERE "chicken_id" = $1
-AND
-"date" = $2;`;
-pool.query(queryText, [req.body.chicken_id, req.body.date])
+const queryString = `
+UPDATE "layingData"
+SET "didLay" = $1
+WHERE "date" = $2
+AND "chicken_id" = $3;`;
+pool.query(queryString, [req.body.didLay, req.body.date, req.body.chicken_id])
 .then((result) => {
   res.send(result.rows);
 }).catch(err => {
@@ -79,7 +107,7 @@ pool.query(queryText, [req.body.chicken_id, req.body.date])
 
 });
 
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('what is the post add chicken', req.body);
   const queryString = `
   INSERT INTO "chicken" 
@@ -104,7 +132,7 @@ router.post('/', (req, res) => {
     });
 })
 
-router.put('/details/:id', (req, res) => {
+router.put('/details/:id',rejectUnauthenticated, (req, res) => {
   console.log('what is the put', req.body, req.params.id);
   const queryString = `
   UPDATE "chicken" 
@@ -131,7 +159,7 @@ router.put('/details/:id', (req, res) => {
     });
 })
 
-router.get('/details/:id', (req, res) => {
+router.get('/details/:id', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What happened to my get details request?:", req.body, req.params.id);
   const queryString = `SELECT "chicken"."id", "chicken"."name", "chicken"."breed", "chicken"."chicken_image_url", "chicken"."chicken_egg_image_url", "chicken"."notes", "chicken"."birthday" FROM "chicken"
@@ -150,22 +178,22 @@ router.get('/details/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req,res) => {
+router.delete('/:id', rejectUnauthenticated, (req,res) => {
   console.log('what is the delete chicken', req.params);
   queryText = `
   DELETE FROM "chicken"
   WHERE "id" = $1;`;
-  pool.query(queryText, [req.params.id])
-  .then((result) => {
+  pool
+  .query(queryText, [req.params.id])
+  .then(result => {
     res.send(result.rows);
   }).catch(err => {
     console.log('got an error in DELETE', err);
     res.sendStatus(500);
-  })
-  
   });
+});  
 
-  router.get('/data', (req,res) => {
+  router.get('/data',rejectUnauthenticated, (req,res) => {
     console.log('What is my data :', req.query);
     const queryString = `SELECT "chicken"."name", "chicken"."id", SUM("didLay") FROM "chicken"
     JOIN "layingData"

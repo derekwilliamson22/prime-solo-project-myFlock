@@ -39,16 +39,11 @@ const Nav = (props) => {
         <div className="dropdown">
           <img className="dropbtn" src="images/nav_icon_menu.png"/>
           <div className="dropdown-content">
-            <a href="#">EDIT USER</a>
-            <a href="#">EDIT COOP</a>
             <a
-    // This button shows up in multiple locations and is styled differently
-    // because it's styled differently depending on where it is used, the className
-    // is passed to it from it's parents through React props
-    className={props.className}
-    onClick={() => props.dispatch({ type: 'LOGOUT' })}>
-    Log Out
-  </a>
+              className={props.className}
+              onClick={() => props.dispatch({ type: 'LOGOUT' })}>
+              Log Out
+            </a>
           </div>
         </div>
       }

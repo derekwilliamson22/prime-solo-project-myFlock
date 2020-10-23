@@ -31,17 +31,27 @@ class MyStatsPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <ul>
+        <div className="Details">
+        <table>
+          <thead>
+          <tr>
+            <th>Chicken Name</th>
+            <th>Last 6 Months</th>
+          </tr>
+          </thead>
+          <tbody>
           {this.props.store.data.map((item, index) => {
             return (
-            <li key={index}>
-                <h5>Name: {item.name}</h5>
-                <h5>Total Eggs in the last six months: {item.sum}</h5>
+              <tr key={index}>
+                <td>{item.name}</td>
+                <td>{item.sum}</td>
 
-            </li>
+              </tr>
             )
           })}
-        </ul>
+          </tbody>
+        </table>
+      </div>
       </div>
     );
   }

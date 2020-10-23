@@ -2,16 +2,12 @@ html,
 body,
 #react-root {
   height: 100%;
+  background-color: rgb(80, 79, 79);
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
-}
-
-img {
-  display: inline-block;
-  max-width: 100%;
 }
 
 ul li {
@@ -41,6 +37,7 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
+  margin:10px;
 }
 
 .PasswordInput {
@@ -51,8 +48,8 @@ Button
   text-align: center;
   font-size: 24px;
   font-weight: 700;
-  color: #820303;
-  text-shadow: -1px 1px white;
+  color: white;
+  text-shadow: -3px 3px rgb(31, 31, 31);
   padding-left: 10px;
   margin-top: 50px;
 }
@@ -87,11 +84,11 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid white;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: white;
 }
 
 .btn_asLink:hover {
@@ -128,6 +125,7 @@ Form Treatment
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top: 50px;
 }
 
 input {
@@ -150,6 +148,7 @@ DashBoard View
   color: #efefef;
   border-radius: 3px;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top:20px
 }
 
 /* .DateBar{
@@ -186,23 +185,28 @@ img {
   width: 100px;
 }
 
-.Details {
-  box-sizing: border-box;
-  width: 400px;
-  max-width: 100%;
-  padding: 65px 25px;
-  margin: 0 auto 20px;
-  background-color: #efefef;
-  border-radius: 3px;
-  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
-}
+
 
 .DetailsInfo {
-  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:15px;
 }
 
 .DetailsNotes {
-  border: 2px solid black;
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:15px;
+  text-align: left;
+  padding: 10px;
 }
 
 .EditDetails {
@@ -219,7 +223,7 @@ img {
 .ChickenListImg {
   width: 75px;
   display: inline;
-  padding:5px;
+  padding:10px;
 }
 
 .ChickenListEggImg {
@@ -227,7 +231,7 @@ img {
   height: 75px;
   
   float:right;
-  padding:5px;
+  padding:10px;
 }
 
 .ChickenListItem {
@@ -278,7 +282,6 @@ display: inline;
   display: inline;
 }
 
-
 .DateContents {
   box-sizing: border-box;
   background-color: rgb(65, 64, 64);
@@ -290,7 +293,34 @@ display: inline;
   align-items: center;
   justify-content: center;
   margin:5px;
-  
+  padding: 10px;
+}
+
+.ServiceContents {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:15px;
+  padding: 10px;
+}
+
+.DashboardDateContents {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom:15px;
 }
 
 .welcome {
@@ -306,8 +336,68 @@ display: inline;
   box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ServiceBar {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
 }
 
 .bars {
   padding: 0;
+  margin: 0;
+}
+
+.DataDashboard {
+  box-sizing: border-box;
+  width: 400px;
+  max-width: 100%;
+  padding: 65px 25px;
+  margin: 0 auto 20px;
+  background-color: rgb(80, 79, 79);
+  color: #efefef;
+  border-radius: 3px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin-top:55px
+}
+
+table {
+  text-align: center;
+  font-size: 25px;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.Details {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:10px;
+  text-align: center;
+}
+
+.DetailsImg {
+  display: inline-block;
+  margin:15px;
+}
+
+.eggSwitch {
+  margin-right:15px;
 }

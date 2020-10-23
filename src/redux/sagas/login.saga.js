@@ -20,7 +20,7 @@ function* loginUser(action) {
     // after the user has logged in
     // get the user information from the server
     yield put({ type: 'FETCH_USER' });
-    yield put({ type: 'FETCH_COOP' });
+    //yield put({ type: 'FETCH_COOP' });
   } catch (error) {
     console.log('Error with user login:', error);
     if (error.response.status === 401) {
@@ -56,7 +56,7 @@ function* logoutUser(action) {
     yield put({ type: 'UNSET_USER' });
     yield put({type: 'UNSET_COOP' });
     yield put({type: 'UNSET_CHICKENS' });
-    yield put({type: 'UNSET_DATE' })
+    yield put({type: 'UNSET_DATE' });
   } catch (error) {
     console.log('Error with user logout:', error);
   }

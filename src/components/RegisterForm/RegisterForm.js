@@ -45,15 +45,15 @@ class RegisterForm extends Component {
 
   render() {
     return (
-      <div>
-        <form className="formPanel" onSubmit={this.registerUser}>
+      <div className="Dashboard">
+        <form className="Details" onSubmit={this.registerUser}>
           <h2>myFlock Registration</h2>
           {this.props.store.errors.registrationMessage && (
             <h3 className="alert" role="alert">
               {this.props.store.errors.registrationMessage}
             </h3>
           )}
-          <div>
+          <div className="Dash">
               <input
                 type="text"
                 name="coop_name"

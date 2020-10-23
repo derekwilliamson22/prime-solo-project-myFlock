@@ -20,6 +20,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ConfirmationPage from '../ConfirmationPage/ConfirmationPage';
+import ServiceConfirmationPage from '../ServiceConfirmationPage/ServiceConfirmationPage';
 import DashboardPage from '../DashboardPage/DashboardPage';
 import MyCoopPage from '../MyCoopPage/MyCoopPage';
 import MyStatsPage from '../MyStatsPage/MyStatsPage';
@@ -27,15 +28,37 @@ import ServicePage from '../ServicePage/ServicePage';
 import CreateChicken from '../CreateChicken/CreateChicken';
 import ChickenDetails from '../ChickenDetails/ChickenDetails';
 import EditChickenDetails from '../EditChickenDetails/EditChickenDetails';
+import { format } from 'date-fns';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 import './App.css';
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' });
+   }
+
+  createDailyData = () => {
+    console.log('in create daily data');
+    const chickens = this.props.store.chicken
+    for(let chicken of chickens) {
+      console.log('say hello', chicken.id);
+      const newDailyData = {
+        date: format(new Date(), 'MMMM - dd - yyyy'),
+        chicken_id: chicken.id,
+        didLay: 0
+      }
+      this.props.dispatch({
+        type: "CREATE_DAILY_DATA",
+        payload: newDailyData
+      })
+    }
+    // this.getChickenLayingData();
   }
 
   render() {
+    console.log('do we see the app js');
+    
     return (
       <Router>
         <div className="App">
@@ -107,7 +130,7 @@ class App extends Component {
               exact
               path="/login"
               component={LoginPage}
-              authRedirect="/dashboard"
+              authRedirect="/mycoop"
             />
             <ProtectedRoute
               // with authRedirect:
@@ -116,7 +139,7 @@ class App extends Component {
               exact
               path="/registration"
               component={RegisterPage}
-              authRedirect="/dashboard"
+              authRedirect="/mycoop"
             />
             {/* <ProtectedRoute
               // with authRedirect:
@@ -127,14 +150,23 @@ class App extends Component {
               component={LandingPage}
               authRedirect="/dashboard"
             /> */}
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
               path="/confirmation"
               component={ConfirmationPage}
-              authRedirect="/dashboard"
+              
+            />
+            <Route
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/serviceConfirmation"
+              component={ServiceConfirmationPage}
+              
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
@@ -147,4 +179,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default connect(mapStoreToProps)(App);

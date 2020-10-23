@@ -113,22 +113,19 @@ render() {
   console.log('the chicken details props', this.props.store.chickenDetails);
   
   return (
-    <div className="EditDetails">
-      <div className="DetailsImg">
+    <div className="Dashboard">
+      <div className="Details">
         <img
+          className="DetailsImg"
           src={`${this.props.store.chickenDetails.chicken_image_url}`}
           alt={this.props.store.chickenDetails}
         />
-      </div>
-      <div className="DetailsEggImg">
         <img
+          className="DetailsImg"
           src={`${this.props.store.chickenDetails.chicken_egg_image_url}`}
           alt={this.props.store.chickenDetails}
         />
-      </div>
-      {/* <form onSubmit={this.updateChicken}> */}
-        <div>
-          
+        <div className="DetailsInfo">
           <h5>Name: 
             <input
             type="text"
@@ -138,8 +135,8 @@ render() {
             onChange={this.handleInputChangeFor('chicken_name')}
           />
           </h5>
-        </div>
-        <div>  
+        
+        
           <h5>Breed:
             <input
               type="text"
@@ -149,8 +146,8 @@ render() {
               onChange={this.handleInputChangeFor('breed')}
             />         
           </h5>
-        </div>  
-        <div>
+         
+      
           <h5>Birthday:
             <input
               type="date"
@@ -161,7 +158,7 @@ render() {
             />
           </h5>
         </div>
-        <div>
+        <div className="DetailsNotes">
           <h5>Notes:</h5>
             <textarea
               type="textarea"
@@ -172,11 +169,12 @@ render() {
             />
         </div>
         <div className="EditDetailsButtons">
-          <button onClick={this.returnToChickenDetails}>Cancel Update</button>
-          <button onClick={this.updateChicken}>Update Details</button>
+          <button className="btn btn_sizeSm" onClick={this.returnToChickenDetails}>Cancel Update</button>
+          <button className="btn btn_sizeSm" onClick={this.updateChicken}>Update Details</button>
         </div>
         {/* <input className="btn" type="submit" name="submit" value="Submit" />
         </form> */}
+        </div>
     </div>
   );
 }

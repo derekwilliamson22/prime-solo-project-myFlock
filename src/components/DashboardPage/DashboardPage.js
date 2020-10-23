@@ -15,9 +15,9 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickens();
-    this.fetchCoop();
+    this.createDailyData();
     this.getChickenLayingData();
-    }
+  }
 
     getChickens = () => {
       this.props.dispatch({
@@ -30,6 +30,30 @@ class DashboardPage extends Component {
         type: "FETCH_COOP"
       });
     }
+
+    createDailyData = () => {
+      console.log('in create daily data');
+      if(this.props.store.layingData.length === 0) {
+          const chickens = this.props.store.chicken
+          for(let chicken of chickens) {
+            console.log('say hello', chicken.id);
+            const newDailyData = {
+              date: format(new Date(), 'MMMM - dd - yyyy'),
+              chicken_id: chicken.id,
+              didLay: 0
+            }
+            this.props.dispatch({
+              type: "CREATE_DAILY_DATA",
+              payload: newDailyData
+            })
+          }
+        }
+        else {
+          this.getChickenLayingData();
+          
+        }
+      } 
+    
 
     getChickenLayingData = () => {
       const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
@@ -64,10 +88,10 @@ class DashboardPage extends Component {
     })
   } 
 
-  render() {    
+  render() { 
     return (
       <div className="Dashboard">
-        <div className="DateContents">
+        <div className="DashboardDateContents">
           <DateBar getDateBarDate={this.getDateBarDate}/>
         </div>
         
