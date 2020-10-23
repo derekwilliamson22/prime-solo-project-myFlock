@@ -5,8 +5,8 @@ function* addEgg(action) {
   console.log('hit Add EGG', action.payload); 
     
   yield axios({
-      method: 'POST',
-      url: 'api/chicken/laying',
+      method: 'PUT',
+      url: 'api/chicken/laying/add',
       data: action.payload
     });
   yield put({

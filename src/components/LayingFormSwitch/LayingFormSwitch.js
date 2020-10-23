@@ -43,17 +43,18 @@ class LayingFormSwitch extends Component {
     }
     const deleteEgg = {
       date: newDate,
+      didLay: 0,
       chicken_id: this.props.chickenId
     }
    
-    if(this.state.checkedA) {
+    if(this.state.checkedA || this.state.checkedB) {
       console.log('delete an egg', this.state.checkedA);      
       this.props.dispatch({
         type: "DELETE_EGG",
         payload: deleteEgg
       })
     }
-    if(!this.state.checkedA) {
+    if(!this.state.checkedA || !this.state.checkedB) {
       console.log('add an egg', this.state.checkedA);
       this.props.dispatch({
         type: "ADD_EGG",
@@ -84,9 +85,9 @@ class LayingFormSwitch extends Component {
                   labelPlacement="start"
                   value="true"
                   control={<DashboardSwitch
-                    checked={this.state.checkedA}
+                    checked={this.state.checkedB}
                     onChange={this.handleChange} 
-                    name="checkedA"
+                    name="checkedB"
                     />}
                   /> : 
                     <FormControlLabel
@@ -94,9 +95,9 @@ class LayingFormSwitch extends Component {
                       labelPlacement="start"
                       value="true"
                       control={<DashboardSwitch
-                        checked={this.state.checkedB}
+                        checked={this.state.checkedA}
                         onChange={this.handleChange} 
-                        name="checkedB"
+                        name="checkedA"
                         />}
                       />
                       }  

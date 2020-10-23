@@ -26,15 +26,17 @@ export default function* rootSaga() {
     registrationSaga(),
     userSaga(),
     coopSaga(),
+    fetchLayingDataSaga(),
+    addDailyDataSaga(),
     addChickenSaga(),
     fetchChickensSaga(),
     fetchChickenDetailsSaga(),
     updateChickenDetailsSaga(),
-    fetchChickenLayingDataSaga(),
     addEggSaga(),
     deleteEggSaga(),
     deleteChickenSaga(),
-    fetchLayingDataSaga(),
-    addDailyDataSaga(),
+    fetchChickenLayingDataSaga(),
+    
+    
   ]);
 }

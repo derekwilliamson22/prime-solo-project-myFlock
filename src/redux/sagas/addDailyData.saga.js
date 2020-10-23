@@ -9,7 +9,7 @@ function* addDailyData(action) {
       url: 'api/chicken/dailyData',
       data: action.payload
     });
-  
+
 }
 
 function* addDailyDataSaga() {

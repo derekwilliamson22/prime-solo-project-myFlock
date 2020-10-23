@@ -15,6 +15,8 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickens();
+    this.createDailyData();
+    //this.getChickenLayingData();
     }
 
     getChickens = () => {
@@ -81,11 +83,6 @@ class DashboardPage extends Component {
   } 
 
   render() { 
-    if(this.props.store.layingData.length === 0) {
-      console.log('laying data is empty');
-      this.createDailyData();
-    }
-    
     return (
       <div className="Dashboard">
         <div className="DateContents">
