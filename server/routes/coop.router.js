@@ -27,7 +27,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/service', rejectUnauthenticated, (req, res) => {
   console.log('what is the post service', req.body);
   const queryString = `
-  INSERT INTO "chicken" 
+  INSERT INTO "serviceData" 
   ("date", "user_id", "requestForFeed", "requestForCleaning", "otherNotes")
   VALUES ($1, $2, $3, $4, $5);`;
   const queryParams = [

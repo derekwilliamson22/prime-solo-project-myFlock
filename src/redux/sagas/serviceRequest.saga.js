@@ -3,6 +3,8 @@ import axios from 'axios';
 
 // worker Saga: will be fired on "REGISTER" actions
 function* requestService(action) {
+  console.log('what is the service request', action.payload);
+  
   yield axios({
     method: 'POST',
     url: 'api/coop/service',

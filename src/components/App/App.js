@@ -150,23 +150,23 @@ class App extends Component {
               component={LandingPage}
               authRedirect="/dashboard"
             /> */}
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
               path="/confirmation"
               component={ConfirmationPage}
-              authRedirect="/dashboard"
+              
             />
-            <ProtectedRoute
+            <Route
               // with authRedirect:
               // - if logged in, redirects to "/user"
               // - else shows LandingPage at "/home"
               exact
               path="/serviceConfirmation"
               component={ServiceConfirmationPage}
-              authRedirect="/dashboard"
+              
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

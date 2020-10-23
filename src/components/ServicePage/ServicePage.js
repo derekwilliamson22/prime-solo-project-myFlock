@@ -57,7 +57,7 @@ class ServicePage extends Component {
   }; // end registerUser
 
   handleInputChangeFor = (propertyName) => (event) => {
-    console.log('what is state for switch', this.state.requestForCleaning);
+    
     
     this.setState({
       serviceRequest:{
@@ -66,6 +66,18 @@ class ServicePage extends Component {
       }
     });
   };
+
+  handleChange = (event) => {
+    this.setState({ 
+      serviceRequest: {
+      ...this.state.serviceRequest,
+      [event.target.name]: event.target.checked
+      }
+    });
+    console.log('what is state for switch', this.state.serviceRequest.requestForFeed);
+    
+    }
+
 
 render() {
   
@@ -102,7 +114,7 @@ render() {
               />}
             />
           </div>       
-        </div>     
+        </div>    
       </FormGroup>
 
         <div className="DetailsNotes">
