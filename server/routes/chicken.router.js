@@ -181,27 +181,17 @@ router.get('/details/:id', rejectUnauthenticated, (req, res) => {
 router.delete('/:id', rejectUnauthenticated, (req,res) => {
   console.log('what is the delete chicken', req.params);
   queryText = `
-  DELETE FROM "layingData"
-  WHERE "chicken_id" = $1
-  RETURNING "id";`;
+  DELETE FROM "chicken"
+  WHERE "id" = $1;`;
   pool
   .query(queryText, [req.params.id])
   .then(result => {
-    const chickenId = result.rows
-    queryText = `
-    DELETE FROM "chicken"
-    WHERE "id" = $1;`;
-    pool.query(queryText, [req.params.id])
-  }).then((result) => {
     res.send(result.rows);
   }).catch(err => {
     console.log('got an error in DELETE', err);
     res.sendStatus(500);
   });
 });  
-
-  
-
 
   router.get('/data',rejectUnauthenticated, (req,res) => {
     console.log('What is my data :', req.query);

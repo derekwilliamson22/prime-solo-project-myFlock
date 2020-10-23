@@ -55,7 +55,7 @@ class CreateChicken extends Component {
   render() {
     return (
       <div className="Dashboard">
-        <form className="formPanel" onSubmit={this.createChicken}>
+        <form className="Details" onSubmit={this.createChicken}>
           {this.props.store.errors.registrationMessage && (
             <h3 className="alert" role="alert">
               {this.props.store.errors.registrationMessage}
