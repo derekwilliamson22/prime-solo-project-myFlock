@@ -71,13 +71,45 @@ class LayingFormSwitch extends Component {
         checkedB: true
       })
     }
-    else if(this.state.checkedA && this.state.checkedB) {
-      console.log('bang b ');      
-      // this.props.dispatch({
-      //   type: "DELETE_EGG",
-      //   payload: deleteEgg
-      // })
+    else if(!this.state.checkedA && !this.state.checkedB) {
+      console.log('bang bang '); // add egg
+      this.props.dispatch({
+        type: "ADD_EGG",
+        payload: addEgg
+      })
+      this.setState({
+        ...this.state,
+        checkedA: false,
+        checkedB: true
+      })
     }
+    else if(this.state.checkedA && this.state.checkedB) {
+      console.log('no bang '); // add egg
+      this.props.dispatch({
+        type: "ADD_EGG",
+        payload: addEgg
+      })
+      this.setState({
+        ...this.state,
+        checkedA: false,
+        checkedB: true
+      })
+    }
+    else if(this.state.checkedA && !this.state.checkedB) {
+      console.log('bang b '); // add egg
+      this.props.dispatch({
+        type: "ADD_EGG",
+        payload: addEgg
+      })
+      this.setState({
+        ...this.state,
+        checkedA: false,
+        checkedB: true
+      })
+    }
+   //this.getChickenLayingData();
+   console.log('what is the value of checkedA', this.state.checkedA);
+   console.log('what is the value of checkedB', this.state.checkedB);
    this.getChickenLayingData();
   }
 
@@ -88,11 +120,9 @@ class LayingFormSwitch extends Component {
       ...this.state,
       [event.target.name]: event.target.checked 
     });
-    console.log('what is the value of checkedA', this.state.checkedA);
-    console.log('what is the value of checkedB', this.state.checkedB);
-    
-    
     this.dailyEgg();
+    console.log('what is the value after click checkedA', this.state.checkedA);
+    console.log('what is the value after click checkedB', this.state.checkedB);
   };
  
 
@@ -114,7 +144,7 @@ class LayingFormSwitch extends Component {
                     control={<DashboardSwitch
                       checked={this.state.checkedB}
                       onChange={this.handleChange} 
-                      name="checkedB"
+                      name="checkedA"
                       />}
                     /> :
                     <FormControlLabel
@@ -124,7 +154,7 @@ class LayingFormSwitch extends Component {
                     control={<DashboardSwitch
                       checked={this.state.checkedA}
                       onChange={this.handleChange} 
-                      name="checkedA"
+                      name="checkedB"
                       />}
                     />
                   }
