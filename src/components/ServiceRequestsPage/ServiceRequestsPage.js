@@ -13,8 +13,9 @@ class ServiceRequestsPage extends Component {
 
   render() {
     return (
-      <div>
-        <h2>{this.state.heading}</h2>
+      <div className="Dashboard">
+        <h2>hello</h2>
+        <button className="AdminBtn" onClick={() => this.props.history.push('/mycoop')}>Return to Admin Menu</button>
       </div>
     );
   }

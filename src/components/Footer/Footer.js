@@ -44,7 +44,7 @@ class Footer extends Component {
         <footer>
           <nav>
             {(this.props.store.user.id === undefined) || 
-            (this.props.store.user.authLevel === 'admin') ?
+            (this.props.store.user.authLevel === 'ADMIN') ?
             '' : 
             <div>
               <img className="NavIcons" src="images/nav_icon_dashboard.png" onClick={this.goToDashboard}/>
