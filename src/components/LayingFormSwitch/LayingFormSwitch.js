@@ -32,7 +32,7 @@ class LayingFormSwitch extends Component {
 
    state = {
      checkedA: false,
-     checkedB: true
+     checkedB: false
    }
 
   dailyEgg = () => {
@@ -44,19 +44,18 @@ class LayingFormSwitch extends Component {
     }
     const deleteEgg = {
       date: newDate,
-      didLay: 0,
       chicken_id: this.props.chickenId
     }
    
-    if(this.state.checkedA || this.state.checkedB) {
-      console.log('delete an egg', this.state.checkedA);      
+    if(this.state.checkedB) {
+      console.log('delete an egg', this.state.checkedB);      
       this.props.dispatch({
         type: "DELETE_EGG",
         payload: deleteEgg
       })
     }
-    if(!this.state.checkedA || !this.state.checkedB) {
-      console.log('add an egg', this.state.checkedA);
+    else if(!this.state.checkedB) {
+      console.log('add an egg', this.state.checkedB);
       this.props.dispatch({
         type: "ADD_EGG",
         payload: addEgg
@@ -72,27 +71,25 @@ class LayingFormSwitch extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy'); 
-    console.log('what is the laying data', this.props.didLay);
-      
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');      
          return (
             <div>
               <FormGroup>
                 <div className="LayingBar">
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
                   <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-                  {/* <div className="eggSwitch">                             
+                  <div className="eggSwitch">                             
                   <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
                     value="true"
                     control={<DashboardSwitch
-                      checked={this.state.checkedA}
+                      checked={this.state.checkedB}
                       onChange={this.handleChange} 
-                      name="checkedA"
+                      name="checkedB"
                       />}
                     />
-                 </div>        */}
+                 </div>
                 </div>   
               </FormGroup>
             </div>

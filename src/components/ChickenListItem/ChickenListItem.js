@@ -17,7 +17,7 @@ class ChickenListItem extends Component {
       >
       <img className="ChickenListImg" src={this.props.chicken.chicken_image_url} alt={this.props.chicken.name}/> 
       <h4 className="ChickenListItem">{this.props.chicken.name}</h4>
-      <img className="ChickenListEggImg" src={this.props.chicken.chicken_egg_image_url} alt={this.props.chicken.name}/>
+      <img className="MyCoopBarEggImg" src={this.props.chicken.chicken_egg_image_url} alt={this.props.chicken.name}/>
                     
       </div>
     );
