@@ -13,7 +13,7 @@ import { format } from 'date-fns';
 class LayingForm extends Component {
 
   componentDidMount(){
-  //this.getChickenLayingData();
+  
   }
 
   getChickenLayingData = () => {

@@ -128,7 +128,12 @@ render() {
             />
         </div>
         <div className="EditDetailsButtons">
-          <button className="btn btn_sizeSm" onClick={this.sendServiceRequest}>Send Request!</button>
+          <button 
+            className="btn btn_sizeSm" 
+            onClick={this.sendServiceRequest}
+            >
+            Send Request!
+          </button>
         </div>
         {/* <input className="btn" type="submit" name="submit" value="Submit" />
         </form> */}

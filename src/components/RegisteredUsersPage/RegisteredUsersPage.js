@@ -15,7 +15,12 @@ class RegisteredUsersPage extends Component {
     return (
       <div className="Dashboard">
         <h2>{this.state.heading}</h2>
-        <button className="AdminBtn" onClick={() => this.props.history.push('/mycoop')}>Return to Admin Menu</button>
+        <button 
+        className="AdminBtn" 
+        onClick={() => this.props.history.push('/mycoop')}
+        >
+        Return to Admin Menu
+        </button>
       </div>
     );
   }
