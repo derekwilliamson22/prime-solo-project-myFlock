@@ -33,7 +33,7 @@ class LayingForm extends Component {
       
     for (let layingData of this.props.store.layingData) {
       if (
-        layingData.chicken_id === chicken.id &&
+        layingData.id === chicken.chickenid &&
         layingData.date === format(this.props.store.date, 'MMMM - dd - yyyy') &&
         layingData.didLay === 1
       ) {

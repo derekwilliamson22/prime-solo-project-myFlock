@@ -46,7 +46,7 @@ class DateBar extends Component {
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
-    event.preventDefault();
+  
     let date = event.target.value;
     if(date === "yesterday") {
       this.props.dispatch({
@@ -61,13 +61,13 @@ class DateBar extends Component {
     //   ...this.state,
     //   counter: this.props.store.date.counterForDate
     // })
-    this.getChickenLayingData();
+  
  }
 
  changeToTomorrow = (event) => {
    // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
   // console.log('what is date', date);
-  event.preventDefault();
+  
     let date = event.target.value;
       if(date === "tomorrow") {
         this.props.dispatch({
@@ -82,7 +82,7 @@ class DateBar extends Component {
   //   ...this.state,
   //   counter: this.props.store.date.counterForDate
   // })
-      this.getChickenLayingData();
+    
 }
 
 //  sendDateBarDate = (date) => {
