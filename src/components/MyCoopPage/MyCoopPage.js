@@ -43,9 +43,18 @@ class MyCoopPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-       <h3 className="DateContents">myCoop</h3>
-       <ChickenList />
-       <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
+        {this.props.store.user.authLevel === 'admin' ?
+          <div className="Details">
+            <button className="AdminBtn">Service Requests</button>
+            <button className="AdminBtn">Registered Users</button>
+          </div>
+          :
+          <div className="MyCoopList">
+            <h3 className="DateContents">myCoop</h3>
+            <ChickenList />
+            <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
+          </div>
+        }
       </div>
     );
   }

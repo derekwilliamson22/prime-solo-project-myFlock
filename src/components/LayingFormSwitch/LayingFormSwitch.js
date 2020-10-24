@@ -30,7 +30,22 @@ const DashboardSwitch = withStyles({
 // component.
 class LayingFormSwitch extends Component {
 
+  state = {
+    checkedA: false,
+    checkedB: true
+  }
   
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData = {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
+    });
+  }
 
   dailyEgg = () => {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
@@ -44,33 +59,67 @@ class LayingFormSwitch extends Component {
       chicken_id: this.props.chickenId
     }
    
-    if(this.props.didLay) {
-      console.log('delete an egg', this.props.didLay);      
-      this.props.dispatch({
-        type: "DELETE_EGG",
-        payload: deleteEgg
-      })
+    if(!this.state.checkedA && this.state.checkedB) {
+      return console.log('bang a '); // add egg
+      // this.props.dispatch({
+      //   type: "ADD_EGG",
+      //   payload: addEgg
+      // })
     }
-    else if(!this.props.didLay) {
-      console.log('add an egg', this.props.didLay);
-      this.props.dispatch({
-        type: "ADD_EGG",
-        payload: addEgg
-      })
+    else if(this.state.checkedA && !this.state.checkedB) {
+      return console.log('bang b ');      
+      // this.props.dispatch({
+      //   type: "DELETE_EGG",
+      //   payload: deleteEgg
+      // })
     }
+    else if(this.state.checkedA && this.state.checkedB) {
+      return console.log('no bang');
+      // this.props.dispatch({
+      //   type: "ADD_EGG",
+      //   payload: addEgg
+      // })
+    }
+    else if(!this.state.checkedA && !this.state.checkedB) {
+      return console.log('bang bang');      
+      // this.props.dispatch({
+      //   type: "DELETE_EGG",
+      //   payload: deleteEgg
+      // })
+    }
+
   }
 
-  handleChange = (event) => {
+  handleChangeA = (event) => {
+    console.log('what is the value of switch', event.target.checked);
+    
     this.setState({ 
       ...this.state,
-      [event.target.name]: event.target.checked });
+      [event.target.name]: event.target.checked 
+    });
+    console.log('what is the value of checkedA', this.state.checkedA);
+    console.log('what is the value of checkedB', this.state.checkedB);
+    
+    
+    this.dailyEgg();
+  };
+  handleChangeB = (event) => {
+    console.log('what is the value of switch', event.target.checked);
+    
+    this.setState({ 
+      ...this.state,
+      [event.target.name]: event.target.checked 
+    });
+    console.log('what is the value of checkedA', this.state.checkedA);
+    console.log('what is the value of checkedB', this.state.checkedB);
+    
+    
     this.dailyEgg();
   };
 
   render() {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
-    console.log('what is didLay', this.props.didLay);
-          
+              
          return (
             <div>
               <FormGroup>
@@ -78,16 +127,28 @@ class LayingFormSwitch extends Component {
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
                   <h4 className="ChickenListItem">{this.props.chickenName}</h4>
                   <div className="eggSwitch">
+                  {this.props.didLay ? // this works to show eggs when checkedB is true and checkedA is false
                     <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
                     value="true"
                     control={<DashboardSwitch
-                      checked={this.props.didLay}
-                      onChange={this.handleChange} 
+                      checked={this.state.checkedB}
+                      onChange={this.handleChangeB} 
+                      name="checkedB"
+                      />}
+                    /> :
+                    <FormControlLabel
+                    label="Laid Today?"
+                    labelPlacement="start"
+                    value="true"
+                    control={<DashboardSwitch
+                      checked={this.state.checkedA}
+                      onChange={this.handleChangeA} 
                       name="checkedA"
                       />}
                     />
+                  }
                  </div>
                 </div>   
               </FormGroup>
@@ -95,5 +156,16 @@ class LayingFormSwitch extends Component {
     )}             
 } 
 
+// the following works in conjunction with no-state to render buttons on load
+{/* <FormControlLabel
+label="Laid Today?"
+labelPlacement="start"
+value="true"
+control={<DashboardSwitch
+  checked={this.props.didLay}
+  onChange={this.handleChange} 
+  name="checkedA"
+  />}
+/> */}
 
 export default connect(mapStoreToProps)(LayingFormSwitch);
