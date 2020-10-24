@@ -55,7 +55,7 @@ class LayingForm extends Component {
           className="LayingFormItem"
           key={index}>
           <LayingFormSwitch
-          chickenId={chicken.id}
+          chickenId={chicken.chickenid}
           chickenName={chicken.name}
           chickenEggImg={chicken.chicken_egg_image_url}
           didLay={this.didChickenLayEgg(chicken)}

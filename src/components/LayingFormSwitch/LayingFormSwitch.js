@@ -30,10 +30,7 @@ const DashboardSwitch = withStyles({
 // component.
 class LayingFormSwitch extends Component {
 
-   state = {
-     checkedA: false,
-     checkedB: false
-   }
+  
 
   dailyEgg = () => {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
@@ -47,15 +44,15 @@ class LayingFormSwitch extends Component {
       chicken_id: this.props.chickenId
     }
    
-    if(this.state.checkedB) {
-      console.log('delete an egg', this.state.checkedB);      
+    if(this.props.didLay) {
+      console.log('delete an egg', this.props.didLay);      
       this.props.dispatch({
         type: "DELETE_EGG",
         payload: deleteEgg
       })
     }
-    else if(!this.state.checkedB) {
-      console.log('add an egg', this.state.checkedB);
+    else if(!this.props.didLay) {
+      console.log('add an egg', this.props.didLay);
       this.props.dispatch({
         type: "ADD_EGG",
         payload: addEgg
@@ -86,9 +83,9 @@ class LayingFormSwitch extends Component {
                     labelPlacement="start"
                     value="true"
                     control={<DashboardSwitch
-                      checked={this.state.checkedB}
+                      checked={this.props.didLay}
                       onChange={this.handleChange} 
-                      name="checkedB"
+                      name="checkedA"
                       />}
                     />
                  </div>

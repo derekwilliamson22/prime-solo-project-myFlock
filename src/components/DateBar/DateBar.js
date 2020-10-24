@@ -118,33 +118,33 @@ const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
 
     return (
       <>
-       <input 
-        type="image"
-        className="DateArrows"
-        src="images/left_arrow.png"
-        alt="left arrow"
-        value="yesterday"
-        onClick={this.changeToYesterday}
-        //onMouseUp={this.getChickenLayingData}
-        /> 
        {/* {this.props.store.date.counterForDate <= 6 ? 
         <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday} onMouseUp={this.sendDateBarDate(date)}/> :
         <div className="HiddenArrowLeft" ></div>} 
         {/* <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button> */}
         {/* <h3>{this.state.date}</h3> */}
+        <input 
+        type="image"
+        className="DateArrows"
+        src="images/left_arrow.png"
+        alt="left arrow"
+        value="yesterday"
+        onMouseDown={this.changeToYesterday}
+        onMouseUp={this.getChickenLayingData}
+        /> 
         <h3>{newDate}</h3>
-        {/* <h3>{this.props.store.date}</h3> */}
-        {newDate ===  format(new Date(), 'MMMM - dd - yyyy') ?
-        <div className="HiddenArrowRight" ></div> :    
         <input
         type="image"
         className="DateArrows"
         src="images/right_arrow.png"
         alt="right arrow"
         value="tomorrow"
-        onClick={this.changeToTomorrow}
-        //onMouseUp={this.getChickenLayingData}
-        />}
+        onMouseDown={this.changeToTomorrow}
+        onMouseUp={this.getChickenLayingData}
+        />
+        {/* <h3>{this.props.store.date}</h3> */}
+        {/* {newDate ===  format(new Date(), 'MMMM - dd - yyyy') ?
+        <div className="HiddenArrowRight" ></div> :} */}
       </>
     );
   }
