@@ -15,8 +15,8 @@ class DashboardPage extends Component {
 
   componentDidMount(){
     this.getChickens();
-    this.createDailyData();
-    this.getChickenLayingData();
+    // this.createDailyData();
+    // this.getChickenLayingData();
   }
 
     getChickens = () => {
@@ -47,10 +47,6 @@ class DashboardPage extends Component {
               payload: newDailyData
             })
           }
-        }
-        else {
-          this.getChickenLayingData();
-          
         }
       } 
     

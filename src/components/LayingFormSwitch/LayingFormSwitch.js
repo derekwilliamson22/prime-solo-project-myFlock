@@ -8,6 +8,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { actionChannel } from 'redux-saga/effects';
+
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
@@ -71,15 +72,16 @@ class LayingFormSwitch extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');   
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy'); 
+    console.log('what is the laying data', this.props.didLay);
+      
          return (
             <div>
-              {this.props.chickenDidLay === 0 ?
               <FormGroup>
                 <div className="LayingBar">
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
                   <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-                  <div className="eggSwitch">                             
+                  {/* <div className="eggSwitch">                             
                   <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
@@ -90,29 +92,9 @@ class LayingFormSwitch extends Component {
                       name="checkedA"
                       />}
                     />
-                 </div>       
+                 </div>        */}
                 </div>   
               </FormGroup>
-              :
-              <FormGroup>
-                <div className="LayingBar">
-                  <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
-                  <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-                  <div className="eggSwitch">                               
-                  <FormControlLabel
-                    label="Laid Today?"
-                    labelPlacement="start"
-                    value="true"
-                    control={<DashboardSwitch
-                      checked={this.state.checkedB}
-                      onChange={this.handleChange} 
-                      name="checkedB"
-                    />}
-                  />
-                 </div>   
-                </div>   
-              </FormGroup>
-              }
             </div>
     )}             
 } 

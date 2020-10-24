@@ -7,7 +7,7 @@ import { green, red } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import { actionChannel } from 'redux-saga/effects';
+
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
