@@ -12,8 +12,24 @@ import { format } from 'date-fns';
 
 class LayingForm extends Component {
 
+  componentDidMount(){
+  //this.getChickenLayingData();
+  }
+
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData = {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
+    });
+  }
+
   didChickenLayEgg = (chicken) => {
-      console.log('what is the chicken', chicken);
+      console.log('what are chicken', chicken);
       
     for (let layingData of this.props.store.layingData) {
       if (

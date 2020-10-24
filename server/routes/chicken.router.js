@@ -6,16 +6,18 @@ const {
 } = require('../modules/authentication-middleware');
 
 
+
 router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryString = `
-  SELECT "chicken"."id",
+  SELECT "chicken"."id" as chickenId,
   "chicken"."name",
   "chicken"."breed",
   "chicken"."chicken_image_url",
   "chicken"."chicken_egg_image_url",
   "chicken"."notes",
-  "chicken"."birthday"
+  "chicken"."birthday",
+  "coop"."id" as coopId
   FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
@@ -53,7 +55,7 @@ router.post('/dailyData', rejectUnauthenticated, (req, res) => {
 router.get('/layingData', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "chicken"."name", "chicken"."chicken_egg_image_url", "chicken"."id", "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "chicken"."name", "chicken"."chicken_egg_image_url", "chicken"."id", "layingData"."date", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"

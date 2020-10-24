@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ChickenList from '../ChickenList/ChickenList';
 import { withRouter } from 'react-router-dom';
+import { format } from 'date-fns';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -12,8 +13,22 @@ class MyCoopPage extends Component {
 
   componentDidMount(){
   this.getChickens();
+  this.getChickenLayingData();
   }
   
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData =
+    {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
+    });
+  }
+
   getChickens = () => {
     this.props.dispatch({
       type: 'FETCH_CHICKENS'

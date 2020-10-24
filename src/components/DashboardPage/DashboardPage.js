@@ -14,15 +14,16 @@ class DashboardPage extends Component {
   // }
 
   componentDidMount(){
-    this.getChickens();
-    // this.createDailyData();
-    // this.getChickenLayingData();
+   // this.getChickens();
+    //this.fetchCoop();
+    this.getChickenLayingData();
   }
 
     getChickens = () => {
       this.props.dispatch({
         type: 'FETCH_CHICKENS'
       });
+
     }
 
     fetchCoop = () => {

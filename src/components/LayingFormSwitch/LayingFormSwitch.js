@@ -71,15 +71,17 @@ class LayingFormSwitch extends Component {
   };
 
   render() {
-    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');      
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    console.log('what is didLay', this.props.didLay);
+          
          return (
             <div>
               <FormGroup>
                 <div className="LayingBar">
                   <img className="ChickenListEggImg" src={this.props.chickenEggImg}/>
                   <h4 className="ChickenListItem">{this.props.chickenName}</h4>
-                  <div className="eggSwitch">                             
-                  <FormControlLabel
+                  <div className="eggSwitch">
+                    <FormControlLabel
                     label="Laid Today?"
                     labelPlacement="start"
                     value="true"

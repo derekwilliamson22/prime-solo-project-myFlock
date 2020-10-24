@@ -26,9 +26,9 @@ class DateBar extends Component {
   //   // date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy'),
   //   counter: this.props.store.date.counterForDate
   // }
-  // componentDidMount() {
-  //   this.sendDateBarDate();
-  // }
+  componentDidMount() {
+    //this.getChickenLayingData();
+  }
   
   getChickenLayingData = () => {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
@@ -46,6 +46,7 @@ class DateBar extends Component {
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
+    event.preventDefault();
     let date = event.target.value;
     if(date === "yesterday") {
       this.props.dispatch({
@@ -60,19 +61,19 @@ class DateBar extends Component {
     //   ...this.state,
     //   counter: this.props.store.date.counterForDate
     // })
-
+    this.getChickenLayingData();
  }
 
  changeToTomorrow = (event) => {
    // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
-  
   // console.log('what is date', date);
-  let date = event.target.value;
-  if(date === "tomorrow") {
-    this.props.dispatch({
-      type: "SET_TOMORROW",
-    });
-  }
+  event.preventDefault();
+    let date = event.target.value;
+      if(date === "tomorrow") {
+        this.props.dispatch({
+          type: "SET_TOMORROW",
+        });
+      }
   // this.setState({
   //   ...this.state,
   //   date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
@@ -81,7 +82,8 @@ class DateBar extends Component {
   //   ...this.state,
   //   counter: this.props.store.date.counterForDate
   // })
- }
+      this.getChickenLayingData();
+}
 
 //  sendDateBarDate = (date) => {
   
@@ -122,7 +124,7 @@ const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
         src="images/left_arrow.png"
         alt="left arrow"
         value="yesterday"
-        onMouseDown={this.changeToYesterday}
+        onClick={this.changeToYesterday}
         //onMouseUp={this.getChickenLayingData}
         /> 
        {/* {this.props.store.date.counterForDate <= 6 ? 
@@ -140,7 +142,7 @@ const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
         src="images/right_arrow.png"
         alt="right arrow"
         value="tomorrow"
-        onMouseDown={this.changeToTomorrow}
+        onClick={this.changeToTomorrow}
         //onMouseUp={this.getChickenLayingData}
         />}
       </>
