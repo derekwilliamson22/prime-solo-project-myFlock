@@ -7,7 +7,7 @@ class ChickenListItem extends Component {
 
   getChickenDetails = () => {
     // navigate to creature details page    
-    this.props.history.push(`/chicken_details/${this.props.chicken.id}`);
+    this.props.history.push(`/chicken_details/${this.props.chicken.chickenid}`);
   }
 
   render() {
