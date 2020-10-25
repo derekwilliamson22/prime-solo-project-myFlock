@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import { withRouter } from 'react-router-dom';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
 // the component name TemplateClass with the name for the new
 // component.
 class ServiceRequestItem extends Component {
-  state = {
-    heading: 'Class Component',
-  };
+  
+  removeServiceRequest = () => {
+    this.props.dispatch({
+      type: "REMOVE_SERVICE_REQUEST",
+      payload: Number(`${this.props.request.id}`)
+    })
+    this.props.history.push('/service_requests')
+  }
+ 
 
   render() {
     return (
@@ -30,10 +37,17 @@ class ServiceRequestItem extends Component {
         <p>ZipCode: {this.props.request.zipcode}</p>
         <p>Email: {this.props.request.email}</p>
         <p>Phone: {this.props.request.phone}</p>
-        <button className="btn btn_sizeSm">Remove Request</button>
+        <button
+        type="button" 
+        className="btn btn_sizeSm"
+        onClick={this.removeServiceRequest}
+        >
+          Remove Request
+        </button>
+      
       </div>
     );
   }
 }
 
-export default connect(mapStoreToProps)(ServiceRequestItem);
+export default connect(mapStoreToProps)(withRouter(ServiceRequestItem));

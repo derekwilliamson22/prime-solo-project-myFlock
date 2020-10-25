@@ -23,7 +23,7 @@ class ServiceConfirmationPage extends Component {
               this.props.history.push('/mycoop');
             }}
           >
-            Return to Service Page
+            Return to myCoop
         </button>
         </div>
       </div>

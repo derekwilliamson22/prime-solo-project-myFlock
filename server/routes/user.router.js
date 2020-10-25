@@ -98,6 +98,7 @@ router.get('/requests', rejectUnauthenticated, (req, res) => {
     "user"."zipcode",
     "user"."email",
     "user"."phone",
+    "serviceData"."id",
     "serviceData"."date",
     "serviceData"."requestForFeed",
     "serviceData"."requestForCleaning",
@@ -117,6 +118,23 @@ router.get('/requests', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 })
+
+router.delete('/request/:id', rejectUnauthenticated, (req, res) => {
+  console.log('hit delete service request', req.params);
+  queryText = `
+  DELETE FROM "serviceData"
+  WHERE "id" = $1;`;
+  pool
+  .query(queryText, [req.params.id])
+  .then(result => {
+    res.send(result.rows);
+  }).catch(err => {
+    console.log('got an error in DELETE service request', err);
+    res.sendStatus(500);
+  });
+});  
+
+
 // router.post('/register', (req, res, next) => {
 //   const username = "coop";
 //   const password = encryptLib.encryptPassword("coop");

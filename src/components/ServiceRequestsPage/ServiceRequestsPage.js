@@ -20,7 +20,8 @@ class ServiceRequestsPage extends Component {
       <div className="Dashboard">
         <div className="Details">
           <h3 className="UserContents">Service Requests</h3>
-          <button 
+          <button
+            type="button" 
             className="AdminBtn" 
             onClick={() => this.props.history.push('/mycoop')}
             >
