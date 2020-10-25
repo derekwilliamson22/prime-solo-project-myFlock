@@ -57,10 +57,65 @@ router.post('/register', (req, res, next) => {
     })
 });
 
-router.get('/users', rejectUnauthenticated, (req, res) => {
-  console.log('hit the registered users get');
+router.get('/registered', rejectUnauthenticated, (req, res) => {
+  console.log('hit the registered users get', req.user);
+ 
+  const queryString = `
+    SELECT 
+    "user"."first_name",
+    "user"."last_name",
+    "user"."username",
+    "user"."address",
+    "user"."zipcode",
+    "user"."email",
+    "user"."phone",
+    "user"."registration_date",
+    "coop"."name" as coop_name
+    FROM "user"
+    JOIN "coop"
+    ON "coop"."user_id" = "user"."id"
+    ORDER BY "user"."last_name" DESC;`;
+  const queryParams = [];
   
+  pool.query(queryString, queryParams)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in GETting reg users', err);
+      res.sendStatus(500);
+    });
+})
+
+router.get('/requests', rejectUnauthenticated, (req, res) => {
+  console.log('hit the service requests get', req.user);
+ 
+  const queryString = `
+    SELECT 
+    "user"."first_name",
+    "user"."last_name",
+    "user"."address",
+    "user"."zipcode",
+    "user"."email",
+    "user"."phone",
+    "serviceData"."date",
+    "serviceData"."requestForFeed",
+    "serviceData"."requestForCleaning",
+    "serviceData"."otherNotes"    
+    FROM "user"
+    JOIN "serviceData"
+    ON "serviceData"."user_id" = "user"."id"
+    ORDER BY "serviceData"."date" DESC;`;
+  const queryParams = [];
   
+  pool.query(queryString, queryParams)
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('error in GETting service requests', err);
+      res.sendStatus(500);
+    });
 })
 // router.post('/register', (req, res, next) => {
 //   const username = "coop";

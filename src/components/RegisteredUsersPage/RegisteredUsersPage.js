@@ -18,7 +18,7 @@ class RegisteredUsersPage extends Component {
     return (
       <div className="Dashboard">
         <div className="Details">
-          <h3 className="UserContents">Registered Users</h3>
+          <h3 className="UserContents">myFlock Users</h3>
           <button 
             className="AdminBtn" 
             onClick={() => this.props.history.push('/mycoop')}
@@ -27,17 +27,16 @@ class RegisteredUsersPage extends Component {
           </button>
           <div className="MyCoopList">            
             <ul className="bars">
-              {/* {this.props.store.userList.map((user, index) => {
+              {this.props.store.userList.map((user, index) => {
                 return (
                 <li key={index}>
                   <RegisteredUserItem 
                   index={index}
                   user={user}
                   />
-                  <button className="btn btn_sizeSm">Remove User</button>
                 </li>
                 )
-              })} */}
+              })}
             </ul>
           </div>
         </div>

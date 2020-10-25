@@ -10,9 +10,18 @@ import userSaga from '../../redux/sagas/user.saga';
 class RegisteredUserItem extends Component {
 
   render() {
+    console.log('what is the user', this.props.user);
+    
     return (
-      <div className="MyCoopBar">
-        {/* <h2>{user.name}</h2> */}
+      <div className="UsersBar">
+        <p>Coop Name: {this.props.user.coop_name}</p>
+        <p>Username: {this.props.user.username}</p>
+        <p>First Name: {this.props.user.first_name}</p>
+        <p>Last Name: {this.props.user.last_name}</p>
+        <p>Address: {this.props.user.address}</p>
+        <p>ZipCode: {this.props.user.zipcode}</p>
+        <p>Email: {this.props.user.email}</p>
+        <p>Phone: {this.props.user.phone}</p>
       </div>
     );
   }

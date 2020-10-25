@@ -8,6 +8,7 @@ import chickenDetails from './chickenDetails.reducer';
 import layingData from './chickenLayingData.reducer';
 import data from './layingData.reducer';
 import userList from './registeredUser.reducer';
+import serviceRequests from './serviceRequests.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   layingData,
   data,
   userList,
+  serviceRequests,
 });
 
 export default rootReducer;

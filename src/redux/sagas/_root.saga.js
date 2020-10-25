@@ -14,7 +14,8 @@ import deleteEggSaga from './deleteEgg.saga';
 import fetchLayingDataSaga from './fetchLayingData.saga';
 import addDailyDataSaga from './addDailyData.saga';
 import requestServiceSaga from './serviceRequest.saga';
-import fetchRegisteredUsersSaga from './fetchRegisteredUsers';
+import fetchRegisteredUsersSaga from './fetchRegisteredUsers.saga';
+import fetchServiceRequestsSaga from './fetchServiceRequests.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -41,7 +42,7 @@ export default function* rootSaga() {
     fetchChickenLayingDataSaga(),
     requestServiceSaga(),
     fetchRegisteredUsersSaga(),
-    
+    fetchServiceRequestsSaga(),   
     
   ]);
 }
