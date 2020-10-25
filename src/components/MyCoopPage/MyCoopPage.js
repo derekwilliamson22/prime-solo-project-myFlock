@@ -46,7 +46,7 @@ class MyCoopPage extends Component {
         {this.props.store.user.authLevel === 'ADMIN' ?
           <div className="Details">
             <button className="AdminBtn" onClick={() => this.props.history.push('/service_requests')}>Service Requests</button>
-            <button className="AdminBtn">Registered Users</button>
+            <button className="AdminBtn" onClick={() => this.props.history.push('/registered_users')}>Registered Users</button>
           </div>
           :
           <div className="MyCoopList">

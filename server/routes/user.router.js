@@ -57,6 +57,11 @@ router.post('/register', (req, res, next) => {
     })
 });
 
+router.get('/users', rejectUnauthenticated, (req, res) => {
+  console.log('hit the registered users get');
+  
+  
+})
 // router.post('/register', (req, res, next) => {
 //   const username = "coop";
 //   const password = encryptLib.encryptPassword("coop");
