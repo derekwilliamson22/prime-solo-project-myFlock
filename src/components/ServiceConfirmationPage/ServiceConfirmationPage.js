@@ -20,10 +20,10 @@ class ServiceConfirmationPage extends Component {
             type="button"
             className="btn"
             onClick={() => {
-              this.props.history.push('/service');
+              this.props.history.push('/mycoop');
             }}
           >
-            Return to Service Page
+            Return to myCoop
         </button>
         </div>
       </div>

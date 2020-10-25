@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import ChickenList from '../ChickenList/ChickenList';
 import { withRouter } from 'react-router-dom';
+import { format } from 'date-fns';
 
 // Basic class component structure for React with default state
 // value setup. When making a new component be sure to replace
@@ -12,8 +13,22 @@ class MyCoopPage extends Component {
 
   componentDidMount(){
   this.getChickens();
+  this.getChickenLayingData();
   }
   
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData =
+    {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
+    this.props.dispatch({
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
+    });
+  }
+
   getChickens = () => {
     this.props.dispatch({
       type: 'FETCH_CHICKENS'
@@ -28,9 +43,18 @@ class MyCoopPage extends Component {
   render() {
     return (
       <div className="Dashboard">
-       <h3 className="DateContents">myCoop</h3>
-       <ChickenList />
-       <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
+        {this.props.store.user.authLevel === 'ADMIN' ?
+          <div className="Details">
+            <button className="AdminBtn" onClick={() => this.props.history.push('/service_requests')}>Service Requests</button>
+            <button className="AdminBtn" onClick={() => this.props.history.push('/registered_users')}>Registered Users</button>
+          </div>
+          :
+          <div className="MyCoopList">
+            <h3 className="DateContents">myCoop</h3>
+            <ChickenList />
+            <button className="btn" onClick={this.addChicken}>Add a Chicken</button>
+          </div>
+        }
       </div>
     );
   }

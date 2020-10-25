@@ -5,7 +5,7 @@ function* deleteEgg(action) {
   console.log('hit delete EGG', action.payload); 
     
   yield axios({
-      method: 'PUT',
+      method: 'DELETE',
       url: 'api/chicken/laying/remove',
       data: action.payload
     });

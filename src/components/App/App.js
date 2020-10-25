@@ -28,6 +28,8 @@ import ServicePage from '../ServicePage/ServicePage';
 import CreateChicken from '../CreateChicken/CreateChicken';
 import ChickenDetails from '../ChickenDetails/ChickenDetails';
 import EditChickenDetails from '../EditChickenDetails/EditChickenDetails';
+import ServiceRequestsPage from '../ServiceRequestsPage/ServiceRequestsPage';
+import RegisteredUsersPage from '../RegisteredUsersPage/RegisteredUsersPage';
 import { format } from 'date-fns';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
@@ -112,13 +114,16 @@ class App extends Component {
               exact
               path="/service"
               component={ServicePage}
-             
             />
             <ProtectedRoute
-              // logged in shows InfoPage else shows LoginPage
               exact
-              path="/info"
-              component={InfoPage}
+              path="/service_requests"
+              component={ServiceRequestsPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/registered_users"
+              component={RegisteredUsersPage}
             />
             {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will

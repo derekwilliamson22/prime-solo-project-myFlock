@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 import './Footer.css';
+import { format } from 'date-fns';
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -11,14 +12,22 @@ import './Footer.css';
 
 class Footer extends Component {
 
-  fetchChickens = () => {
+
+  getChickenLayingData = () => {
+    const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
+    const layingData = {
+      date: newDate,
+      coop_id: this.props.store.coop.id
+    }
     this.props.dispatch({
-      type: 'FETCH_CHICKENS'
+      type: 'FETCH_CHICKEN_LAYING_DATA',
+      payload: layingData
     });
   }
 
   goToDashboard = () => {
     this.props.history.push('/dashboard');
+    this.getChickenLayingData();
   }
   goToMyCoop = () => {
     this.props.history.push('/mycoop');
@@ -34,7 +43,8 @@ class Footer extends Component {
     return (
         <footer>
           <nav>
-            {this.props.store.user.id === undefined ?
+            {(this.props.store.user.id === undefined) || 
+            (this.props.store.user.authLevel === 'ADMIN') ?
             '' : 
             <div>
               <img className="NavIcons" src="images/nav_icon_dashboard.png" onClick={this.goToDashboard}/>

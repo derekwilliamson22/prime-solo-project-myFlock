@@ -14,8 +14,8 @@ class DashboardPage extends Component {
   // }
 
   componentDidMount(){
-    this.getChickens();
-    this.createDailyData();
+   // this.getChickens();
+    //this.fetchCoop();
     this.getChickenLayingData();
   }
 
@@ -23,6 +23,7 @@ class DashboardPage extends Component {
       this.props.dispatch({
         type: 'FETCH_CHICKENS'
       });
+
     }
 
     fetchCoop = () => {
@@ -47,10 +48,6 @@ class DashboardPage extends Component {
               payload: newDailyData
             })
           }
-        }
-        else {
-          this.getChickenLayingData();
-          
         }
       } 
     

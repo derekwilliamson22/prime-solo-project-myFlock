@@ -179,6 +179,7 @@ myCoop View
   align-items: center;
   text-align: center;
   margin-bottom: 5px;
+  position: relative;
 }
 
 img {
@@ -223,7 +224,14 @@ img {
 .ChickenListImg {
   width: 75px;
   display: inline;
-  padding:10px;
+  margin:10px;
+}
+
+.MyCoopBarEggImg {
+  width: 54px;
+  height: 75px;
+  position: absolute;
+  margin-left: 230px;
 }
 
 .ChickenListEggImg {
@@ -400,4 +408,51 @@ table, th, td {
 
 .eggSwitch {
   margin-right:15px;
+}
+
+.MyCoopList {
+  text-align: center;
+}
+
+.AdminBtn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #014041;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  border-radius: 4px;
+  background-color: rgb(190,0,10);
+  color: #f8f8f8;
+  font-size: 1.1rem;
+  outline: 0;
+  cursor: pointer;
+  margin:10px;
+}
+
+.UserContents {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+  padding: 10px;
+}
+
+.UsersBar {
+  box-sizing: border-box;
+  background-color: rgb(65, 64, 64);
+  color: #efefef;
+  border: 1px solid rgb(255, 196, 0);
+  border-radius: 5px;
+  box-shadow: -3px 3px rgb(0, 0, 0, 0.4);
+  margin:20px;
+  text-align: left;
+}
+
+.UsersBar p {
+  padding-left: 10px;
 }

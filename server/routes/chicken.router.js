@@ -6,16 +6,18 @@ const {
 } = require('../modules/authentication-middleware');
 
 
+
 router.get('/', rejectUnauthenticated, (req, res) => {
   // GET route code here
   const queryString = `
-  SELECT "chicken"."id",
+  SELECT "chicken"."id" as chickenId,
   "chicken"."name",
   "chicken"."breed",
   "chicken"."chicken_image_url",
   "chicken"."chicken_egg_image_url",
   "chicken"."notes",
-  "chicken"."birthday"
+  "chicken"."birthday",
+  "coop"."id" as coopId
   FROM "chicken"
   JOIN "coop"
   ON "coop"."id" = "chicken"."coop_id"
@@ -53,7 +55,7 @@ router.post('/dailyData', rejectUnauthenticated, (req, res) => {
 router.get('/layingData', rejectUnauthenticated, (req, res) => {
   // GET route code here
   console.log("What is my laying data :", req.query);
-  const queryString = `SELECT "chicken"."name", "chicken"."chicken_egg_image_url", "chicken"."id", "layingData"."didLay" FROM "chicken"
+  const queryString = `SELECT "chicken"."name", "chicken"."chicken_egg_image_url", "chicken"."id", "layingData"."date", "layingData"."didLay" FROM "chicken"
   JOIN "layingData"
   ON "chicken"."id" = "layingData"."chicken_id"
   JOIN "coop"
@@ -62,7 +64,8 @@ router.get('/layingData', rejectUnauthenticated, (req, res) => {
   on "coop"."user_id" = "user"."id"
   WHERE "layingData"."date" = $1
   AND
-  "chicken"."coop_id" = $2;`;
+  "chicken"."coop_id" = $2
+  ORDER BY "layingData"."chicken_id";`;
   pool.query(queryString, [req.query.date, req.query.coop_id])
     .then(result => {
       res.send(result.rows);
@@ -73,14 +76,13 @@ router.get('/layingData', rejectUnauthenticated, (req, res) => {
     });
 });
 
-router.put('/laying/add', rejectUnauthenticated, (req, res) => {
+router.post('/laying/add', rejectUnauthenticated, (req, res) => {
   console.log('what is the post add egg', req.body);
   const queryString = `
-  UPDATE "layingData"
-  SET "didLay" = $1
-  WHERE "date" = $2
-  AND "chicken_id" = $3;`;
-  pool.query(queryString, [req.body.didLay, req.body.date, req.body.chicken_id])
+  INSERT INTO "layingData"
+  ("date", "didLay", "chicken_id")
+  VALUES ($1, $2, $3);`;
+  pool.query(queryString, [req.body.date, req.body.didLay, req.body.chicken_id])
   .then(result => {
     res.send(result.rows);
   })
@@ -90,14 +92,13 @@ router.put('/laying/add', rejectUnauthenticated, (req, res) => {
   });
 })
 
-router.put('/laying/remove', rejectUnauthenticated, (req,res) => {
+router.delete('/laying/remove', rejectUnauthenticated, (req,res) => {
 console.log('what is the delete egg', req.body);
 const queryString = `
-UPDATE "layingData"
-SET "didLay" = $1
-WHERE "date" = $2
-AND "chicken_id" = $3;`;
-pool.query(queryString, [req.body.didLay, req.body.date, req.body.chicken_id])
+DELETE FROM "layingData"
+WHERE "date" = $1
+AND "chicken_id" = $2;`;
+pool.query(queryString, [req.body.date, req.body.chicken_id])
 .then((result) => {
   res.send(result.rows);
 }).catch(err => {

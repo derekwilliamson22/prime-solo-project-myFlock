@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { format, subDays } from 'date-fns';
+import { format } from 'date-fns';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 
@@ -26,13 +26,14 @@ class DateBar extends Component {
   //   // date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy'),
   //   counter: this.props.store.date.counterForDate
   // }
-  // componentDidMount() {
-  //   this.sendDateBarDate();
-  // }
+  componentDidMount() {
+    //this.getChickenLayingData();
+  }
   
   getChickenLayingData = () => {
     const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
-    const layingData = {
+    const layingData =
+    {
       date: newDate,
       coop_id: this.props.store.coop.id
     }
@@ -45,6 +46,7 @@ class DateBar extends Component {
   changeToYesterday = (event) => {
     // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
     // console.log('what is date', date);
+  
     let date = event.target.value;
     if(date === "yesterday") {
       this.props.dispatch({
@@ -59,19 +61,19 @@ class DateBar extends Component {
     //   ...this.state,
     //   counter: this.props.store.date.counterForDate
     // })
-
+  
  }
 
  changeToTomorrow = (event) => {
    // const date = format((subDays(new Date(), `${this.props}`)), 'MMMM - dd - yyyy');
-  
   // console.log('what is date', date);
-  let date = event.target.value;
-  if(date === "tomorrow") {
-    this.props.dispatch({
-      type: "SET_TOMORROW",
-    });
-  }
+  
+    let date = event.target.value;
+      if(date === "tomorrow") {
+        this.props.dispatch({
+          type: "SET_TOMORROW",
+        });
+      }
   // this.setState({
   //   ...this.state,
   //   date: format((subDays(new Date(), this.props.store.date.counterForDate)), 'MMMM - dd - yyyy')
@@ -80,7 +82,8 @@ class DateBar extends Component {
   //   ...this.state,
   //   counter: this.props.store.date.counterForDate
   // })
- }
+    
+}
 
 //  sendDateBarDate = (date) => {
   
@@ -115,21 +118,33 @@ const newDate = format(this.props.store.date, 'MMMM - dd - yyyy');
 
     return (
       <>
-       <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday} onMouseUp={this.getChickenLayingData}/> 
-
-
-
-        {/* {this.props.store.date.counterForDate <= 6 ? 
+       {/* {this.props.store.date.counterForDate <= 6 ? 
         <input type="image" className="DateArrows" src="images/left_arrow.png" value="yesterday" onMouseDown={this.changeToYesterday} onMouseUp={this.sendDateBarDate(date)}/> :
         <div className="HiddenArrowLeft" ></div>} 
         {/* <button value="increase" onMouseDown={this.changeToYesterday} onMouseUp={this.goToYesterday(date)}>Yesterday</button> */}
         {/* <h3>{this.state.date}</h3> */}
+        <input 
+        type="image"
+        className="DateArrows"
+        src="images/left_arrow.png"
+        alt="left arrow"
+        value="yesterday"
+        onMouseDown={this.changeToYesterday}
+        onMouseUp={this.getChickenLayingData}
+        /> 
         <h3>{newDate}</h3>
+        <input
+        type="image"
+        className="DateArrows"
+        src="images/right_arrow.png"
+        alt="right arrow"
+        value="tomorrow"
+        onMouseDown={this.changeToTomorrow}
+        onMouseUp={this.getChickenLayingData}
+        />
         {/* <h3>{this.props.store.date}</h3> */}
-        {/* {this.props.store.date.counterForDate > 0 ? 
-        <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow} onMouseUp={this.sendDateBarDate(date)}/> :
-        <div className="HiddenArrowRight" ></div>}       */}
-        <input type="image" className="DateArrows" src="images/right_arrow.png" value="tomorrow" onMouseDown={this.changeToTomorrow} onMouseUp={this.getChickenLayingData}/>
+        {/* {newDate ===  format(new Date(), 'MMMM - dd - yyyy') ?
+        <div className="HiddenArrowRight" ></div> :} */}
       </>
     );
   }

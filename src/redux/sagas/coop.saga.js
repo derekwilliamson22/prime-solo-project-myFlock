@@ -7,6 +7,8 @@ function* fetchCoop(action) {
     method: 'GET',
     url: `/api/coop`
   });
+  console.log('what is response', response.data);
+  
   yield put({
     type: 'SET_COOP',
     payload: response.data
