@@ -103,6 +103,8 @@ render() {
             <textarea
               type="textarea"
               name="notes"
+              rows="8"
+              cols="26"
               //placeholder="Notes"
               value={this.state.updatedChicken.notes}
               onChange={this.handleInputChangeFor('notes')}

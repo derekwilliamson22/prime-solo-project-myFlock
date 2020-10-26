@@ -41,14 +41,13 @@ class MyStatsPage extends Component {
           </thead>
           <tbody>
           {this.props.store.data.map((item, index) => {
-            return (
+            return (    
               <tr key={index}>
                 <td>{item.name}</td>
                 <td>{item.sum}</td>
-
               </tr>
-            )
-          })}
+             )
+            })}
           </tbody>
         </table>
       </div>

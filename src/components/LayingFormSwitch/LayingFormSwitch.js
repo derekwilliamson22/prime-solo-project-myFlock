@@ -138,7 +138,7 @@ class LayingFormSwitch extends Component {
                   <div className="eggSwitch">
                   {this.props.didLay ? // this works to show eggs when checkedB is true and checkedA is false
                     <FormControlLabel
-                    label="Laid Today?"
+                    label="Egg Today?"
                     labelPlacement="start"
                     value="true"
                     control={<DashboardSwitch
@@ -148,7 +148,7 @@ class LayingFormSwitch extends Component {
                       />}
                     /> :
                     <FormControlLabel
-                    label="Laid Today?"
+                    label="Egg Today?"
                     labelPlacement="start"
                     value="true"
                     control={<DashboardSwitch
