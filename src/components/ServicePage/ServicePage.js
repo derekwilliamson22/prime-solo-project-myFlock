@@ -122,6 +122,8 @@ render() {
             <textarea
               type="textarea"
               name="otherNotes"
+              rows="8"
+              cols="26"
               //placeholder="Notes"
               value={this.state.serviceRequest.otherNotes}
               onChange={this.handleInputChangeFor('otherNotes')}
