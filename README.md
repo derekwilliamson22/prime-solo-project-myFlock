@@ -68,4 +68,4 @@ How does someone use this application? Tell a user story here.
 Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality, especially my Instructors [Edan Schwartz](https://github.com/eschwartz) and [dEv](https://github.com/devjanaprime) 
 
 ## Support
-If you have suggestions or issues, please email me at [derekwilliamson22@gmail.com](www.google.com)
+If you have suggestions or issues, please email me at derekwilliamson22 at gmail.com
