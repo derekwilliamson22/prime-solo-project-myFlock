@@ -207,7 +207,7 @@ router.delete('/:id', rejectUnauthenticated, (req,res) => {
     AND
     "date" BETWEEN $2 AND $3
     GROUP BY "chicken"."id";`;
-    pool.query(queryString, [req.query.coopId, req.query.previousDate, req.query.newDate])
+    pool.query(queryString, [req.query.coopId, req.query.newDate, req.query.previousDate])
       .then(result => {
         res.send(result.rows);
       })
