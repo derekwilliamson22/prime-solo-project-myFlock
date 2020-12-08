@@ -8,6 +8,7 @@ test('"hello" should return 3', () => {
 
 test('"aaaah" should return 1', () => {
   let result = findFirstRepeat('aaaah');
+  debugger
   expect(result).toBe(1);
 });
 
