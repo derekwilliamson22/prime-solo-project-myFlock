@@ -12,7 +12,6 @@
     "date-fns-tz": "^1.0.12",
     "dotenv": "^4.0.0",
     "express": "^4.16.4",
-    "jest": "^26.6.3",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "pg": "^8.3.0",
@@ -32,7 +31,6 @@
     "client": "react-scripts start",
     "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
-    "test": "jest --forceExit --runInBand --verbose",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
